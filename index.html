@@ -952,7 +952,7 @@
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                 <path d="m9 11 3 3L22 4" />
-              </svg> Tudo que você edita aqui é salvo automaticamente neste navegador.</div>
+              </svg> As alterações são salvas no Supabase quando conectado. Se não estiver conectado, conecte e tente novamente.</div>
 
             <div class="xirras-style-198">
               <!-- DESTAQUE -->
@@ -1467,20 +1467,30 @@ class Component extends DCLogic {
   openAdmin = () => this.setState({ adminOpen: true, adminData: this.cloneData(this.state.data), adminTab: 'destaque' });
   closeAdmin = () => this.setState({ adminOpen: false, adminData: null, attMsg: '' });
   discardChanges = () => this.closeAdmin();
-  saveAdmin = () => {
+  saveAdmin = async () => {
     if (!this.sb) {
       this.setState({ sbStatus: 'error', sbMsg: 'Conecte ao Supabase antes de salvar.' });
       return;
     }
     const data = this.state.adminData || this.state.data;
-    this.setState({ data, adminOpen: false, adminData: null, sbMsg: 'Alterações salvas.' });
-    this.persist(data);
+    this.setState({ sbStatus: 'saving', sbMsg: '' });
+    try {
+      await this.persist(data);
+      this.setState({ data, adminOpen: false, adminData: null, sbStatus: 'online', sbMsg: 'Alterações salvas.' });
+    } catch (err) {
+      this.setState({ sbStatus: 'error', sbMsg: (err && err.message) || 'Erro ao salvar no banco.' });
+    }
   };
 
-  pushRemote(data) {
-    if (!this.sb) return;
-    this.sb.from('xirras_state').upsert({ id: 'main', data, updated_at: new Date().toISOString() })
-      .then(({ error }) => this.setState({ sbStatus: error ? 'error' : 'online', sbMsg: error ? (error.message || 'Erro ao salvar no banco.') : '' }));
+  async persist(data) {
+    if (!this.sb) {
+      throw new Error('Conecte ao Supabase para salvar os dados.');
+    }
+    const { error } = await this.sb.from('xirras_state').upsert({ id: 'main', data, updated_at: new Date().toISOString() });
+    if (error) {
+      throw error;
+    }
+    return true;
   }
 
   merge(s) {
@@ -1497,15 +1507,6 @@ class Component extends DCLogic {
     };
   }
 
-  persist(data) {
-    if (!this.sb) {
-      this.setState({ sbStatus: 'error', sbMsg: 'Conecte ao Supabase para salvar os dados.' });
-      return;
-    }
-    this.setState({ sbStatus: 'saving', sbMsg: '' });
-    clearTimeout(this._sbTimer);
-    this._sbTimer = setTimeout(() => this.pushRemote(data), 700);
-  }
   setData(fn) { const data = fn(this.state.data); this.setState({ data }); this.persist(data); }
 
   setRoot = (el) => { this.rootEl = el; this.applyProps(); };
@@ -1613,7 +1614,7 @@ class Component extends DCLogic {
     const adminHighlight = adminSource.highlight ? { playerName: adminSource.highlight.playerName, weekLabel: adminSource.highlight.weekLabel, reason: adminSource.highlight.reason, votes: adminSource.highlight.votes } : { playerName: '', weekLabel: 'Destaque da semana', reason: '', votes: 0 };
 
     const sbMap = {
-      off:    { label: 'Não conectado (salvando só neste navegador)', bg: 'color-mix(in oklab,var(--muted) 60%,transparent)', color: 'var(--muted-fg)' },
+      off:    { label: 'Não conectado (use Supabase para salvar)', bg: 'color-mix(in oklab,var(--muted) 60%,transparent)', color: 'var(--muted-fg)' },
       connecting: { label: 'Conectando...', bg: 'color-mix(in oklab,var(--accent) 70%,transparent)', color: 'var(--accent-fg)' },
       online: { label: 'Conectado ao banco', bg: 'color-mix(in oklab,var(--primary) 22%,transparent)', color: 'var(--primary)' },
       saving: { label: 'Salvando no banco...', bg: 'color-mix(in oklab,var(--accent) 70%,transparent)', color: 'var(--accent-fg)' },
