@@ -15,128 +15,39 @@
       <link
         href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-      <style>
-        :root {
-          --bg: oklch(0.13 0.012 350);
-          --fg: oklch(0.97 0.005 350);
-          --card: oklch(0.18 0.018 350);
-          --card-fg: oklch(0.97 0.005 350);
-          --primary: oklch(0.68 0.2 354);
-          --primary-fg: oklch(0.13 0.012 350);
-          --secondary: oklch(0.24 0.025 350);
-          --secondary-fg: oklch(0.97 0.005 350);
-          --muted: oklch(0.23 0.02 350);
-          --muted-fg: oklch(0.7 0.03 350);
-          --accent: oklch(0.3 0.08 354);
-          --accent-fg: oklch(0.97 0.01 350);
-          --border: oklch(1 0 0 / 12%);
-          --ring: oklch(0.68 0.2 354);
-          --destructive: oklch(0.62 0.2 25);
-        }
-
-        [data-theme="light"] {
-          --bg: oklch(0.98 0.005 350);
-          --fg: oklch(0.16 0.01 350);
-          --card: oklch(1 0 0);
-          --card-fg: oklch(0.16 0.01 350);
-          --primary: oklch(0.62 0.21 354);
-          --primary-fg: oklch(0.99 0 0);
-          --secondary: oklch(0.95 0.02 350);
-          --secondary-fg: oklch(0.2 0.02 350);
-          --muted: oklch(0.96 0.01 350);
-          --muted-fg: oklch(0.5 0.02 350);
-          --accent: oklch(0.93 0.05 350);
-          --accent-fg: oklch(0.2 0.04 354);
-          --border: oklch(0.9 0.015 350);
-          --ring: oklch(0.62 0.21 354);
-          --destructive: oklch(0.58 0.24 27);
-        }
-
-        * {
-          box-sizing: border-box
-        }
-
-        html {
-          scroll-behavior: smooth
-        }
-
-        body {
-          margin: 0;
-          background: oklch(0.13 0.012 350);
-          color: oklch(0.97 0.005 350);
-          font-family: Geist, system-ui, sans-serif;
-          -webkit-font-smoothing: antialiased
-        }
-
-        a {
-          color: var(--primary);
-          text-decoration: none
-        }
-
-        a:hover {
-          color: var(--fg)
-        }
-
-        input,
-        select,
-        textarea,
-        button {
-          font-family: inherit
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-          outline: 2px solid var(--ring);
-          outline-offset: 1px
-        }
-
-        section[id] {
-          scroll-margin-top: 88px
-        }
-
-        ::placeholder {
-          color: var(--muted-fg);
-          opacity: .7
-        }
-
-        @keyframes spin {
-          to {
-            transform: rotate(360deg)
-          }
-        }
-      </style>
+      
+      <link rel="stylesheet" href="./styles.css">
       <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     </helmet>
     <div ref="{{ setRoot }}" data-theme="{{ theme }}"
-      style="min-height:100vh;background:var(--bg);color:var(--fg);font-family:Geist,sans-serif">
+      class="xirras-style-1">
 
       <header
-        style="position:sticky;top:0;z-index:40;border-bottom:1px solid var(--border);background:color-mix(in oklab,var(--bg) 82%,transparent);backdrop-filter:blur(12px)">
+        class="xirras-style-2">
         <div
-          style="max-width:1152px;margin:0 auto;padding:0 20px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px">
-          <a href="#topo" style="display:flex;align-items:center;gap:12px;color:var(--fg)">
+          class="xirras-style-3">
+          <a href="#topo" class="xirras-style-4">
             <img src="public/images/xirras-logo.png" alt="Escudo do Xirras"
-              style="width:44px;height:44px;border-radius:10px;object-fit:contain" />
+              class="xirras-style-5" />
             <span
-              style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1;font-size:19px">Xirras<span
-                style="display:block;font-size:11px;font-weight:500;color:var(--primary)">Voleibol Club</span></span>
+              class="xirras-style-6">Xirras<span
+                class="xirras-style-7">Voleibol Club</span></span>
           </a>
-          <nav style="display:flex;flex-wrap:wrap;align-items:center;gap:26px">
+          <nav class="xirras-style-8">
             <a href="#integrantes"
-              style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Integrantes</a>
+              class="xirras-style-9">Integrantes</a>
             <a href="#ranking"
-              style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Ranking</a>
+              class="xirras-style-9">Ranking</a>
             <a href="#presenca"
-              style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Presença</a>
+              class="xirras-style-9">Presença</a>
             <a href="#jogos"
-              style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Jogos</a>
+              class="xirras-style-9">Jogos</a>
             <a href="#galeria"
-              style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Galeria</a>
+              class="xirras-style-9">Galeria</a>
           </nav>
-          <div style="display:flex;align-items:center;gap:8px">
+          <div class="xirras-style-10">
             <button onClick="{{ toggleTheme }}" aria-label="Alternar tema"
-              style="width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--fg);cursor:pointer">
+              class="xirras-style-11">
               <sc-if value="{{ isDark }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18"
                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -157,7 +68,7 @@
                 </svg></sc-if>
             </button>
             <button onClick="{{ openAdmin }}"
-              style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:10px;border:none;background:var(--primary);color:var(--primary-fg);font-family:Oswald;font-weight:600;text-transform:uppercase;font-size:13px;letter-spacing:.04em;cursor:pointer">
+              class="xirras-style-12">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 7h-9" />
@@ -173,21 +84,21 @@
 
       <main>
         <!-- HERO -->
-        <section id="topo" style="position:relative;overflow:hidden;isolation:isolate">
-          <div style="position:absolute;inset:0;z-index:-10">
+        <section id="topo" class="xirras-style-13">
+          <div class="xirras-style-14">
             <img src="uploads/xirras1.jpeg" alt="Time Xirras na quadra"
-              style="width:100%;height:100%;object-fit:cover;object-position:center 28%" />
+              class="xirras-style-15" />
             <div
-              style="position:absolute;inset:0;background:linear-gradient(to bottom,color-mix(in oklab,var(--bg) 55%,transparent),color-mix(in oklab,var(--bg) 78%,transparent),var(--bg))">
+              class="xirras-style-16">
             </div>
             <div
-              style="position:absolute;inset:0;background:linear-gradient(to right,color-mix(in oklab,var(--bg) 88%,transparent),transparent 75%)">
+              class="xirras-style-17">
             </div>
           </div>
           <div
-            style="max-width:1152px;margin:0 auto;padding:clamp(90px,15vw,150px) 20px;display:flex;flex-direction:column;align-items:flex-start;gap:22px">
+            class="xirras-style-18">
             <span
-              style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid color-mix(in oklab,var(--primary) 45%,transparent);background:color-mix(in oklab,var(--primary) 12%,transparent);padding:7px 16px;font-family:Oswald;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--primary)">
+              class="xirras-style-19">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -198,20 +109,20 @@
               {{ site.heroBadge }}
             </span>
             <h1
-              style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:.92;letter-spacing:-.01em;font-size:clamp(52px,10vw,118px);margin:0;text-shadow:0 2px 30px rgba(0,0,0,.4)">
-              {{ site.heroTitle }}<span style="display:block;color:var(--primary)">{{ site.heroTitle2 }}</span></h1>
+              class="xirras-style-20">
+              {{ site.heroTitle }}<span class="xirras-style-21">{{ site.heroTitle2 }}</span></h1>
             <p
-              style="max-width:560px;font-size:clamp(17px,2.2vw,21px);line-height:1.55;color:var(--fg);opacity:.85;margin:0">
+              class="xirras-style-22">
               {{ site.heroText }}</p>
-            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:6px">
+            <div class="xirras-style-23">
               <a href="#integrantes"
-                style="display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 24px;border-radius:12px;background:var(--primary);color:var(--primary-fg);font-family:Oswald;font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:.04em">Ver
+                class="xirras-style-24">Ver
                 integrantes <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="m9 18 6-6-6-6" />
                 </svg></a>
               <button onClick="{{ openAdmin }}"
-                style="display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 24px;border-radius:12px;border:1px solid var(--border);background:color-mix(in oklab,var(--bg) 45%,transparent);backdrop-filter:blur(4px);color:var(--fg);font-family:Oswald;font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:.04em;cursor:pointer"><svg
+                class="xirras-style-25"><svg
                   width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 7h-9" />
@@ -225,11 +136,11 @@
 
         <!-- STATS -->
         <section
-          style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--card)">
+          class="xirras-style-26">
           <div
-            style="max-width:1152px;margin:0 auto;padding:8px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+            class="xirras-style-27">
             <div
-              style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:32px 16px;text-align:center">
+              class="xirras-style-28">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -237,12 +148,12 @@
                 <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg><span
-                style="font-family:Oswald;font-weight:700;font-size:clamp(34px,5vw,48px);line-height:1;font-variant-numeric:tabular-nums">{{
+                class="xirras-style-29">{{
                 stats.players }}</span><span
-                style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-fg)">Atletas no
+                class="xirras-style-30">Atletas no
                 elenco</span></div>
             <div
-              style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:32px 16px;text-align:center">
+              class="xirras-style-28">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M8 2v4" />
@@ -251,12 +162,12 @@
                 <path d="M3 10h18" />
                 <path d="m9 16 2 2 4-4" />
               </svg><span
-                style="font-family:Oswald;font-weight:700;font-size:clamp(34px,5vw,48px);line-height:1;font-variant-numeric:tabular-nums">{{
+                class="xirras-style-29">{{
                 stats.games }}</span><span
-                style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-fg)">Quartas
+                class="xirras-style-30">Quartas
                 disputadas</span></div>
             <div
-              style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:32px 16px;text-align:center">
+              class="xirras-style-28">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
@@ -266,38 +177,38 @@
                 <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
                 <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
               </svg><span
-                style="font-family:Oswald;font-weight:700;font-size:clamp(34px,5vw,48px);line-height:1;font-variant-numeric:tabular-nums">{{
+                class="xirras-style-29">{{
                 stats.confirmed }}</span><span
-                style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-fg)">Confirmados
+                class="xirras-style-30">Confirmados
                 p/ próxima</span></div>
             <div
-              style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:32px 16px;text-align:center">
+              class="xirras-style-28">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path
                   d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
               </svg><span
-                style="font-family:Oswald;font-weight:700;font-size:clamp(34px,5vw,48px);line-height:1;font-variant-numeric:tabular-nums">{{
+                class="xirras-style-29">{{
                 stats.totalPoints }}</span><span
-                style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-fg)">Pontos na
+                class="xirras-style-30">Pontos na
                 temporada</span></div>
           </div>
         </section>
 
         <!-- INTEGRANTES -->
         <section id="integrantes"
-          style="border-bottom:1px solid var(--border);background:var(--card);padding:clamp(64px,9vw,112px) 0">
-          <div style="max-width:1152px;margin:0 auto;padding:0 20px">
+          class="xirras-style-31">
+          <div class="xirras-style-32">
             <span
-              style="font-family:Oswald;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:var(--primary)">Integrantes</span>
+              class="xirras-style-33">Integrantes</span>
             <h2
-              style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-.01em;font-size:clamp(30px,5vw,48px);margin:12px 0 0">
+              class="xirras-style-34">
               Elenco do Xirras</h2>
-            <p style="max-width:640px;font-size:16px;line-height:1.6;color:var(--muted-fg);margin:14px 0 0">A turma
+            <p class="xirras-style-35">A turma
               completa em cards, com foto, apelido e a base de estatísticas pronta para crescer.</p>
-            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:28px 0 24px">
+            <div class="xirras-style-36">
               <span
-                style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid var(--border);background:var(--bg);padding:9px 16px;font-size:14px;color:var(--muted-fg)"><svg
+                class="xirras-style-37"><svg
                   width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -306,65 +217,65 @@
                   <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg> {{ membersCount }} integrantes</span>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px">
+            <div class="xirras-style-38">
               <sc-for list="{{ memberCards }}" as="m" hint-placeholder-count="8">
                 <div
-                  style="position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--border);background:var(--bg);box-shadow:0 1px 2px rgba(0,0,0,.15)">
-                  <div style="position:relative;aspect-ratio:4/5;overflow:hidden">
+                  class="xirras-style-39">
+                  <div class="xirras-style-40">
                     <sc-if value="{{ m.hasFoto }}" hint-placeholder-val="{{ false }}"><img src="{{ m.foto }}" alt="Foto"
-                        style="width:100%;height:100%;object-fit:cover" /></sc-if>
+                        class="xirras-style-41" /></sc-if>
                     <sc-if value="{{ m.noFoto }}" hint-placeholder-val="{{ true }}">
                       <div
-                        style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:Oswald;font-weight:700;font-size:44px;text-transform:uppercase;color:#fff;background:radial-gradient(circle at top,rgba(255,255,255,.18),transparent 60%),linear-gradient(160deg,color-mix(in oklab,var(--primary) 60%,transparent),oklch(0.2 0.03 350))">
+                        class="xirras-style-42">
                         {{ m.initials }}</div>
                     </sc-if>
                     <div
-                      style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,6,8,.92),rgba(10,6,8,.12) 45%,transparent)">
+                      class="xirras-style-43">
                     </div>
                     <div
-                      style="position:absolute;left:14px;top:14px;border-radius:999px;background:color-mix(in oklab,var(--bg) 85%,transparent);backdrop-filter:blur(4px);padding:5px 12px;font-family:Oswald;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--fg)">
+                      class="xirras-style-44">
                       {{ m.rankLabel }}</div>
-                    <div style="position:absolute;left:0;right:0;bottom:0;padding:16px;color:#fff">
-                      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+                    <div class="xirras-style-45">
+                      <div class="xirras-style-46">
                         <h3
-                          style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:22px;line-height:1;margin:0">
+                          class="xirras-style-47">
                           {{ m.nome }}</h3><sc-if value="{{ m.hasApelido }}" hint-placeholder-val="{{ false }}"><span
-                            style="border-radius:999px;background:var(--primary);color:var(--primary-fg);padding:3px 9px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em">{{
+                            class="xirras-style-48">{{
                             m.apelido }}</span></sc-if>
                       </div>
                     </div>
                   </div>
                   <div
-                    style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-top:1px solid var(--border)">
-                    <div style="background:var(--bg);padding:11px 14px">
-                      <div style="font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted-fg)">
+                    class="xirras-style-49">
+                    <div class="xirras-style-50">
+                      <div class="xirras-style-51">
                         Jogos</div>
-                      <div style="font-family:Oswald;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums">
+                      <div class="xirras-style-52">
                         {{ m.jogos }}</div>
                     </div>
-                    <div style="background:var(--bg);padding:11px 14px">
-                      <div style="font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted-fg)">
+                    <div class="xirras-style-50">
+                      <div class="xirras-style-51">
                         Vitórias</div>
-                      <div style="font-family:Oswald;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums">
+                      <div class="xirras-style-52">
                         {{ m.vitorias }}</div>
                     </div>
-                    <div style="background:var(--bg);padding:11px 14px">
-                      <div style="font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted-fg)">
+                    <div class="xirras-style-50">
+                      <div class="xirras-style-51">
                         Derrotas</div>
-                      <div style="font-family:Oswald;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums">
+                      <div class="xirras-style-52">
                         {{ m.derrotas }}</div>
                     </div>
-                    <div style="background:var(--bg);padding:11px 14px">
-                      <div style="font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted-fg)">
+                    <div class="xirras-style-50">
+                      <div class="xirras-style-51">
                         Pontos</div>
                       <div
-                        style="font-family:Oswald;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums;color:var(--primary)">
+                        class="xirras-style-53">
                         {{ m.pontos }}</div>
                     </div>
-                    <div style="grid-column:span 2;background:var(--bg);padding:11px 14px">
-                      <div style="font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted-fg)">MVP
+                    <div class="xirras-style-54">
+                      <div class="xirras-style-51">MVP
                       </div>
-                      <div style="font-family:Oswald;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums">
+                      <div class="xirras-style-52">
                         {{ m.mvp }}</div>
                     </div>
                   </div>
@@ -376,39 +287,39 @@
 
         <!-- RANKING -->
         <section id="ranking"
-          style="border-bottom:1px solid var(--border);background:var(--bg);padding:clamp(64px,9vw,112px) 0">
-          <div style="max-width:1152px;margin:0 auto;padding:0 20px">
+          class="xirras-style-55">
+          <div class="xirras-style-32">
             <div
-              style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:36px">
+              class="xirras-style-56">
               <div><span
-                  style="font-family:Oswald;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:var(--primary)">Ranking</span>
+                  class="xirras-style-33">Ranking</span>
                 <h2
-                  style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(30px,5vw,48px);margin:12px 0 0">
+                  class="xirras-style-57">
                   Classificação do elenco</h2>
-                <p style="max-width:640px;font-size:16px;line-height:1.6;color:var(--muted-fg);margin:14px 0 0">Quando o
+                <p class="xirras-style-35">Quando o
                   admin atualiza as estatísticas de alguém, o ranking muda junto.</p>
               </div>
               <span
-                style="border-radius:999px;padding:7px 16px;font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;background:{{ seasonBg }};color:{{ seasonColor }};border:1px solid var(--border)">{{
+                class="xirras-style-58" style="background: {{ seasonBg }}; color: {{ seasonColor }};">{{
                 seasonLabel }}</span>
             </div>
-            <div style="overflow-x:auto;border-radius:18px;border:1px solid var(--border);background:var(--card)">
-              <table style="width:100%;border-collapse:collapse;text-align:left;min-width:520px">
+            <div class="xirras-style-59">
+              <table class="xirras-style-60">
                 <thead>
                   <tr
-                    style="border-bottom:1px solid var(--border);background:color-mix(in oklab,var(--secondary) 60%,transparent);font-family:Oswald;font-size:12px;text-transform:uppercase;color:var(--muted-fg)">
-                    <th style="width:64px;padding:14px 20px">#</th>
-                    <th style="padding:14px 20px">Integrante</th>
-                    <th style="padding:14px 20px;text-align:center">Jogos</th>
-                    <th style="padding:14px 20px;text-align:center">Vitórias</th>
-                    <th style="padding:14px 20px;text-align:center">MVP</th>
-                    <th style="padding:14px 20px;text-align:right">Pontos</th>
+                    class="xirras-style-61">
+                    <th class="xirras-style-62">#</th>
+                    <th class="xirras-style-63">Integrante</th>
+                    <th class="xirras-style-64">Jogos</th>
+                    <th class="xirras-style-64">Vitórias</th>
+                    <th class="xirras-style-64">MVP</th>
+                    <th class="xirras-style-65">Pontos</th>
                   </tr>
                 </thead>
                 <tbody>
                   <sc-for list="{{ rankingRows }}" as="r" hint-placeholder-count="6">
-                    <tr style="border-bottom:1px solid color-mix(in oklab,var(--border) 70%,transparent)">
-                      <td style="padding:16px 20px">
+                    <tr class="xirras-style-66">
+                      <td class="xirras-style-67">
                         <sc-if value="{{ r.isTop3 }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="{{ r.medalColor }}" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -416,28 +327,28 @@
                             <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
                           </svg></sc-if>
                         <sc-if value="{{ r.notTop3 }}" hint-placeholder-val="{{ true }}"><span
-                            style="font-family:Oswald;font-weight:700;font-size:18px;color:var(--muted-fg)">{{
+                            class="xirras-style-68">{{
                             r.rankNumber }}</span></sc-if>
                       </td>
-                      <td style="padding:16px 20px"><span style="display:inline-flex;align-items:center;gap:12px"><span
-                            style="position:relative;width:44px;height:44px;overflow:hidden;border-radius:999px;border:1px solid var(--border);background:var(--secondary);flex:none">
+                      <td class="xirras-style-67"><span class="xirras-style-69"><span
+                            class="xirras-style-70">
                             <sc-if value="{{ r.hasFoto }}" hint-placeholder-val="{{ false }}"><img src="{{ r.foto }}"
-                                alt="" style="width:100%;height:100%;object-fit:cover" /></sc-if>
+                                alt="" class="xirras-style-41" /></sc-if>
                             <sc-if value="{{ r.noFoto }}" hint-placeholder-val="{{ true }}"><span
-                                style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:Oswald;font-weight:700;font-size:14px;text-transform:uppercase;color:var(--primary)">{{
+                                class="xirras-style-71">{{
                                 r.initials }}</span></sc-if>
-                          </span><span style="display:flex;flex-direction:column"><span
-                              style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:14px;line-height:1">{{
-                              r.nome }}</span><span style="font-size:12px;color:var(--muted-fg);margin-top:3px">{{
+                          </span><span class="xirras-style-72"><span
+                              class="xirras-style-73">{{
+                              r.nome }}</span><span class="xirras-style-74">{{
                               r.apelidoLabel }}</span></span></span></td>
-                      <td style="padding:16px 20px;text-align:center;font-size:14px;font-variant-numeric:tabular-nums">
+                      <td class="xirras-style-75">
                         {{ r.jogos }}</td>
-                      <td style="padding:16px 20px;text-align:center;font-size:14px;font-variant-numeric:tabular-nums">
+                      <td class="xirras-style-75">
                         {{ r.vitorias }}</td>
-                      <td style="padding:16px 20px;text-align:center;font-size:14px;font-variant-numeric:tabular-nums">
+                      <td class="xirras-style-75">
                         {{ r.mvp }}</td>
-                      <td style="padding:16px 20px;text-align:right"><span
-                          style="font-family:Oswald;font-weight:700;font-size:20px;font-variant-numeric:tabular-nums;color:var(--primary)">{{
+                      <td class="xirras-style-76"><span
+                          class="xirras-style-77">{{
                           r.pontos }}</span></td>
                     </tr>
                   </sc-for>
@@ -448,13 +359,13 @@
         </section>
 
         <!-- PRESENÇA -->
-        <section id="presenca" style="background:var(--bg);padding:clamp(64px,9vw,112px) 0">
+        <section id="presenca" class="xirras-style-78">
           <div
-            style="max-width:1152px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px">
+            class="xirras-style-79">
             <div
-              style="position:relative;overflow:hidden;border-radius:18px;border:1px solid color-mix(in oklab,var(--primary) 30%,transparent);background:linear-gradient(150deg,color-mix(in oklab,var(--primary) 16%,transparent),var(--card) 55%,var(--card));padding:clamp(28px,4vw,44px)">
+              class="xirras-style-80">
               <span
-                style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--primary);color:var(--primary-fg);padding:6px 14px;font-family:Oswald;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em"><svg
+                class="xirras-style-81"><svg
                   width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M8 2v4" />
@@ -464,20 +375,20 @@
                   <path d="m9 16 2 2 4-4" />
                 </svg> Próximo encontro</span>
               <h3
-                style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(26px,3.5vw,38px);margin:20px 0 0">
+                class="xirras-style-82">
                 {{ nextGameLabel }}</h3>
               <p
-                style="display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;color:var(--muted-fg);font-size:15px">
+                class="xirras-style-83">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg> {{ site.nextGamePlace }}</p>
-              <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
+              <div class="xirras-style-84">
                 <input value="{{ pubName }}" onInput="{{ onPubName }}" placeholder="Seu nome" aria-label="Seu nome"
-                  style="flex:1;min-width:180px;height:50px;padding:0 16px;border-radius:12px;border:1px solid var(--border);background:color-mix(in oklab,var(--bg) 60%,transparent);color:var(--fg);font-size:15px" />
+                  class="xirras-style-85" />
                 <button onClick="{{ confirmPresence }}"
-                  style="display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 22px;border-radius:12px;border:none;background:var(--primary);color:var(--primary-fg);font-family:Oswald;font-weight:600;text-transform:uppercase;font-size:14px;letter-spacing:.04em;cursor:pointer"><svg
+                  class="xirras-style-86"><svg
                     width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21.801 10A10 10 0 1 1 17 3.335" />
@@ -485,34 +396,34 @@
                   </svg> Confirmar presença</button>
               </div>
               <sc-if value="{{ attMsg }}" hint-placeholder-val="">
-                <p style="margin:14px 0 0;font-size:14px;font-weight:600;color:var(--primary)">{{ attMsg }}</p>
+                <p class="xirras-style-87">{{ attMsg }}</p>
               </sc-if>
             </div>
-            <div style="display:flex;flex-direction:column;gap:16px">
+            <div class="xirras-style-88">
               <div><span
-                  style="font-family:Oswald;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:var(--primary)">Lista</span>
+                  class="xirras-style-33">Lista</span>
                 <h3
-                  style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(24px,3vw,34px);margin:10px 0 0">
+                  class="xirras-style-89">
                   Quem já confirmou</h3>
               </div>
               <sc-if value="{{ hasAttendance }}" hint-placeholder-val="{{ true }}">
-                <div style="overflow:hidden;border-radius:16px;border:1px solid var(--border);background:var(--card)">
+                <div class="xirras-style-90">
                   <div
-                    style="display:grid;grid-template-columns:1.4fr 1fr 1fr;background:var(--secondary);padding:13px 16px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted-fg)">
+                    class="xirras-style-91">
                     <span>Nome</span><span>Status</span><span>Data</span></div>
                   <sc-for list="{{ attendanceView }}" as="a" hint-placeholder-count="4">
                     <div
-                      style="display:grid;grid-template-columns:1.4fr 1fr 1fr;padding:15px 16px;font-size:14px;border-top:1px solid color-mix(in oklab,var(--border) 70%,transparent)">
-                      <span>{{ a.name }}</span><span style="font-weight:600;color:var(--primary)">{{ a.status
-                        }}</span><span style="color:var(--muted-fg)">{{ a.dateLabel }}</span></div>
+                      class="xirras-style-92">
+                      <span>{{ a.name }}</span><span class="xirras-style-93">{{ a.status
+                        }}</span><span class="xirras-style-94">{{ a.dateLabel }}</span></div>
                   </sc-for>
                 </div>
               </sc-if>
               <sc-if value="{{ noAttendance }}" hint-placeholder-val="{{ false }}">
-                <p style="color:var(--muted-fg)">Ninguém confirmou ainda.</p>
+                <p class="xirras-style-94">Ninguém confirmou ainda.</p>
               </sc-if>
               <span
-                style="display:inline-flex;width:fit-content;align-items:center;gap:8px;border-radius:999px;background:var(--accent);color:var(--accent-fg);padding:9px 16px;font-family:Oswald;font-size:13px;font-weight:600;text-transform:uppercase"><svg
+                class="xirras-style-95"><svg
                   width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -527,15 +438,15 @@
         <!-- DESTAQUE -->
         <sc-if value="{{ highlightExists }}" hint-placeholder-val="{{ true }}">
           <section
-            style="position:relative;overflow:hidden;background:oklch(0.13 0.012 350);color:oklch(0.97 0.005 350);padding:clamp(64px,9vw,112px) 0">
+            class="xirras-style-96">
             <div
-              style="position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:999px;background:color-mix(in oklab,var(--primary) 30%,transparent);filter:blur(80px);pointer-events:none">
+              class="xirras-style-97">
             </div>
             <div
-              style="max-width:1152px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center">
-              <div style="display:flex;flex-direction:column;gap:18px">
+              class="xirras-style-98">
+              <div class="xirras-style-99">
                 <span
-                  style="display:inline-flex;width:fit-content;align-items:center;gap:8px;border-radius:999px;background:var(--primary);color:var(--primary-fg);padding:7px 16px;font-family:Oswald;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.06em"><svg
+                  class="xirras-style-100"><svg
                     width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
@@ -546,21 +457,21 @@
                     <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
                   </svg> {{ hl.weekLabel }}</span>
                 <h2
-                  style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:.95;font-size:clamp(36px,6vw,64px);margin:0">
+                  class="xirras-style-101">
                   {{ hl.playerName }}</h2>
                 <p
-                  style="max-width:560px;font-size:clamp(16px,2vw,19px);line-height:1.55;color:oklch(0.97 0.005 350 / .72);margin:0">
+                  class="xirras-style-102">
                   {{ hl.reason }}</p>
-                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:6px">
+                <div class="xirras-style-103">
                   <span
-                    style="display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid rgba(255,255,255,.2);padding:9px 16px;font-size:14px;font-weight:500"><svg
+                    class="xirras-style-104"><svg
                       width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round">
                       <path d="M7 10v12" />
                       <path
                         d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
                     </svg> {{ hl.votes }} votos registrados</span>
-                  <span style="display:flex;gap:3px;color:var(--primary)"><svg width="20" height="20"
+                  <span class="xirras-style-105"><svg width="20" height="20"
                       viewBox="0 0 24 24" fill="currentColor">
                       <path
                         d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" />
@@ -579,21 +490,21 @@
                     </svg></span>
                 </div>
               </div>
-              <div style="position:relative;width:100%;max-width:360px;margin:0 auto">
+              <div class="xirras-style-106">
                 <div
-                  style="position:absolute;inset:-12px;border-radius:32px;background:color-mix(in oklab,var(--primary) 20%,transparent);filter:blur(20px)">
+                  class="xirras-style-107">
                 </div>
                 <div
-                  style="position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:28px;border:2px solid color-mix(in oklab,var(--primary) 50%,transparent)">
+                  class="xirras-style-108">
                   <sc-if value="{{ hl.hasPhoto }}" hint-placeholder-val="{{ false }}"><img src="{{ hl.photo }}"
-                      alt="Destaque" style="width:100%;height:100%;object-fit:cover" /></sc-if>
+                      alt="Destaque" class="xirras-style-41" /></sc-if>
                   <sc-if value="{{ hl.noPhoto }}" hint-placeholder-val="{{ true }}">
                     <div
-                      style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:Oswald;font-weight:700;font-size:60px;text-transform:uppercase;color:#fff;background:radial-gradient(circle at top,rgba(255,255,255,.18),transparent 60%),linear-gradient(160deg,color-mix(in oklab,var(--primary) 60%,transparent),oklch(0.2 0.03 350))">
+                      class="xirras-style-109">
                       {{ hl.initials }}</div>
                   </sc-if>
                   <div
-                    style="position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:12px;padding:20px;background:linear-gradient(to top,rgba(10,6,8,.92),transparent)">
+                    class="xirras-style-110">
                     <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round">
                       <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
@@ -603,7 +514,7 @@
                       <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
                       <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
                     </svg><span
-                      style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:20px;color:#fff">Destaque
+                      class="xirras-style-111">Destaque
                       registrado</span></div>
                 </div>
               </div>
@@ -612,29 +523,29 @@
         </sc-if>
 
         <!-- JOGOS -->
-        <section id="jogos" style="background:var(--bg);padding:clamp(64px,9vw,112px) 0">
-          <div style="max-width:1152px;margin:0 auto;padding:0 20px">
+        <section id="jogos" class="xirras-style-78">
+          <div class="xirras-style-32">
             <span
-              style="font-family:Oswald;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:var(--primary)">Linha
+              class="xirras-style-33">Linha
               do tempo</span>
             <h2
-              style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(30px,5vw,48px);margin:12px 0 40px">
+              class="xirras-style-112">
               Últimos jogos</h2>
             <sc-if value="{{ hasGames }}" hint-placeholder-val="{{ true }}">
-              <div style="display:flex;flex-direction:column;gap:20px">
+              <div class="xirras-style-113">
                 <sc-for list="{{ gamesView }}" as="g" hint-placeholder-count="2">
                   <article
-                    style="border-radius:20px;border:1px solid var(--border);background:var(--card);padding:clamp(22px,3vw,30px)">
-                    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
-                      <div style="display:flex;flex-direction:column;gap:5px">
+                    class="xirras-style-114">
+                    <div class="xirras-style-115">
+                      <div class="xirras-style-116">
                         <span
-                          style="font-family:Oswald;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--primary)">{{
+                          class="xirras-style-117">{{
                           g.metaLabel }}</span>
                         <h3
-                          style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:clamp(20px,2.6vw,26px);line-height:1;margin:0">
+                          class="xirras-style-118">
                           {{ g.title }}</h3>
                         <sc-if value="{{ g.hasLocation }}" hint-placeholder-val="{{ false }}"><span
-                            style="display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:14px;color:var(--muted-fg)"><svg
+                            class="xirras-style-119"><svg
                               width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -642,26 +553,26 @@
                             </svg> {{ g.location }}</span></sc-if>
                       </div>
                       <div
-                        style="display:flex;align-items:center;gap:20px;border-radius:14px;background:var(--secondary);padding:14px 22px">
-                        <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span
-                            style="font-family:Oswald;font-weight:700;font-size:30px;font-variant-numeric:tabular-nums;color:{{ g.colorA }}">{{
+                        class="xirras-style-120">
+                        <div class="xirras-style-121"><span
+                            class="xirras-style-122" style="color: {{ g.colorA }};">{{
                             g.scoreA }}</span><span
-                            style="font-size:10px;text-transform:uppercase;color:var(--muted-fg);max-width:90px;text-align:center">{{
+                            class="xirras-style-123">{{
                             g.teamA }}</span></div>
-                        <span style="font-family:Oswald;font-size:14px;color:var(--muted-fg)">vs</span>
-                        <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span
-                            style="font-family:Oswald;font-weight:700;font-size:30px;font-variant-numeric:tabular-nums;color:{{ g.colorB }}">{{
+                        <span class="xirras-style-124">vs</span>
+                        <div class="xirras-style-121"><span
+                            class="xirras-style-122" style="color: {{ g.colorB }};">{{
                             g.scoreB }}</span><span
-                            style="font-size:10px;text-transform:uppercase;color:var(--muted-fg);max-width:90px;text-align:center">{{
+                            class="xirras-style-123">{{
                             g.teamB }}</span></div>
                       </div>
                     </div>
                     <sc-if value="{{ g.hasHighlight }}" hint-placeholder-val="{{ false }}">
                       <p
-                        style="display:flex;align-items:flex-start;gap:8px;margin:16px 0 0;font-size:14px;font-style:italic;color:var(--muted-fg)">
+                        class="xirras-style-125">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                          style="flex:none;margin-top:2px">
+                          class="xirras-style-126">
                           <path
                             d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
                           <path
@@ -669,8 +580,8 @@
                         </svg> {{ g.highlightText }}</p>
                     </sc-if>
                     <sc-if value="{{ g.hasResult }}" hint-placeholder-val="{{ false }}">
-                      <div style="margin-top:16px"><span
-                          style="border-radius:999px;background:var(--accent);color:var(--accent-fg);padding:5px 14px;font-size:12px;font-weight:500;text-transform:uppercase">{{
+                      <div class="xirras-style-127"><span
+                          class="xirras-style-128">{{
                           g.result }}</span></div>
                     </sc-if>
                   </article>
@@ -679,9 +590,9 @@
             </sc-if>
             <sc-if value="{{ noGames }}" hint-placeholder-val="{{ false }}">
               <div
-                style="display:flex;align-items:flex-start;gap:16px;border-radius:20px;border:1px dashed var(--border);background:var(--card);padding:24px;color:var(--muted-fg)">
+                class="xirras-style-129">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px">
+                  stroke-linecap="round" stroke-linejoin="round" class="xirras-style-126">
                   <path d="M8 2v4" />
                   <path d="M16 2v4" />
                   <rect width="18" height="18" x="3" y="4" rx="2" />
@@ -692,9 +603,9 @@
                 </svg>
                 <div>
                   <h3
-                    style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:20px;color:var(--fg);margin:0">
+                    class="xirras-style-130">
                     Nenhum jogo publicado ainda</h3>
-                  <p style="margin:6px 0 0;font-size:14px;line-height:1.5">Cadastre uma partida no painel admin e ela
+                  <p class="xirras-style-131">Cadastre uma partida no painel admin e ela
                     aparece aqui.</p>
                 </div>
               </div>
@@ -704,35 +615,35 @@
 
         <!-- GALERIA -->
         <section id="galeria"
-          style="border-top:1px solid var(--border);background:var(--card);padding:clamp(64px,9vw,112px) 0">
-          <div style="max-width:1152px;margin:0 auto;padding:0 20px">
+          class="xirras-style-132">
+          <div class="xirras-style-32">
             <span
-              style="font-family:Oswald;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:var(--primary)">Memórias</span>
+              class="xirras-style-33">Memórias</span>
             <h2
-              style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(30px,5vw,48px);margin:12px 0 40px">
+              class="xirras-style-112">
               Galeria do time</h2>
             <sc-if value="{{ hasAlbums }}" hint-placeholder-val="{{ true }}">
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px">
+              <div class="xirras-style-133">
                 <sc-for list="{{ albumsView }}" as="al" hint-placeholder-count="3">
                   <button data-id="{{ al.id }}" onClick="{{ openAlbum }}"
-                    style="position:relative;display:block;text-align:left;aspect-ratio:4/5;overflow:hidden;border-radius:20px;border:1px solid var(--border);cursor:pointer;padding:0;background:var(--secondary)">
+                    class="xirras-style-134">
                     <sc-if value="{{ al.hasCover }}" hint-placeholder-val="{{ true }}"><img src="{{ al.cover }}"
-                        alt="Capa" style="width:100%;height:100%;object-fit:cover" /></sc-if>
+                        alt="Capa" class="xirras-style-41" /></sc-if>
                     <sc-if value="{{ al.noCover }}" hint-placeholder-val="{{ false }}">
                       <div
-                        style="width:100%;height:100%;background:repeating-linear-gradient(45deg,var(--secondary),var(--secondary) 12px,var(--muted) 12px,var(--muted) 24px)">
+                        class="xirras-style-135">
                       </div>
                     </sc-if>
                     <div
-                      style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,6,8,.92),rgba(10,6,8,.15) 45%,transparent)">
+                      class="xirras-style-136">
                     </div>
-                    <div style="position:absolute;left:0;right:0;bottom:0;padding:20px;color:#fff"><span
-                        style="font-family:Oswald;font-size:12px;text-transform:uppercase;color:var(--primary)">{{
+                    <div class="xirras-style-137"><span
+                        class="xirras-style-138">{{
                         al.dateLabel }}</span>
                       <h3
-                        style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:22px;line-height:1;margin:4px 0 0">
+                        class="xirras-style-139">
                         {{ al.title }}</h3><span
-                        style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)"><svg
+                        class="xirras-style-140"><svg
                           width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                           stroke-linecap="round" stroke-linejoin="round">
                           <path d="M18 22H4a2 2 0 0 1-2-2V6" />
@@ -747,9 +658,9 @@
             </sc-if>
             <sc-if value="{{ noAlbums }}" hint-placeholder-val="{{ false }}">
               <div
-                style="display:flex;align-items:flex-start;gap:16px;border-radius:20px;border:1px dashed var(--border);background:var(--bg);padding:24px;color:var(--muted-fg)">
+                class="xirras-style-141">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px">
+                  stroke-linecap="round" stroke-linejoin="round" class="xirras-style-126">
                   <path d="M18 22H4a2 2 0 0 1-2-2V6" />
                   <path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18" />
                   <circle cx="12" cy="8" r="2" />
@@ -757,9 +668,9 @@
                 </svg>
                 <div>
                   <h3
-                    style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:20px;color:var(--fg);margin:0">
+                    class="xirras-style-130">
                     Nenhum álbum publicado ainda</h3>
-                  <p style="margin:6px 0 0;font-size:14px;line-height:1.5">Crie um álbum no painel admin e envie as
+                  <p class="xirras-style-131">Crie um álbum no painel admin e envie as
                     fotos do time.</p>
                 </div>
               </div>
@@ -769,37 +680,37 @@
 
         <!-- MURAL -->
         <section id="mural"
-          style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg);padding:clamp(64px,9vw,112px) 0">
-          <div style="max-width:1152px;margin:0 auto;padding:0 20px">
+          class="xirras-style-142">
+          <div class="xirras-style-32">
             <span
-              style="font-family:Oswald;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:var(--primary)">Mural
+              class="xirras-style-33">Mural
               do clube</span>
             <h2
-              style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(30px,5vw,48px);margin:12px 0 40px">
+              class="xirras-style-112">
               Avisos e novidades</h2>
             <sc-if value="{{ hasPosts }}" hint-placeholder-val="{{ true }}">
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px">
+              <div class="xirras-style-143">
                 <sc-for list="{{ postsView }}" as="p" hint-placeholder-count="2">
                   <article
-                    style="display:flex;flex-direction:column;overflow:hidden;border-radius:20px;border:1px solid var(--border);background:var(--card)">
+                    class="xirras-style-144">
                     <sc-if value="{{ p.hasImage }}" hint-placeholder-val="{{ false }}">
-                      <div style="position:relative;aspect-ratio:16/10;overflow:hidden"><img src="{{ p.image }}"
-                          alt="{{ p.title }}" style="width:100%;height:100%;object-fit:cover" /><span
-                          style="position:absolute;left:16px;top:16px;border-radius:999px;background:var(--primary);color:var(--primary-fg);padding:5px 12px;font-family:Oswald;font-size:11px;font-weight:500;text-transform:uppercase">{{
+                      <div class="xirras-style-145"><img src="{{ p.image }}"
+                          alt="{{ p.title }}" class="xirras-style-41" /><span
+                          class="xirras-style-146">{{
                           p.category }}</span></div>
                     </sc-if>
-                    <div style="display:flex;flex-direction:column;gap:10px;padding:24px;flex:1">
+                    <div class="xirras-style-147">
                       <sc-if value="{{ p.noImage }}" hint-placeholder-val="{{ true }}"><span
-                          style="width:fit-content;border-radius:999px;background:var(--primary);color:var(--primary-fg);padding:5px 12px;font-family:Oswald;font-size:11px;font-weight:500;text-transform:uppercase">{{
+                          class="xirras-style-148">{{
                           p.category }}</span></sc-if>
                       <h3
-                        style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:20px;line-height:1.1;margin:0">
+                        class="xirras-style-149">
                         {{ p.title }}</h3>
-                      <p style="flex:1;font-size:14px;line-height:1.55;color:var(--muted-fg);margin:0">{{ p.content }}
+                      <p class="xirras-style-150">{{ p.content }}
                       </p>
                       <div
-                        style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted-fg);margin-top:4px">
-                        <span style="font-weight:600">{{ p.author }}</span><span>{{ p.dateLabel }}</span></div>
+                        class="xirras-style-151">
+                        <span class="xirras-style-152">{{ p.author }}</span><span>{{ p.dateLabel }}</span></div>
                     </div>
                   </article>
                 </sc-for>
@@ -807,17 +718,17 @@
             </sc-if>
             <sc-if value="{{ noPosts }}" hint-placeholder-val="{{ false }}">
               <div
-                style="display:flex;align-items:flex-start;gap:16px;border-radius:20px;border:1px dashed var(--border);background:var(--card);padding:24px;color:var(--muted-fg)">
+                class="xirras-style-129">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px">
+                  stroke-linecap="round" stroke-linejoin="round" class="xirras-style-126">
                   <path d="m3 11 18-5v12L3 14v-3z" />
                   <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
                 </svg>
                 <div>
                   <h3
-                    style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:20px;color:var(--fg);margin:0">
+                    class="xirras-style-130">
                     Nenhum aviso publicado ainda</h3>
-                  <p style="margin:6px 0 0;font-size:14px;line-height:1.5">Publique um recado no painel admin.</p>
+                  <p class="xirras-style-131">Publique um recado no painel admin.</p>
                 </div>
               </div>
             </sc-if>
@@ -825,26 +736,26 @@
         </section>
 
         <!-- SOBRE -->
-        <section id="sobre" style="background:var(--bg);padding:clamp(64px,9vw,112px) 0">
+        <section id="sobre" class="xirras-style-78">
           <div
-            style="max-width:1152px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;align-items:center">
-            <div style="position:relative;width:100%;max-width:420px;margin:0 auto">
+            class="xirras-style-98">
+            <div class="xirras-style-153">
               <div
-                style="aspect-ratio:1;overflow:hidden;border-radius:24px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;padding:48px">
+                class="xirras-style-154">
                 <img src="public/images/xirras-logo.png" alt="Escudo do Xirras"
-                  style="width:100%;height:100%;object-fit:contain" /></div>
+                  class="xirras-style-155" /></div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:20px">
+            <div class="xirras-style-113">
               <span
-                style="font-family:Oswald;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:var(--primary)">Base
+                class="xirras-style-33">Base
                 oficial · Fundado em {{ foundedLabel }}</span>
               <h2
-                style="font-family:Oswald;font-weight:700;text-transform:uppercase;line-height:1;font-size:clamp(28px,4.5vw,46px);margin:0">
+                class="xirras-style-156">
                 {{ site.aboutTitle }}</h2>
-              <p style="font-size:17px;line-height:1.6;color:var(--muted-fg);margin:0">{{ site.aboutText }}</p>
+              <p class="xirras-style-157">{{ site.aboutText }}</p>
               <div
-                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:8px">
-                <div style="border-radius:18px;border:1px solid var(--border);background:var(--card);padding:20px"><svg
+                class="xirras-style-158">
+                <div class="xirras-style-159"><svg
                     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <ellipse cx="12" cy="5" rx="9" ry="3" />
@@ -852,12 +763,12 @@
                     <path d="M3 12A9 3 0 0 0 21 12" />
                   </svg>
                   <h3
-                    style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:15px;margin:12px 0 0">
+                    class="xirras-style-160">
                     Cadastro único</h3>
-                  <p style="margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--muted-fg)">Integrantes, perfil e
+                  <p class="xirras-style-161">Integrantes, perfil e
                     ranking usam a mesma fonte de dados.</p>
                 </div>
-                <div style="border-radius:18px;border:1px solid var(--border);background:var(--card);padding:20px"><svg
+                <div class="xirras-style-159"><svg
                     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
@@ -868,12 +779,12 @@
                     <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
                   </svg>
                   <h3
-                    style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:15px;margin:12px 0 0">
+                    class="xirras-style-160">
                     Ranking real</h3>
-                  <p style="margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--muted-fg)">A classificação nasce
+                  <p class="xirras-style-161">A classificação nasce
                     das estatísticas preenchidas.</p>
                 </div>
-                <div style="border-radius:18px;border:1px solid var(--border);background:var(--card);padding:20px"><svg
+                <div class="xirras-style-159"><svg
                     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7" />
@@ -883,9 +794,9 @@
                     <path d="M19 16v6" />
                   </svg>
                   <h3
-                    style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:15px;margin:12px 0 0">
+                    class="xirras-style-160">
                     Fotos editáveis</h3>
-                  <p style="margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--muted-fg)">Cada integrante pode
+                  <p class="xirras-style-161">Cada integrante pode
                     receber uma foto própria pelo painel.</p>
                 </div>
               </div>
@@ -894,19 +805,19 @@
         </section>
       </main>
 
-      <footer style="border-top:1px solid var(--border);background:var(--card)">
-        <div style="max-width:1152px;margin:0 auto;padding:48px 20px">
-          <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;justify-content:space-between">
-            <div style="display:flex;flex-direction:column;gap:16px;max-width:320px">
-              <div style="display:flex;align-items:center;gap:12px"><img src="public/images/xirras-logo.png"
-                  alt="Escudo" style="width:48px;height:48px;border-radius:10px;object-fit:contain" /><span
-                  style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:20px">Xirras<span
-                    style="display:block;font-size:11px;font-weight:500;color:var(--primary)">Voleibol
+      <footer class="xirras-style-162">
+        <div class="xirras-style-163">
+          <div class="xirras-style-164">
+            <div class="xirras-style-165">
+              <div class="xirras-style-166"><img src="public/images/xirras-logo.png"
+                  alt="Escudo" class="xirras-style-167" /><span
+                  class="xirras-style-168">Xirras<span
+                    class="xirras-style-7">Voleibol
                     Club</span></span></div>
-              <p style="font-size:14px;line-height:1.6;color:var(--muted-fg);margin:0">Base oficial para integrantes,
+              <p class="xirras-style-169">Base oficial para integrantes,
                 ranking e registros do time. Fundado em {{ foundedLabel }}.</p>
               <a href="https://www.instagram.com/xirrasvc/" target="_blank" rel="noopener"
-                style="display:inline-flex;width:fit-content;align-items:center;gap:8px;font-family:Oswald;font-size:13px;font-weight:500;text-transform:uppercase;color:var(--primary)"><svg
+                class="xirras-style-170"><svg
                   width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
                   <rect width="20" height="20" x="2" y="2" rx="5" />
@@ -914,40 +825,40 @@
                   <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                 </svg> @xirrasvc</a>
             </div>
-            <nav style="display:grid;grid-template-columns:repeat(2,auto);gap:12px 48px">
+            <nav class="xirras-style-171">
               <a href="#integrantes"
-                style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Integrantes</a>
+                class="xirras-style-9">Integrantes</a>
               <a href="#ranking"
-                style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Ranking</a>
+                class="xirras-style-9">Ranking</a>
               <a href="#presenca"
-                style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Presença</a>
+                class="xirras-style-9">Presença</a>
               <a href="#jogos"
-                style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Jogos</a>
+                class="xirras-style-9">Jogos</a>
               <a href="#galeria"
-                style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Galeria</a>
+                class="xirras-style-9">Galeria</a>
               <a href="#mural"
-                style="font-family:Oswald;font-size:14px;font-weight:500;text-transform:uppercase;color:var(--muted-fg)">Mural</a>
+                class="xirras-style-9">Mural</a>
             </nav>
-            <div style="display:flex;flex-direction:column;gap:10px;min-width:200px">
+            <div class="xirras-style-172">
               <span
-                style="font-family:Oswald;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--primary)">Pix
+                class="xirras-style-173">Pix
                 do clube</span>
-              <div style="display:flex;flex-direction:column;gap:2px">
-                <span style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-fg)">Mensalidade</span>
-                <span style="font-size:14px;font-variant-numeric:tabular-nums">{{ site.pixMensalidade }}</span>
+              <div class="xirras-style-174">
+                <span class="xirras-style-175">Mensalidade</span>
+                <span class="xirras-style-176">{{ site.pixMensalidade }}</span>
               </div>
-              <div style="display:flex;flex-direction:column;gap:2px">
-                <span style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-fg)">Avulso</span>
-                <span style="font-size:14px;font-variant-numeric:tabular-nums">{{ site.pixAvulso }}</span>
+              <div class="xirras-style-174">
+                <span class="xirras-style-175">Avulso</span>
+                <span class="xirras-style-176">{{ site.pixAvulso }}</span>
               </div>
             </div>
           </div>
           <div
-            style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:40px;border-top:1px solid var(--border);padding-top:24px;text-align:center">
+            class="xirras-style-177">
             <p
-              style="font-family:Oswald;font-size:14px;font-weight:700;text-transform:uppercase;color:var(--primary);margin:0">
+              class="xirras-style-178">
               Feito pelos Xirras para os Xirras</p>
-            <p style="font-size:12px;color:var(--muted-fg);margin:0">© {{ year }} Xirras Voleibol Club.</p>
+            <p class="xirras-style-179">© {{ year }} Xirras Voleibol Club.</p>
           </div>
         </div>
       </footer>
@@ -955,17 +866,17 @@
       <!-- LIGHTBOX ÁLBUM -->
       <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
         <div onClick="{{ closeAlbum }}"
-          style="position:fixed;inset:0;z-index:60;background:rgba(8,5,7,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px">
+          class="xirras-style-180">
           <div
-            style="width:100%;max-width:900px;max-height:88vh;overflow:auto;border-radius:22px;border:1px solid var(--border);background:var(--card);padding:28px">
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px">
-              <div><span style="font-family:Oswald;font-size:12px;text-transform:uppercase;color:var(--primary)">{{
+            class="xirras-style-181">
+            <div class="xirras-style-182">
+              <div><span class="xirras-style-138">{{
                   lb.dateLabel }}</span>
                 <h3
-                  style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:26px;line-height:1;margin:4px 0 0">
+                  class="xirras-style-183">
                   {{ lb.title }}</h3>
               </div><button onClick="{{ closeAlbum }}"
-                style="width:40px;height:40px;flex:none;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--fg);cursor:pointer"><svg
+                class="xirras-style-184"><svg
                   width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 6 6 18" />
@@ -973,15 +884,15 @@
                 </svg></button>
             </div>
             <sc-if value="{{ lb.hasPhotos }}" hint-placeholder-val="{{ true }}">
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px">
+              <div class="xirras-style-185">
                 <sc-for list="{{ lb.photos }}" as="ph" hint-placeholder-count="4">
-                  <div style="aspect-ratio:1;overflow:hidden;border-radius:12px;border:1px solid var(--border)"><img
-                      src="{{ ph.url }}" alt="{{ ph.caption }}" style="width:100%;height:100%;object-fit:cover" /></div>
+                  <div class="xirras-style-186"><img
+                      src="{{ ph.url }}" alt="{{ ph.caption }}" class="xirras-style-41" /></div>
                 </sc-for>
               </div>
             </sc-if>
             <sc-if value="{{ lb.noPhotos }}" hint-placeholder-val="{{ false }}">
-              <p style="color:var(--muted-fg);text-align:center;padding:30px 0">Nenhuma foto neste álbum ainda. Adicione
+              <p class="xirras-style-187">Nenhuma foto neste álbum ainda. Adicione
                 fotos pelo painel admin.</p>
             </sc-if>
           </div>
@@ -991,26 +902,26 @@
       <!-- PAINEL ADMIN -->
       <sc-if value="{{ adminOpen }}" hint-placeholder-val="{{ false }}">
         <div
-          style="position:fixed;inset:0;z-index:70;background:rgba(8,5,7,.7);backdrop-filter:blur(6px);display:flex;justify-content:flex-end">
+          class="xirras-style-188">
           <div
-            style="width:100%;max-width:720px;height:100%;overflow:auto;background:var(--bg);border-left:1px solid var(--border);box-shadow:-20px 0 60px rgba(0,0,0,.4)">
+            class="xirras-style-189">
             <div
-              style="position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px;background:color-mix(in oklab,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)">
-              <div style="display:flex;align-items:center;gap:10px"><svg width="20" height="20" viewBox="0 0 24 24"
+              class="xirras-style-190">
+              <div class="xirras-style-191"><svg width="20" height="20" viewBox="0 0 24 24"
                   fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 7h-9" />
                   <path d="M14 17H5" />
                   <circle cx="17" cy="17" r="3" />
                   <circle cx="7" cy="7" r="3" />
-                </svg><span style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:18px">Painel de
+                </svg><span class="xirras-style-192">Painel de
                   edição</span></div>
-              <div style="display:flex;align-items:center;gap:8px">
+              <div class="xirras-style-10">
                 <button onClick="{{ saveAdmin }}"
-                  style="height:40px;padding:0 16px;border-radius:10px;border:none;background:var(--primary);color:var(--primary-fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Salvar</button>
+                  class="xirras-style-193">Salvar</button>
                 <button onClick="{{ discardChanges }}"
-                  style="height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Descartar</button>
+                  class="xirras-style-194">Descartar</button>
                 <button onClick="{{ closeAdmin }}"
-                  style="width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--fg);cursor:pointer"><svg
+                  class="xirras-style-11"><svg
                     width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 6 6 18" />
@@ -1019,122 +930,122 @@
               </div>
             </div>
 
-            <div style="display:flex;flex-wrap:wrap;gap:8px;padding:16px 24px;border-bottom:1px solid var(--border)">
+            <div class="xirras-style-195">
               <button data-tab="destaque" onClick="{{ setTab }}"
-                style="height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:{{ tabBg_destaque }};color:{{ tabColor_destaque }};font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;cursor:pointer">Destaque</button>
+                class="xirras-style-196" style="background: {{ tabBg_destaque }}; color: {{ tabColor_destaque }};">Destaque</button>
               <button data-tab="integrantes" onClick="{{ setTab }}"
-                style="height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:{{ tabBg_integrantes }};color:{{ tabColor_integrantes }};font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;cursor:pointer">Integrantes</button>
+                class="xirras-style-196" style="background: {{ tabBg_integrantes }}; color: {{ tabColor_integrantes }};">Integrantes</button>
               <button data-tab="jogos" onClick="{{ setTab }}"
-                style="height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:{{ tabBg_jogos }};color:{{ tabColor_jogos }};font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;cursor:pointer">Jogos</button>
+                class="xirras-style-196" style="background: {{ tabBg_jogos }}; color: {{ tabColor_jogos }};">Jogos</button>
               <button data-tab="galeria" onClick="{{ setTab }}"
-                style="height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:{{ tabBg_galeria }};color:{{ tabColor_galeria }};font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;cursor:pointer">Galeria</button>
+                class="xirras-style-196" style="background: {{ tabBg_galeria }}; color: {{ tabColor_galeria }};">Galeria</button>
               <button data-tab="mural" onClick="{{ setTab }}"
-                style="height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:{{ tabBg_mural }};color:{{ tabColor_mural }};font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;cursor:pointer">Mural</button>
+                class="xirras-style-196" style="background: {{ tabBg_mural }}; color: {{ tabColor_mural }};">Mural</button>
               <button data-tab="presencas" onClick="{{ setTab }}"
-                style="height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:{{ tabBg_presencas }};color:{{ tabColor_presencas }};font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;cursor:pointer">Presenças</button>
+                class="xirras-style-196" style="background: {{ tabBg_presencas }}; color: {{ tabColor_presencas }};">Presenças</button>
               <button data-tab="geral" onClick="{{ setTab }}"
-                style="height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:{{ tabBg_geral }};color:{{ tabColor_geral }};font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;cursor:pointer">Dados</button>
+                class="xirras-style-196" style="background: {{ tabBg_geral }}; color: {{ tabColor_geral }};">Dados</button>
             </div>
 
-            <div style="display:flex;align-items:center;gap:8px;padding:12px 24px;font-size:12px;color:var(--muted-fg)">
+            <div class="xirras-style-197">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                 <path d="m9 11 3 3L22 4" />
               </svg> Tudo que você edita aqui é salvo automaticamente neste navegador.</div>
 
-            <div style="padding:8px 24px 60px">
+            <div class="xirras-style-198">
               <!-- DESTAQUE -->
               <sc-if value="{{ isTab_destaque }}" hint-placeholder-val="{{ true }}">
-                <div style="display:flex;flex-direction:column;gap:12px">
-                  <label style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Nome
+                <div class="xirras-style-199">
+                  <label class="xirras-style-200">Nome
                     do destaque</label>
                   <input data-field="playerName" value="{{ adminHighlight.playerName }}" onInput="{{ onHighlight }}"
                     placeholder="Nome do integrante"
-                    style="width:100%;height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:14px" />
+                    class="xirras-style-201" />
                   <label
-                    style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Título /
+                    class="xirras-style-200">Título /
                     semana</label>
                   <input data-field="weekLabel" value="{{ adminHighlight.weekLabel }}" onInput="{{ onHighlight }}"
                     placeholder="Destaque da semana"
-                    style="width:100%;height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:14px" />
+                    class="xirras-style-201" />
                   <label
-                    style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Motivo</label>
+                    class="xirras-style-200">Motivo</label>
                   <textarea data-field="reason" onInput="{{ onHighlight }}"
                     placeholder="Por que essa pessoa foi destaque?"
-                    style="width:100%;min-height:80px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:14px;resize:vertical">{{ adminHighlight.reason }}</textarea>
+                    class="xirras-style-202">{{ adminHighlight.reason }}</textarea>
                   <label
-                    style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Votos</label>
+                    class="xirras-style-200">Votos</label>
                   <input data-field="votes" type="number" value="{{ adminHighlight.votes }}" onInput="{{ onHighlight }}"
-                    style="width:120px;height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:14px" />
-                  <label style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Foto
+                    class="xirras-style-203" />
+                  <label class="xirras-style-200">Foto
                     do destaque</label>
                   <input type="file" accept="image/*" onChange="{{ onHighlightPhoto }}"
-                    style="font-size:13px;color:var(--muted-fg)" />
+                    class="xirras-style-204" />
                   <div><button onClick="{{ clearHighlight }}"
-                      style="height:38px;padding:0 16px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Remover
+                      class="xirras-style-205">Remover
                       destaque</button></div>
                 </div>
               </sc-if>
 
               <!-- INTEGRANTES -->
               <sc-if value="{{ isTab_integrantes }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;flex-direction:column;gap:14px">
+                <div class="xirras-style-206">
                   <sc-for list="{{ adminMembers }}" as="m" hint-placeholder-count="3">
-                    <div style="border-radius:16px;border:1px solid var(--border);background:var(--card);padding:16px">
-                      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+                    <div class="xirras-style-207">
+                      <div class="xirras-style-208">
                         <span
-                          style="position:relative;width:52px;height:52px;flex:none;overflow:hidden;border-radius:12px;border:1px solid var(--border);background:var(--secondary)">
+                          class="xirras-style-209">
                           <sc-if value="{{ m.hasFoto }}" hint-placeholder-val="{{ false }}"><img src="{{ m.foto }}"
-                              alt="" style="width:100%;height:100%;object-fit:cover" /></sc-if>
+                              alt="" class="xirras-style-41" /></sc-if>
                           <sc-if value="{{ m.noFoto }}" hint-placeholder-val="{{ true }}"><span
-                              style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:Oswald;font-weight:700;font-size:16px;color:var(--primary)">{{
+                              class="xirras-style-210">{{
                               m.initials }}</span></sc-if>
                         </span>
-                        <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                        <div class="xirras-style-211">
                           <input data-id="{{ m.id }}" data-field="nome" value="{{ m.nome }}" onInput="{{ onMember }}"
                             placeholder="Nome"
-                            style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                            class="xirras-style-212" />
                           <input data-id="{{ m.id }}" data-field="apelido" value="{{ m.apelido }}"
                             onInput="{{ onMember }}" placeholder="Apelido"
-                            style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                            class="xirras-style-212" />
                         </div>
                       </div>
-                      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px">
+                      <div class="xirras-style-213">
                         <div><label
-                            style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Jogos</label><input
+                            class="xirras-style-214">Jogos</label><input
                             data-id="{{ m.id }}" data-field="stat:jogos" type="number" value="{{ m.jogos }}"
                             onInput="{{ onMember }}"
-                            style="width:100%;height:38px;padding:0 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                            class="xirras-style-215" />
                         </div>
                         <div><label
-                            style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Vitórias</label><input
+                            class="xirras-style-214">Vitórias</label><input
                             data-id="{{ m.id }}" data-field="stat:vitorias" type="number" value="{{ m.vitorias }}"
                             onInput="{{ onMember }}"
-                            style="width:100%;height:38px;padding:0 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                            class="xirras-style-215" />
                         </div>
                         <div><label
-                            style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Derrotas</label><input
+                            class="xirras-style-214">Derrotas</label><input
                             data-id="{{ m.id }}" data-field="stat:derrotas" type="number" value="{{ m.derrotas }}"
                             onInput="{{ onMember }}"
-                            style="width:100%;height:38px;padding:0 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                            class="xirras-style-215" />
                         </div>
                         <div><label
-                            style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Pontos</label><input
+                            class="xirras-style-214">Pontos</label><input
                             data-id="{{ m.id }}" data-field="stat:pontos" type="number" value="{{ m.pontos }}"
                             onInput="{{ onMember }}"
-                            style="width:100%;height:38px;padding:0 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                            class="xirras-style-215" />
                         </div>
                         <div><label
-                            style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">MVP</label><input
+                            class="xirras-style-214">MVP</label><input
                             data-id="{{ m.id }}" data-field="stat:mvp" type="number" value="{{ m.mvp }}"
                             onInput="{{ onMember }}"
-                            style="width:100%;height:38px;padding:0 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                            class="xirras-style-215" />
                         </div>
                       </div>
-                      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px">
+                      <div class="xirras-style-216">
                         <label
-                          style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted-fg);cursor:pointer"><svg
+                          class="xirras-style-217"><svg
                             width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7" />
@@ -1143,14 +1054,14 @@
                             <path d="M16 19h6" />
                             <path d="M19 16v6" />
                           </svg> Trocar foto <input data-id="{{ m.id }}" type="file" accept="image/*"
-                            onChange="{{ onMemberPhoto }}" style="display:none" /></label>
+                            onChange="{{ onMemberPhoto }}" class="xirras-style-218" /></label>
                         <button data-id="{{ m.id }}" onClick="{{ removeMember }}"
-                          style="margin-left:auto;height:34px;padding:0 12px;border-radius:8px;border:none;background:var(--destructive);color:#fff;font-family:Oswald;font-size:11px;font-weight:600;text-transform:uppercase;cursor:pointer">Remover</button>
+                          class="xirras-style-219">Remover</button>
                       </div>
                     </div>
                   </sc-for>
                   <button onClick="{{ addMember }}"
-                    style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:12px;border:1px dashed var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:13px;font-weight:600;text-transform:uppercase;cursor:pointer"><svg
+                    class="xirras-style-220"><svg
                       width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round">
                       <path d="M5 12h14" />
@@ -1161,54 +1072,54 @@
 
               <!-- JOGOS -->
               <sc-if value="{{ isTab_jogos }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;flex-direction:column;gap:14px">
+                <div class="xirras-style-206">
                   <sc-for list="{{ adminGames }}" as="g" hint-placeholder-count="2">
                     <div
-                      style="border-radius:16px;border:1px solid var(--border);background:var(--card);padding:16px;display:grid;gap:8px">
+                      class="xirras-style-221">
                       <input data-id="{{ g.id }}" data-field="title" value="{{ g.title }}" onInput="{{ onGame }}"
                         placeholder="Título"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
-                      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                        class="xirras-style-212" />
+                      <div class="xirras-style-222">
                         <input data-id="{{ g.id }}" data-field="eventDate" type="date" value="{{ g.eventDate }}"
                           onInput="{{ onGame }}"
-                          style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                          class="xirras-style-212" />
                         <select data-id="{{ g.id }}" data-field="matchType" value="{{ g.matchType }}"
                           onChange="{{ onGame }}"
-                          style="height:40px;padding:0 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px">
+                          class="xirras-style-223">
                           <option value="interno">Interno</option>
                           <option value="externo">Externo</option>
                         </select>
                       </div>
                       <input data-id="{{ g.id }}" data-field="location" value="{{ g.location }}" onInput="{{ onGame }}"
                         placeholder="Local"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
-                      <div style="display:grid;grid-template-columns:1fr 70px 70px 1fr;gap:8px;align-items:center">
+                        class="xirras-style-212" />
+                      <div class="xirras-style-224">
                         <input data-id="{{ g.id }}" data-field="teamA" value="{{ g.teamA }}" onInput="{{ onGame }}"
                           placeholder="Time A"
-                          style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                          class="xirras-style-212" />
                         <input data-id="{{ g.id }}" data-field="scoreA" type="number" value="{{ g.scoreA }}"
                           onInput="{{ onGame }}" placeholder="0"
-                          style="height:40px;padding:0 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px;text-align:center" />
+                          class="xirras-style-225" />
                         <input data-id="{{ g.id }}" data-field="scoreB" type="number" value="{{ g.scoreB }}"
                           onInput="{{ onGame }}" placeholder="0"
-                          style="height:40px;padding:0 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px;text-align:center" />
+                          class="xirras-style-225" />
                         <input data-id="{{ g.id }}" data-field="teamB" value="{{ g.teamB }}" onInput="{{ onGame }}"
                           placeholder="Time B"
-                          style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                          class="xirras-style-212" />
                       </div>
                       <input data-id="{{ g.id }}" data-field="result" value="{{ g.result }}" onInput="{{ onGame }}"
                         placeholder="Resultado (ex: Vitória 3x1)"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <input data-id="{{ g.id }}" data-field="highlightText" value="{{ g.highlightText }}"
                         onInput="{{ onGame }}" placeholder="Destaque do jogo"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <div><button data-id="{{ g.id }}" onClick="{{ removeGame }}"
-                          style="height:34px;padding:0 12px;border-radius:8px;border:none;background:var(--destructive);color:#fff;font-family:Oswald;font-size:11px;font-weight:600;text-transform:uppercase;cursor:pointer">Remover
+                          class="xirras-style-226">Remover
                           jogo</button></div>
                     </div>
                   </sc-for>
                   <button onClick="{{ addGame }}"
-                    style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:12px;border:1px dashed var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:13px;font-weight:600;text-transform:uppercase;cursor:pointer"><svg
+                    class="xirras-style-220"><svg
                       width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round">
                       <path d="M5 12h14" />
@@ -1219,19 +1130,19 @@
 
               <!-- GALERIA -->
               <sc-if value="{{ isTab_galeria }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;flex-direction:column;gap:14px">
+                <div class="xirras-style-206">
                   <sc-for list="{{ adminAlbums }}" as="al" hint-placeholder-count="1">
                     <div
-                      style="border-radius:16px;border:1px solid var(--border);background:var(--card);padding:16px;display:grid;gap:8px">
+                      class="xirras-style-221">
                       <input data-id="{{ al.id }}" data-field="title" value="{{ al.title }}" onInput="{{ onAlbum }}"
                         placeholder="Título do álbum"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <input data-id="{{ al.id }}" data-field="eventDate" type="date" value="{{ al.eventDate }}"
                         onInput="{{ onAlbum }}"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
-                      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+                        class="xirras-style-212" />
+                      <div class="xirras-style-227">
                         <label
-                          style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted-fg);cursor:pointer"><svg
+                          class="xirras-style-217"><svg
                             width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M18 22H4a2 2 0 0 1-2-2V6" />
@@ -1239,23 +1150,23 @@
                             <circle cx="12" cy="8" r="2" />
                             <rect width="16" height="16" x="6" y="2" rx="2" />
                           </svg> Definir capa <input data-id="{{ al.id }}" type="file" accept="image/*"
-                            onChange="{{ onAlbumCover }}" style="display:none" /></label>
+                            onChange="{{ onAlbumCover }}" class="xirras-style-218" /></label>
                         <label
-                          style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted-fg);cursor:pointer"><svg
+                          class="xirras-style-217"><svg
                             width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14" />
                             <path d="M12 5v14" />
                           </svg> Adicionar foto <input data-id="{{ al.id }}" type="file" accept="image/*"
-                            onChange="{{ onAlbumPhoto }}" style="display:none" /></label>
-                        <span style="font-size:12px;color:var(--muted-fg)">{{ al.countLabel }}</span>
+                            onChange="{{ onAlbumPhoto }}" class="xirras-style-218" /></label>
+                        <span class="xirras-style-228">{{ al.countLabel }}</span>
                         <button data-id="{{ al.id }}" onClick="{{ removeAlbum }}"
-                          style="margin-left:auto;height:34px;padding:0 12px;border-radius:8px;border:none;background:var(--destructive);color:#fff;font-family:Oswald;font-size:11px;font-weight:600;text-transform:uppercase;cursor:pointer">Remover</button>
+                          class="xirras-style-219">Remover</button>
                       </div>
                     </div>
                   </sc-for>
                   <button onClick="{{ addAlbum }}"
-                    style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:12px;border:1px dashed var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:13px;font-weight:600;text-transform:uppercase;cursor:pointer"><svg
+                    class="xirras-style-220"><svg
                       width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round">
                       <path d="M5 12h14" />
@@ -1266,26 +1177,26 @@
 
               <!-- MURAL -->
               <sc-if value="{{ isTab_mural }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;flex-direction:column;gap:14px">
+                <div class="xirras-style-206">
                   <sc-for list="{{ adminPosts }}" as="p" hint-placeholder-count="2">
                     <div
-                      style="border-radius:16px;border:1px solid var(--border);background:var(--card);padding:16px;display:grid;gap:8px">
+                      class="xirras-style-221">
                       <input data-id="{{ p.id }}" data-field="title" value="{{ p.title }}" onInput="{{ onPost }}"
                         placeholder="Título"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <textarea data-id="{{ p.id }}" data-field="content" onInput="{{ onPost }}" placeholder="Conteúdo"
-                        style="min-height:70px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px;resize:vertical">{{ p.content }}</textarea>
-                      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                        class="xirras-style-229">{{ p.content }}</textarea>
+                      <div class="xirras-style-222">
                         <input data-id="{{ p.id }}" data-field="category" value="{{ p.category }}"
                           onInput="{{ onPost }}" placeholder="Categoria"
-                          style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                          class="xirras-style-212" />
                         <input data-id="{{ p.id }}" data-field="author" value="{{ p.author }}" onInput="{{ onPost }}"
                           placeholder="Autor"
-                          style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                          class="xirras-style-212" />
                       </div>
-                      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+                      <div class="xirras-style-227">
                         <label
-                          style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted-fg);cursor:pointer"><svg
+                          class="xirras-style-217"><svg
                             width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7" />
@@ -1294,14 +1205,14 @@
                             <path d="M16 19h6" />
                             <path d="M19 16v6" />
                           </svg> Imagem <input data-id="{{ p.id }}" type="file" accept="image/*"
-                            onChange="{{ onPostImage }}" style="display:none" /></label>
+                            onChange="{{ onPostImage }}" class="xirras-style-218" /></label>
                         <button data-id="{{ p.id }}" onClick="{{ removePost }}"
-                          style="margin-left:auto;height:34px;padding:0 12px;border-radius:8px;border:none;background:var(--destructive);color:#fff;font-family:Oswald;font-size:11px;font-weight:600;text-transform:uppercase;cursor:pointer">Remover</button>
+                          class="xirras-style-219">Remover</button>
                       </div>
                     </div>
                   </sc-for>
                   <button onClick="{{ addPost }}"
-                    style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:12px;border:1px dashed var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:13px;font-weight:600;text-transform:uppercase;cursor:pointer"><svg
+                    class="xirras-style-220"><svg
                       width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round">
                       <path d="M5 12h14" />
@@ -1312,20 +1223,20 @@
 
               <!-- PRESENÇAS -->
               <sc-if value="{{ isTab_presencas }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;flex-direction:column;gap:14px">
-                  <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <div class="xirras-style-206">
+                  <div class="xirras-style-230">
                     <input value="{{ newAtt }}" onInput="{{ onNewAtt }}" placeholder="Nome para confirmar"
-                      style="flex:1;min-width:180px;height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--fg);font-size:14px" />
+                      class="xirras-style-231" />
                     <button onClick="{{ addAttendance }}"
-                      style="height:44px;padding:0 18px;border-radius:10px;border:none;background:var(--primary);color:var(--primary-fg);font-family:Oswald;font-size:13px;font-weight:600;text-transform:uppercase;cursor:pointer">Adicionar</button>
+                      class="xirras-style-232">Adicionar</button>
                   </div>
-                  <div style="overflow:hidden;border-radius:14px;border:1px solid var(--border);background:var(--card)">
+                  <div class="xirras-style-233">
                     <sc-for list="{{ adminAttendance }}" as="a" hint-placeholder-count="3">
                       <div
-                        style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid color-mix(in oklab,var(--border) 70%,transparent)">
-                        <span style="font-size:14px;font-weight:500">{{ a.name }}</span><button data-id="{{ a.id }}"
+                        class="xirras-style-234">
+                        <span class="xirras-style-235">{{ a.name }}</span><button data-id="{{ a.id }}"
                           onClick="{{ removeAttendance }}"
-                          style="height:30px;padding:0 12px;border-radius:8px;border:none;background:var(--destructive);color:#fff;font-family:Oswald;font-size:11px;font-weight:600;text-transform:uppercase;cursor:pointer">Remover</button>
+                          class="xirras-style-236">Remover</button>
                       </div>
                     </sc-for>
                   </div>
@@ -1334,105 +1245,105 @@
 
               <!-- GERAL / DADOS -->
               <sc-if value="{{ isTab_geral }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;flex-direction:column;gap:16px">
+                <div class="xirras-style-88">
                   <div
-                    style="border-radius:16px;border:1px solid color-mix(in oklab,var(--primary) 35%,var(--border));background:var(--card);padding:18px;display:flex;flex-direction:column;gap:12px">
-                    <div style="display:flex;align-items:center;gap:10px"><svg width="18" height="18"
+                    class="xirras-style-237">
+                    <div class="xirras-style-191"><svg width="18" height="18"
                         viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <ellipse cx="12" cy="5" rx="9" ry="3" />
                         <path d="M3 5V19A9 3 0 0 0 21 19V5" />
                         <path d="M3 12A9 3 0 0 0 21 12" />
                       </svg>
-                      <h3 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:16px;margin:0">
+                      <h3 class="xirras-style-238">
                         Banco de dados (Supabase)</h3>
                     </div>
                     <div
-                      style="display:inline-flex;width:fit-content;align-items:center;gap:8px;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;background:{{ sbBadgeBg }};color:{{ sbBadgeColor }}">
-                      <span style="width:8px;height:8px;border-radius:999px;background:currentColor"></span>{{
+                      class="xirras-style-239" style="background: {{ sbBadgeBg }}; color: {{ sbBadgeColor }};">
+                      <span class="xirras-style-240"></span>{{
                       sbStatusLabel }}</div>
                     <sc-if value="{{ sbMsg }}" hint-placeholder-val="">
-                        <p style="margin:0;font-size:12px;color:var(--destructive)">{{ sbMsg }}</p>
+                        <p class="xirras-style-241">{{ sbMsg }}</p>
                       </sc-if>
-                      <p style="font-size:13px;line-height:1.5;color:var(--muted-fg);margin:0">Cole a <b>URL do
+                      <p class="xirras-style-242">Cole a <b>URL do
                           projeto</b> e a <b>chave anon (public)</b> do seu Supabase (Project Settings → API). Depois de
                         conectar, tudo passa a salvar no banco real e sincroniza entre dispositivos.</p>
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Project
+                        class="xirras-style-243">Project
                         URL</label>
                       <input value="{{ sbUrl }}" onInput="{{ onSbUrl }}" placeholder="https://xxxx.supabase.co"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Chave
+                        class="xirras-style-243">Chave
                         anon (public)</label>
                       <input value="{{ sbKey }}" onInput="{{ onSbKey }}" placeholder="eyJhbGciOi..."
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:13px;font-family:monospace" />
-                      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
+                        class="xirras-style-244" />
+                      <div class="xirras-style-245">
                         <button onClick="{{ connectSb }}"
-                          style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:10px;border:none;background:var(--primary);color:var(--primary-fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Conectar
+                          class="xirras-style-246">Conectar
                           e sincronizar</button>
                         <button onClick="{{ reloadRemote }}"
-                          style="height:42px;padding:0 14px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Recarregar
+                          class="xirras-style-247">Recarregar
                           do banco</button>
                         <button onClick="{{ disconnectSb }}"
-                          style="height:42px;padding:0 14px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--muted-fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Desconectar</button>
+                          class="xirras-style-248">Desconectar</button>
                       </div>
                     </div>
                     <div
-                      style="border-radius:16px;border:1px solid var(--border);background:var(--card);padding:18px;display:flex;flex-direction:column;gap:12px">
-                      <h3 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:16px;margin:0">
+                      class="xirras-style-249">
+                      <h3 class="xirras-style-238">
                         Textos da página inicial</h3>
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Selo
+                        class="xirras-style-243">Selo
                         do topo</label>
                       <input data-field="heroBadge" value="{{ adminSite.heroBadge }}" onInput="{{ onSite }}"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Frase
+                        class="xirras-style-243">Frase
                         do topo</label>
                       <textarea data-field="heroText" onInput="{{ onSite }}"
-                        style="min-height:64px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px;resize:vertical">{{ adminSite.heroText }}</textarea>
+                        class="xirras-style-250">{{ adminSite.heroText }}</textarea>
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Local
+                        class="xirras-style-243">Local
                         do próximo jogo</label>
                       <input data-field="nextGamePlace" value="{{ adminSite.nextGamePlace }}" onInput="{{ onSite }}"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Data
+                        class="xirras-style-243">Data
                         de fundação</label>
                       <input data-field="foundedDate" type="date" value="{{ adminSite.foundedDate }}" onInput="{{ onSite }}"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Chave
+                        class="xirras-style-243">Chave
                         Pix — Mensalidade</label>
                       <input data-field="pixMensalidade" value="{{ adminSite.pixMensalidade }}" onInput="{{ onSite }}"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Chave
+                        class="xirras-style-243">Chave
                         Pix — Avulso</label>
                       <input data-field="pixAvulso" value="{{ adminSite.pixAvulso }}" onInput="{{ onSite }}"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Título
+                        class="xirras-style-243">Título
                         do "Sobre"</label>
                       <input data-field="aboutTitle" value="{{ adminSite.aboutTitle }}" onInput="{{ onSite }}"
-                        style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
+                        class="xirras-style-212" />
                       <label
-                        style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Texto
+                        class="xirras-style-243">Texto
                         do "Sobre"</label>
                       <textarea data-field="aboutText" onInput="{{ onSite }}"
-                        style="min-height:80px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px;resize:vertical">{{ adminSite.aboutText }}</textarea>
+                        class="xirras-style-251">{{ adminSite.aboutText }}</textarea>
                     </div>
                     <div
-                      style="border-radius:16px;border:1px solid var(--border);background:var(--card);padding:18px;display:flex;flex-direction:column;gap:12px">
-                      <h3 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:16px;margin:0">
+                      class="xirras-style-249">
+                      <h3 class="xirras-style-238">
                         Backup dos dados</h3>
-                      <p style="font-size:13px;line-height:1.5;color:var(--muted-fg);margin:0">Baixe um arquivo com tudo
+                      <p class="xirras-style-242">Baixe um arquivo com tudo
                         que você cadastrou para guardar ou levar para outro dispositivo. Depois é só importar de volta.
                       </p>
-                      <div style="display:flex;flex-wrap:wrap;gap:10px">
+                      <div class="xirras-style-252">
                         <button onClick="{{ exportData }}"
-                          style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:10px;border:none;background:var(--primary);color:var(--primary-fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer"><svg
+                          class="xirras-style-246"><svg
                             width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -1440,27 +1351,24 @@
                             <path d="M12 15V3" />
                           </svg> Exportar backup</button>
                         <label
-                          style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer"><svg
+                          class="xirras-style-253"><svg
                             width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                             <path d="M17 8l-5-5-5 5" />
                             <path d="M12 3v12" />
                           </svg> Importar backup <input type="file" accept="application/json"
-                            onChange="{{ importData }}" style="display:none" /></label>
+                            onChange="{{ importData }}" class="xirras-style-218" /></label>
                       </div>
                     </div>
                     <div
-                      style="border-radius:16px;border:1px solid color-mix(in oklab,var(--destructive) 40%,var(--border));background:var(--card);padding:18px;display:flex;flex-direction:column;gap:12px">
-                      <h3 style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:16px;margin:0">
+                      class="xirras-style-254">
+                      <h3 class="xirras-style-238">
                         Reiniciar</h3>
-                      <div style="display:flex;flex-wrap:wrap;gap:10px">
+                      <div class="xirras-style-252">
                         <button onClick="{{ clearContent }}"
-                          style="height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Limpar
+                          class="xirras-style-255">Limpar
                           conteúdo (zerar tudo)</button>
-                        <button onClick="{{ resetDemo }}"
-                          style="height:40px;padding:0 14px;border-radius:10px;border:none;background:var(--destructive);color:#fff;font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Restaurar
-                          dados de exemplo</button>
                       </div>
                     </div>
                   </div>
@@ -1477,71 +1385,37 @@
     data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;oklch(0.68 0.2 354)&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;,&quot;options&quot;:[&quot;oklch(0.68 0.2 354)&quot;,&quot;oklch(0.7 0.17 25)&quot;,&quot;oklch(0.68 0.16 250)&quot;,&quot;oklch(0.72 0.17 150)&quot;]},&quot;startTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;}}">
 class Component extends DCLogic {
   defaults() {
-    const M = (id, nome, apelido, s) => ({ id, nome, apelido: apelido || '', foto: null, stats: { jogos: s[0]||0, vitorias: s[1]||0, derrotas: s[2]||0, pontos: s[3]||0, mvp: s[4]||0 } });
     return {
       site: {
-        heroBadge: 'Elenco oficial do Xirras',
-        heroTitle: 'Xirras',
-        heroTitle2: 'Voleibol Club',
-        heroText: 'Base do time para reunir integrantes, ranking, presenças, fotos e os registros de cada quarta.',
-        nextGamePlace: 'G4 Arena — Rua Jamily Elias, 10, Roçado, São José - SC, 88108-310',
-        aboutTitle: 'Um só lugar para os dados do Xirras',
-        aboutText: 'A parte pública mostra apenas o que o time cadastra: integrantes, fotos, estatísticas, jogos, álbuns e avisos. Tudo editável pelo painel.',
-        foundedDate: '2025-04-30',
-        pixMensalidade: '048991673781',
-        pixAvulso: '048991673781',
+        heroBadge: '',
+        heroTitle: '',
+        heroTitle2: '',
+        heroText: '',
+        nextGamePlace: '',
+        aboutTitle: '',
+        aboutText: '',
+        foundedDate: '',
+        pixMensalidade: '',
+        pixAvulso: '',
       },
-      highlight: { playerName: 'Tayná', weekLabel: 'Destaque da semana', reason: 'Comandou a virada na quarta e ainda salvou três bolas difíceis na defesa.', votes: 14, playerPhoto: null },
-      members: [
-        M('daniel','Daniel','',[12,8,4,124,3]),
-        M('tayna','Tayná','',[12,9,3,141,4]),
-        M('malu','Malu','',[10,6,4,96,1]),
-        M('vithoria','Vithória','',[11,7,4,118,2]),
-        M('victor','Victor','',[11,7,4,121,2]),
-        M('patricia','Patrícia','',[9,5,4,84,0]),
-        M('schirlei','Schirlei','Xica',[8,4,4,71,1]),
-        M('sthefani','Sthefani','Sthe',[12,8,4,129,2]),
-        M('jeziel','Jeziel','Chimichurri de Laranja',[7,3,4,58,0]),
-        M('isaque','Isaque','',[6,3,3,52,0]),
-        M('joana','Joana','',[9,5,4,88,1]),
-        M('luiza','Luiza','SAAAAAI',[10,6,4,102,1]),
-        M('marco','Marco','',[8,4,4,74,0]),
-        M('mirieli','Mirieli','1kg de carne é só dela',[7,4,3,66,0]),
-        M('nadja','Nadja','',[6,2,4,44,0]),
-        M('gui','Gui','Eu',[12,9,3,138,3]),
-        M('paulo','Paulo','',[5,2,3,38,0]),
-      ],
-      games: [
-        { id: 'g1', eventDate: '2026-07-01', title: 'Quarta do Xirras', location: 'G4 Arena', matchType: 'interno', teamA: 'Xirras A', teamB: 'Xirras B', scoreA: 3, scoreB: 1, result: 'Vitória do time A', highlightText: 'Virada no terceiro set puxada pela Tayná.' },
-        { id: 'g2', eventDate: '2026-06-24', title: 'Amistoso de quarta', location: 'G4 Arena', matchType: 'externo', teamA: 'Xirras', teamB: 'Vôlei da Vila', scoreA: 2, scoreB: 3, result: 'Derrota no tie-break', highlightText: 'Jogo duro decidido nos detalhes do quinto set.' },
-      ],
-      albums: [
-        { id: 'al1', title: 'Quarta na G4 Arena', eventDate: '2026-07-01', coverUrl: 'uploads/xirras1.jpeg', photos: [ { id: 'ph1', url: 'uploads/xirras1.jpeg', caption: 'Time reunido' } ] },
-      ],
-      posts: [
-        { id: 'p1', title: 'Confirmados para quarta', content: 'Fechamos time cheio essa semana! Chegar 19h na G4 Arena, jogo 08/07.', category: 'Aviso', author: 'Vitinho', imageUrl: null, createdAt: '2026-07-05' },
-        { id: 'p2', title: 'Uniforme novo chegou', content: 'As camisas pretas com rosa já estão prontas. Retirem no próximo encontro.', category: 'Novidade', author: 'Patrícia', imageUrl: null, createdAt: '2026-07-02' },
-      ],
-      attendance: [
-        { id: 'a1', name: 'Daniel', status: 'Confirmado' },
-        { id: 'a2', name: 'Sthe', status: 'Confirmado' },
-        { id: 'a3', name: 'Vitinho', status: 'Confirmado' },
-        { id: 'a4', name: 'Vithória', status: 'Confirmado' },
-      ],
+      highlight: null,
+      members: [],
+      games: [],
+      albums: [],
+      posts: [],
+      attendance: [],
     };
   }
 
-  KEY = 'xirras-data-v1';
-
   constructor(props) {
     super(props);
-    let data = this.defaults();
-    try { const s = localStorage.getItem('xirras-data-v1'); if (s) data = this.merge(JSON.parse(s)); } catch (e) {}
+    const data = this.defaults();
     let theme = (props && props.startTheme) || 'dark';
     try { const t = localStorage.getItem('xirras-theme'); if (t) theme = t; } catch (e) {}
-    let sb = { url: '', key: '' };
-    try { const s = localStorage.getItem('xirras-supabase'); if (s) sb = JSON.parse(s); } catch (e) {}
-    this.state = { data, adminData: null, theme, adminOpen: false, adminTab: 'destaque', lightbox: null, newAtt: '', pubName: '', attMsg: '', sbUrl: sb.url || '', sbKey: sb.key || '', sbStatus: 'off', sbMsg: '' };
+    let sbUrl = '';
+    let sbKey = '';
+    try { const s = localStorage.getItem('xirras-supabase'); if (s) { const parsed = JSON.parse(s); sbUrl = parsed.url || ''; sbKey = parsed.key || ''; } } catch (e) {}
+    this.state = { data, adminData: null, theme, adminOpen: false, adminTab: 'destaque', lightbox: null, newAtt: '', pubName: '', attMsg: '', sbUrl, sbKey, sbStatus: 'off', sbMsg: '' };
   }
 
   componentDidMount() { if (this.state.sbUrl && this.state.sbKey) this.connectSb(true); }
@@ -1559,16 +1433,14 @@ class Component extends DCLogic {
     try {
       const lib = await this.waitForLib();
       this.sb = lib.createClient(url, key);
-      try { localStorage.setItem('xirras-supabase', JSON.stringify({ url, key })); } catch (e) {}
       const { data: row, error } = await this.sb.from('xirras_state').select('data').eq('id', 'main').maybeSingle();
       if (error) throw error;
+      try { localStorage.setItem('xirras-supabase', JSON.stringify({ url, key })); } catch (e) {}
       if (row && row.data && Object.keys(row.data).length) {
         const merged = this.merge(row.data);
         this.setState({ data: merged, sbStatus: 'online', sbMsg: '' });
-        this.persistLocal(merged);
       } else {
-        await this.sb.from('xirras_state').upsert({ id: 'main', data: this.state.data, updated_at: new Date().toISOString() });
-        this.setState({ sbStatus: 'online', sbMsg: '' });
+        this.setState({ sbStatus: 'online', sbMsg: 'Conectado. Nenhum conteúdo foi encontrado no banco ainda.' });
       }
     } catch (err) {
       this.sb = null;
@@ -1582,12 +1454,12 @@ class Component extends DCLogic {
     try {
       const { data: row, error } = await this.sb.from('xirras_state').select('data').eq('id', 'main').maybeSingle();
       if (error) throw error;
-      if (row && row.data) { const merged = this.merge(row.data); this.setState({ data: merged, sbStatus: 'online' }); this.persistLocal(merged); }
+      if (row && row.data) { const merged = this.merge(row.data); this.setState({ data: merged, sbStatus: 'online' }); }
       else this.setState({ sbStatus: 'online' });
     } catch (err) { this.setState({ sbStatus: 'error', sbMsg: (err && err.message) || 'Falha ao recarregar.' }); }
   };
 
-  disconnectSb = () => { this.sb = null; try { localStorage.removeItem('xirras-supabase'); } catch (e) {} this.setState({ sbStatus: 'off', sbMsg: '' }); };
+  disconnectSb = () => { this.sb = null; this.setState({ sbStatus: 'off', sbMsg: '' }); };
 
   cloneData(data) { return JSON.parse(JSON.stringify(data)); }
   setAdminData(fn) { const adminData = fn(this.state.adminData || this.state.data); this.setState({ adminData }); }
@@ -1596,12 +1468,15 @@ class Component extends DCLogic {
   closeAdmin = () => this.setState({ adminOpen: false, adminData: null, attMsg: '' });
   discardChanges = () => this.closeAdmin();
   saveAdmin = () => {
+    if (!this.sb) {
+      this.setState({ sbStatus: 'error', sbMsg: 'Conecte ao Supabase antes de salvar.' });
+      return;
+    }
     const data = this.state.adminData || this.state.data;
     this.setState({ data, adminOpen: false, adminData: null, sbMsg: 'Alterações salvas.' });
     this.persist(data);
   };
 
-  persistLocal(data) { try { localStorage.setItem(this.KEY, JSON.stringify(data)); } catch (e) {} }
   pushRemote(data) {
     if (!this.sb) return;
     this.sb.from('xirras_state').upsert({ id: 'main', data, updated_at: new Date().toISOString() })
@@ -1623,8 +1498,13 @@ class Component extends DCLogic {
   }
 
   persist(data) {
-    this.persistLocal(data);
-    if (this.sb) { this.setState({ sbStatus: 'saving' }); clearTimeout(this._sbTimer); this._sbTimer = setTimeout(() => this.pushRemote(data), 700); }
+    if (!this.sb) {
+      this.setState({ sbStatus: 'error', sbMsg: 'Conecte ao Supabase para salvar os dados.' });
+      return;
+    }
+    this.setState({ sbStatus: 'saving', sbMsg: '' });
+    clearTimeout(this._sbTimer);
+    this._sbTimer = setTimeout(() => this.pushRemote(data), 700);
   }
   setData(fn) { const data = fn(this.state.data); this.setState({ data }); this.persist(data); }
 
@@ -1678,7 +1558,6 @@ class Component extends DCLogic {
 
   exportData = () => { try { const blob = new Blob([JSON.stringify(this.state.adminOpen && this.state.adminData ? this.state.adminData : this.state.data, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'xirras-backup.json'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); } catch (e) {} };
   importData = (e) => { const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { try { const parsed = JSON.parse(r.result); const data = this.merge(parsed); if (this.state.adminOpen) { this.setState({ adminData: data }); } else { this.setState({ data }); this.persist(data); } } catch (err) { alert('Arquivo de backup inválido.'); } }; r.readAsText(f); };
-  resetDemo = () => { const data = this.defaults(); if (this.state.adminOpen) { this.setState({ adminData: data }); } else { this.setState({ data }); this.persist(data); } };
   clearContent = () => { const data = this.defaults(); const cleared = { ...data, highlight: null, games: [], albums: [], posts: [], attendance: [], members: data.members.map(m => ({ ...m, stats: { jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 } })) }; if (this.state.adminOpen) { this.setState({ adminData: cleared }); } else { this.setState({ data: cleared }); this.persist(cleared); } };
 
   renderVals() {
@@ -1778,7 +1657,7 @@ class Component extends DCLogic {
       onPost: this.onPost, onPostImage: this.onPostImage, addPost: this.addPost, removePost: this.removePost,
       onNewAtt: this.onNewAtt, addAttendance: this.addAttendance, removeAttendance: this.removeAttendance,
       saveAdmin: this.saveAdmin, discardChanges: this.discardChanges,
-      exportData: this.exportData, importData: this.importData, resetDemo: this.resetDemo, clearContent: this.clearContent,
+      exportData: this.exportData, importData: this.importData, clearContent: this.clearContent,
       sbUrl: this.state.sbUrl, sbKey: this.state.sbKey, sbMsg: this.state.sbMsg,
       sbStatusLabel: sbInfo.label, sbBadgeBg: sbInfo.bg, sbBadgeColor: sbInfo.color,
       onSbUrl: this.onSbUrl, onSbKey: this.onSbKey, connectSb: this.connectSb, reloadRemote: this.reloadRemote, disconnectSb: this.disconnectSb,
