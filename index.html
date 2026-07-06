@@ -20,141 +20,69 @@
       </helmet>
       <div ref="{{ setRoot }}" data-theme="{{ theme }}" class="xirras-style-1">
         <sc-if value="{{ isPublicRoute }}" hint-placeholder-val="{{ true }}">
-        <header class="xirras-style-2">
-          <div class="xirras-style-3">
-            <a href="#topo" class="xirras-style-4">
-              <img
-                src="public/images/xirras-logo.png"
-                alt="Escudo do Xirras"
-                class="xirras-style-5"
-              />
-              <span class="xirras-style-6"
-                >Xirras<span class="xirras-style-7">Voleibol Club</span></span
-              >
-            </a>
-            <nav class="xirras-style-8">
-              <a href="#integrantes" class="xirras-style-9">Integrantes</a>
-              <a href="#ranking" class="xirras-style-9">Ranking</a>
-              <a href="#presenca" class="xirras-style-9">Presença</a>
-              <a href="#jogos" class="xirras-style-9">Jogos</a>
-              <a href="#galeria" class="xirras-style-9">Galeria</a>
-            </nav>
-            <div class="xirras-style-10">
-              <button
-                onClick="{{ toggleTheme }}"
-                aria-label="Alternar tema"
-                class="xirras-style-11"
-              >
-                <sc-if value="{{ isDark }}" hint-placeholder-val="{{ true }}"
-                  ><svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="4" />
-                    <path d="M12 2v2" />
-                    <path d="M12 20v2" />
-                    <path d="m4.93 4.93 1.41 1.41" />
-                    <path d="m17.66 17.66 1.41 1.41" />
-                    <path d="M2 12h2" />
-                    <path d="M20 12h2" />
-                    <path d="m6.34 17.66-1.41 1.41" />
-                    <path d="m19.07 4.93-1.41 1.41" /></svg
-                ></sc-if>
-                <sc-if value="{{ isLight }}" hint-placeholder-val="{{ false }}"
-                  ><svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg
-                ></sc-if>
-              </button>
-              <button onClick="{{ openAdmin }}" class="xirras-style-12">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+          <header class="xirras-style-2">
+            <div class="xirras-style-3">
+              <a href="#topo" class="xirras-style-4">
+                <img
+                  src="public/images/xirras-logo.png"
+                  alt="Escudo do Xirras"
+                  class="xirras-style-5"
+                />
+                <span class="xirras-style-6"
+                  >Xirras<span class="xirras-style-7">Voleibol Club</span></span
                 >
-                  <path d="M20 7h-9" />
-                  <path d="M14 17H5" />
-                  <circle cx="17" cy="17" r="3" />
-                  <circle cx="7" cy="7" r="3" />
-                </svg>
-                Admin
-              </button>
-            </div>
-          </div>
-        </header>
-
-        <main>
-          <!-- HERO -->
-          <section id="topo" class="xirras-style-13">
-            <div class="xirras-style-14">
-              <img
-                src="{{ heroImageSrc }}"
-                alt="Time Xirras na quadra"
-                class="xirras-style-15"
-              />
-              <div class="xirras-style-16"></div>
-              <div class="xirras-style-17"></div>
-            </div>
-            <div class="xirras-style-18">
-              <span class="xirras-style-19">
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+              </a>
+              <nav class="xirras-style-8">
+                <a href="#integrantes" class="xirras-style-9">Integrantes</a>
+                <a href="#ranking" class="xirras-style-9">Ranking</a>
+                <a href="#presenca" class="xirras-style-9">Presença</a>
+                <a href="#jogos" class="xirras-style-9">Jogos</a>
+                <a href="#galeria" class="xirras-style-9">Galeria</a>
+              </nav>
+              <div class="xirras-style-10">
+                <button
+                  onClick="{{ toggleTheme }}"
+                  aria-label="Alternar tema"
+                  class="xirras-style-11"
                 >
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-                {{ site.heroBadge }}
-              </span>
-              <h1 class="xirras-style-20">
-                {{ site.heroTitle }}<span class="xirras-style-21"
-                  >{{ site.heroTitle2 }}</span
-                >
-              </h1>
-              <p class="xirras-style-22">{{ site.heroText }}</p>
-              <div class="xirras-style-23">
-                <a href="#integrantes" class="xirras-style-24"
-                  >Ver integrantes
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="m9 18 6-6-6-6" /></svg
-                ></a>
-                <button onClick="{{ openAdmin }}" class="xirras-style-25">
+                  <sc-if value="{{ isDark }}" hint-placeholder-val="{{ true }}"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="4" />
+                      <path d="M12 2v2" />
+                      <path d="M12 20v2" />
+                      <path d="m4.93 4.93 1.41 1.41" />
+                      <path d="m17.66 17.66 1.41 1.41" />
+                      <path d="M2 12h2" />
+                      <path d="M20 12h2" />
+                      <path d="m6.34 17.66-1.41 1.41" />
+                      <path d="m19.07 4.93-1.41 1.41" /></svg
+                  ></sc-if>
+                  <sc-if
+                    value="{{ isLight }}"
+                    hint-placeholder-val="{{ false }}"
+                    ><svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg
+                  ></sc-if>
+                </button>
+                <button onClick="{{ openAdmin }}" class="xirras-style-12">
                   <svg
                     width="16"
                     height="16"
@@ -170,300 +98,27 @@
                     <circle cx="17" cy="17" r="3" />
                     <circle cx="7" cy="7" r="3" />
                   </svg>
-                  Painel admin
+                  Admin
                 </button>
               </div>
             </div>
-          </section>
+          </header>
 
-          <!-- STATS -->
-          <section class="xirras-style-26">
-            <div class="xirras-style-27">
-              <div class="xirras-style-28">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="var(--primary)"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
-                ><span class="xirras-style-29">{{ stats.players }}</span
-                ><span class="xirras-style-30">Atletas no elenco</span>
+          <main>
+            <!-- HERO -->
+            <section id="topo" class="xirras-style-13">
+              <div class="xirras-style-14">
+                <img
+                  src="{{ heroImageSrc }}"
+                  alt="Time Xirras na quadra"
+                  class="xirras-style-15"
+                />
+                <div class="xirras-style-16"></div>
+                <div class="xirras-style-17"></div>
               </div>
-              <div class="xirras-style-28">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="var(--primary)"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M8 2v4" />
-                  <path d="M16 2v4" />
-                  <rect width="18" height="18" x="3" y="4" rx="2" />
-                  <path d="M3 10h18" />
-                  <path d="m9 16 2 2 4-4" /></svg
-                ><span class="xirras-style-29">{{ stats.games }}</span
-                ><span class="xirras-style-30">Quartas disputadas</span>
-              </div>
-              <div class="xirras-style-28">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="var(--primary)"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-                  <path d="M4 22h16" />
-                  <path
-                    d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
-                  />
-                  <path
-                    d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
-                  />
-                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg
-                ><span class="xirras-style-29">{{ stats.confirmed }}</span
-                ><span class="xirras-style-30">Confirmados p/ próxima</span>
-              </div>
-              <div class="xirras-style-28">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="var(--primary)"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
-                  /></svg
-                ><span class="xirras-style-29">{{ stats.totalPoints }}</span
-                ><span class="xirras-style-30">Pontos na temporada</span>
-              </div>
-            </div>
-          </section>
-
-          <!-- INTEGRANTES -->
-          <section id="integrantes" class="xirras-style-31">
-            <div class="xirras-style-32">
-              <span class="xirras-style-33">Integrantes</span>
-              <h2 class="xirras-style-34">Elenco do Xirras</h2>
-              <p class="xirras-style-35">
-                A turma completa em cards, com foto, apelido e a base de
-                estatísticas pronta para crescer.
-              </p>
-              <div class="xirras-style-36">
-                <span class="xirras-style-37"
-                  ><svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--primary)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                  {{ membersCount }} integrantes</span
-                >
-              </div>
-              <div class="xirras-style-38">
-                <sc-for
-                  list="{{ memberCards }}"
-                  as="m"
-                  hint-placeholder-count="8"
-                >
-                  <div class="xirras-style-39">
-                    <div class="xirras-style-40">
-                      <sc-if
-                        value="{{ m.hasFoto }}"
-                        hint-placeholder-val="{{ false }}"
-                        ><img
-                          src="{{ m.foto }}"
-                          alt="Foto"
-                          class="xirras-style-41"
-                      /></sc-if>
-                      <sc-if
-                        value="{{ m.noFoto }}"
-                        hint-placeholder-val="{{ true }}"
-                      >
-                        <div class="xirras-style-42">{{ m.initials }}</div>
-                      </sc-if>
-                      <div class="xirras-style-43"></div>
-                      <div class="xirras-style-44">{{ m.rankLabel }}</div>
-                      <div class="xirras-style-45">
-                        <div class="xirras-style-46">
-                          <h3 class="xirras-style-47">{{ m.nome }}</h3>
-                          <sc-if
-                            value="{{ m.hasApelido }}"
-                            hint-placeholder-val="{{ false }}"
-                            ><span class="xirras-style-48"
-                              >{{ m.apelido }}</span
-                            ></sc-if
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="xirras-style-49">
-                      <div class="xirras-style-50">
-                        <div class="xirras-style-51">Jogos</div>
-                        <div class="xirras-style-52">{{ m.jogos }}</div>
-                      </div>
-                      <div class="xirras-style-50">
-                        <div class="xirras-style-51">Vitórias</div>
-                        <div class="xirras-style-52">{{ m.vitorias }}</div>
-                      </div>
-                      <div class="xirras-style-50">
-                        <div class="xirras-style-51">Derrotas</div>
-                        <div class="xirras-style-52">{{ m.derrotas }}</div>
-                      </div>
-                      <div class="xirras-style-50">
-                        <div class="xirras-style-51">Pontos</div>
-                        <div class="xirras-style-53">{{ m.pontos }}</div>
-                      </div>
-                      <div class="xirras-style-54">
-                        <div class="xirras-style-51">MVP</div>
-                        <div class="xirras-style-52">{{ m.mvp }}</div>
-                      </div>
-                    </div>
-                  </div>
-                </sc-for>
-              </div>
-            </div>
-          </section>
-
-          <!-- RANKING -->
-          <section id="ranking" class="xirras-style-55">
-            <div class="xirras-style-32">
-              <div class="xirras-style-56">
-                <div>
-                  <span class="xirras-style-33">Ranking</span>
-                  <h2 class="xirras-style-57">Classificação do elenco</h2>
-                  <p class="xirras-style-35">
-                    Quando o admin atualiza as estatísticas de alguém, o ranking
-                    muda junto.
-                  </p>
-                </div>
-                <span
-                  class="xirras-style-58"
-                  style="background: {{ seasonBg }}; color: {{ seasonColor }};"
-                  >{{ seasonLabel }}</span
-                >
-              </div>
-              <div class="xirras-style-59">
-                <table class="xirras-style-60">
-                  <thead>
-                    <tr class="xirras-style-61">
-                      <th class="xirras-style-62">#</th>
-                      <th class="xirras-style-63">Integrante</th>
-                      <th class="xirras-style-64">Jogos</th>
-                      <th class="xirras-style-64">Vitórias</th>
-                      <th class="xirras-style-64">MVP</th>
-                      <th class="xirras-style-65">Pontos</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <sc-for
-                      list="{{ rankingRows }}"
-                      as="r"
-                      hint-placeholder-count="6"
-                    >
-                      <tr class="xirras-style-66">
-                        <td class="xirras-style-67">
-                          <sc-if
-                            value="{{ r.isTop3 }}"
-                            hint-placeholder-val="{{ false }}"
-                            ><svg
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="{{ r.medalColor }}"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            >
-                              <circle cx="12" cy="8" r="6" />
-                              <path
-                                d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"
-                              /></svg
-                          ></sc-if>
-                          <sc-if
-                            value="{{ r.notTop3 }}"
-                            hint-placeholder-val="{{ true }}"
-                            ><span class="xirras-style-68"
-                              >{{ r.rankNumber }}</span
-                            ></sc-if
-                          >
-                        </td>
-                        <td class="xirras-style-67">
-                          <span class="xirras-style-69"
-                            ><span class="xirras-style-70">
-                              <sc-if
-                                value="{{ r.hasFoto }}"
-                                hint-placeholder-val="{{ false }}"
-                                ><img
-                                  src="{{ r.foto }}"
-                                  alt=""
-                                  class="xirras-style-41"
-                              /></sc-if>
-                              <sc-if
-                                value="{{ r.noFoto }}"
-                                hint-placeholder-val="{{ true }}"
-                                ><span class="xirras-style-71"
-                                  >{{ r.initials }}</span
-                                ></sc-if
-                              > </span
-                            ><span class="xirras-style-72"
-                              ><span class="xirras-style-73">{{ r.nome }}</span
-                              ><span class="xirras-style-74"
-                                >{{ r.apelidoLabel }}</span
-                              ></span
-                            ></span
-                          >
-                        </td>
-                        <td class="xirras-style-75">{{ r.jogos }}</td>
-                        <td class="xirras-style-75">{{ r.vitorias }}</td>
-                        <td class="xirras-style-75">{{ r.mvp }}</td>
-                        <td class="xirras-style-76">
-                          <span class="xirras-style-77">{{ r.pontos }}</span>
-                        </td>
-                      </tr>
-                    </sc-for>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-
-          <!-- PRESENÇA -->
-          <section id="presenca" class="xirras-style-78">
-            <div class="xirras-style-79">
-              <div class="xirras-style-80">
-                <span class="xirras-style-81"
-                  ><svg
+              <div class="xirras-style-18">
+                <span class="xirras-style-19">
+                  <svg
                     width="15"
                     height="15"
                     viewBox="0 0 24 24"
@@ -473,43 +128,22 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   >
-                    <path d="M8 2v4" />
-                    <path d="M16 2v4" />
-                    <rect width="18" height="18" x="3" y="4" rx="2" />
-                    <path d="M3 10h18" />
-                    <path d="m9 16 2 2 4-4" />
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                   </svg>
-                  Próximo encontro</span
-                >
-                <h3 class="xirras-style-82">{{ nextGameLabel }}</h3>
-                <p class="xirras-style-83">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--primary)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                  {{ site.heroBadge }}
+                </span>
+                <h1 class="xirras-style-20">
+                  {{ site.heroTitle }}<span class="xirras-style-21"
+                    >{{ site.heroTitle2 }}</span
                   >
-                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  {{ site.nextGamePlace }}
-                </p>
-                <div class="xirras-style-84">
-                  <input
-                    value="{{ pubName }}"
-                    onInput="{{ onPubName }}"
-                    placeholder="Seu nome"
-                    aria-label="Seu nome"
-                    class="xirras-style-85"
-                  />
-                  <button
-                    onClick="{{ confirmPresence }}"
-                    class="xirras-style-86"
-                  >
+                </h1>
+                <p class="xirras-style-22">{{ site.heroText }}</p>
+                <div class="xirras-style-23">
+                  <a href="#integrantes" class="xirras-style-24"
+                    >Ver integrantes
                     <svg
                       width="16"
                       height="16"
@@ -520,80 +154,422 @@
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     >
-                      <path d="M21.801 10A10 10 0 1 1 17 3.335" />
-                      <path d="m9 11 3 3L22 4" />
+                      <path d="m9 18 6-6-6-6" /></svg
+                  ></a>
+                  <button onClick="{{ openAdmin }}" class="xirras-style-25">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 7h-9" />
+                      <path d="M14 17H5" />
+                      <circle cx="17" cy="17" r="3" />
+                      <circle cx="7" cy="7" r="3" />
                     </svg>
-                    Confirmar presença
+                    Painel admin
                   </button>
                 </div>
-                <sc-if value="{{ attMsg }}" hint-placeholder-val="">
-                  <p class="xirras-style-87">{{ attMsg }}</p>
-                </sc-if>
               </div>
-              <div class="xirras-style-88">
-                <div>
-                  <span class="xirras-style-33">Lista</span>
-                  <h3 class="xirras-style-89">Quem já confirmou</h3>
-                </div>
-                <sc-if
-                  value="{{ hasAttendance }}"
-                  hint-placeholder-val="{{ true }}"
-                >
-                  <div class="xirras-style-90">
-                    <div class="xirras-style-91">
-                      <span>Nome</span><span>Status</span><span>Data</span>
-                    </div>
-                    <sc-for
-                      list="{{ attendanceView }}"
-                      as="a"
-                      hint-placeholder-count="4"
-                    >
-                      <div class="xirras-style-92">
-                        <span>{{ a.name }}</span
-                        ><span class="xirras-style-93">{{ a.status }}</span
-                        ><span class="xirras-style-94">{{ a.dateLabel }}</span>
-                      </div>
-                    </sc-for>
-                  </div>
-                </sc-if>
-                <sc-if
-                  value="{{ noAttendance }}"
-                  hint-placeholder-val="{{ false }}"
-                >
-                  <p class="xirras-style-94">Ninguém confirmou ainda.</p>
-                </sc-if>
-                <span class="xirras-style-95"
-                  ><svg
-                    width="16"
-                    height="16"
+            </section>
+
+            <!-- STATS -->
+            <section class="xirras-style-26">
+              <div class="xirras-style-27">
+                <div class="xirras-style-28">
+                  <svg
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="var(--primary)"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   >
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />
-                    <path d="M19 8v6" />
-                    <path d="M22 11h-6" />
-                  </svg>
-                  {{ attendanceCount }} confirmados</span
-                >
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg
+                  ><span class="xirras-style-29">{{ stats.players }}</span
+                  ><span class="xirras-style-30">Atletas no elenco</span>
+                </div>
+                <div class="xirras-style-28">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M8 2v4" />
+                    <path d="M16 2v4" />
+                    <rect width="18" height="18" x="3" y="4" rx="2" />
+                    <path d="M3 10h18" />
+                    <path d="m9 16 2 2 4-4" /></svg
+                  ><span class="xirras-style-29">{{ stats.games }}</span
+                  ><span class="xirras-style-30">Quartas disputadas</span>
+                </div>
+                <div class="xirras-style-28">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                    <path d="M4 22h16" />
+                    <path
+                      d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
+                    />
+                    <path
+                      d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
+                    />
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg
+                  ><span class="xirras-style-29">{{ stats.confirmed }}</span
+                  ><span class="xirras-style-30">Confirmados p/ próxima</span>
+                </div>
+                <div class="xirras-style-28">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--primary)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
+                    /></svg
+                  ><span class="xirras-style-29">{{ stats.totalPoints }}</span
+                  ><span class="xirras-style-30">Pontos na temporada</span>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <!-- DESTAQUE -->
-          <sc-if
-            value="{{ highlightExists }}"
-            hint-placeholder-val="{{ true }}"
-          >
-            <section class="xirras-style-96">
-              <div class="xirras-style-97"></div>
-              <div class="xirras-style-98">
-                <div class="xirras-style-99">
-                  <span class="xirras-style-100"
+            <!-- INTEGRANTES -->
+            <section id="integrantes" class="xirras-style-31">
+              <div class="xirras-style-32">
+                <span class="xirras-style-33">Integrantes</span>
+                <h2 class="xirras-style-34">Elenco do Xirras</h2>
+                <p class="xirras-style-35">
+                  A turma completa em cards, com foto, apelido e a base de
+                  estatísticas pronta para crescer.
+                </p>
+                <div class="xirras-style-36">
+                  <span class="xirras-style-37"
+                    ><svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--primary)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    {{ membersCount }} integrantes</span
+                  >
+                </div>
+                <div class="xirras-style-38">
+                  <sc-for
+                    list="{{ memberCards }}"
+                    as="m"
+                    hint-placeholder-count="8"
+                  >
+                    <div class="xirras-style-39">
+                      <div class="xirras-style-40">
+                        <sc-if
+                          value="{{ m.hasFoto }}"
+                          hint-placeholder-val="{{ false }}"
+                          ><img
+                            src="{{ m.foto }}"
+                            alt="Foto"
+                            class="xirras-style-41"
+                        /></sc-if>
+                        <sc-if
+                          value="{{ m.noFoto }}"
+                          hint-placeholder-val="{{ true }}"
+                        >
+                          <div class="xirras-style-42">{{ m.initials }}</div>
+                        </sc-if>
+                        <div class="xirras-style-43"></div>
+                        <div class="xirras-style-44">{{ m.rankLabel }}</div>
+                        <div class="xirras-style-45">
+                          <div class="xirras-style-46">
+                            <h3 class="xirras-style-47">{{ m.nome }}</h3>
+                            <sc-if
+                              value="{{ m.hasApelido }}"
+                              hint-placeholder-val="{{ false }}"
+                              ><span class="xirras-style-48"
+                                >{{ m.apelido }}</span
+                              ></sc-if
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="xirras-style-49">
+                        <div class="xirras-style-50">
+                          <div class="xirras-style-51">Jogos</div>
+                          <div class="xirras-style-52">{{ m.jogos }}</div>
+                        </div>
+                        <div class="xirras-style-50">
+                          <div class="xirras-style-51">Vitórias</div>
+                          <div class="xirras-style-52">{{ m.vitorias }}</div>
+                        </div>
+                        <div class="xirras-style-50">
+                          <div class="xirras-style-51">Derrotas</div>
+                          <div class="xirras-style-52">{{ m.derrotas }}</div>
+                        </div>
+                        <div class="xirras-style-50">
+                          <div class="xirras-style-51">Pontos</div>
+                          <div class="xirras-style-53">{{ m.pontos }}</div>
+                        </div>
+                        <div class="xirras-style-54">
+                          <div class="xirras-style-51">MVP</div>
+                          <div class="xirras-style-52">{{ m.mvp }}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </section>
+
+            <!-- RANKING -->
+            <section id="ranking" class="xirras-style-55">
+              <div class="xirras-style-32">
+                <div class="xirras-style-56">
+                  <div>
+                    <span class="xirras-style-33">Ranking</span>
+                    <h2 class="xirras-style-57">Classificação do elenco</h2>
+                    <p class="xirras-style-35">
+                      Quando o admin atualiza as estatísticas de alguém, o
+                      ranking muda junto.
+                    </p>
+                  </div>
+                  <span
+                    class="xirras-style-58"
+                    style="background: {{ seasonBg }}; color: {{ seasonColor }};"
+                    >{{ seasonLabel }}</span
+                  >
+                </div>
+                <div class="xirras-style-59">
+                  <table class="xirras-style-60">
+                    <thead>
+                      <tr class="xirras-style-61">
+                        <th class="xirras-style-62">#</th>
+                        <th class="xirras-style-63">Integrante</th>
+                        <th class="xirras-style-64">Jogos</th>
+                        <th class="xirras-style-64">Vitórias</th>
+                        <th class="xirras-style-64">MVP</th>
+                        <th class="xirras-style-65">Pontos</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <sc-for
+                        list="{{ rankingRows }}"
+                        as="r"
+                        hint-placeholder-count="6"
+                      >
+                        <tr class="xirras-style-66">
+                          <td class="xirras-style-67">
+                            <sc-if
+                              value="{{ r.isTop3 }}"
+                              hint-placeholder-val="{{ false }}"
+                              ><svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="{{ r.medalColor }}"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <circle cx="12" cy="8" r="6" />
+                                <path
+                                  d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"
+                                /></svg
+                            ></sc-if>
+                            <sc-if
+                              value="{{ r.notTop3 }}"
+                              hint-placeholder-val="{{ true }}"
+                              ><span class="xirras-style-68"
+                                >{{ r.rankNumber }}</span
+                              ></sc-if
+                            >
+                          </td>
+                          <td class="xirras-style-67">
+                            <span class="xirras-style-69"
+                              ><span class="xirras-style-70">
+                                <sc-if
+                                  value="{{ r.hasFoto }}"
+                                  hint-placeholder-val="{{ false }}"
+                                  ><img
+                                    src="{{ r.foto }}"
+                                    alt=""
+                                    class="xirras-style-41"
+                                /></sc-if>
+                                <sc-if
+                                  value="{{ r.noFoto }}"
+                                  hint-placeholder-val="{{ true }}"
+                                  ><span class="xirras-style-71"
+                                    >{{ r.initials }}</span
+                                  ></sc-if
+                                > </span
+                              ><span class="xirras-style-72"
+                                ><span class="xirras-style-73"
+                                  >{{ r.nome }}</span
+                                ><span class="xirras-style-74"
+                                  >{{ r.apelidoLabel }}</span
+                                ></span
+                              ></span
+                            >
+                          </td>
+                          <td class="xirras-style-75">{{ r.jogos }}</td>
+                          <td class="xirras-style-75">{{ r.vitorias }}</td>
+                          <td class="xirras-style-75">{{ r.mvp }}</td>
+                          <td class="xirras-style-76">
+                            <span class="xirras-style-77">{{ r.pontos }}</span>
+                          </td>
+                        </tr>
+                      </sc-for>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+            <!-- PRESENÇA -->
+            <section id="presenca" class="xirras-style-78">
+              <div class="xirras-style-79">
+                <div class="xirras-style-80">
+                  <span class="xirras-style-81"
+                    ><svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M8 2v4" />
+                      <path d="M16 2v4" />
+                      <rect width="18" height="18" x="3" y="4" rx="2" />
+                      <path d="M3 10h18" />
+                      <path d="m9 16 2 2 4-4" />
+                    </svg>
+                    Próximo encontro</span
+                  >
+                  <h3 class="xirras-style-82">{{ nextGameLabel }}</h3>
+                  <p class="xirras-style-83">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--primary)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+                      />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    {{ site.nextGamePlace }}
+                  </p>
+                  <div class="xirras-style-84">
+                    <input
+                      value="{{ pubName }}"
+                      onInput="{{ onPubName }}"
+                      placeholder="Seu nome"
+                      aria-label="Seu nome"
+                      class="xirras-style-85"
+                    />
+                    <button
+                      onClick="{{ confirmPresence }}"
+                      class="xirras-style-86"
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                        <path d="m9 11 3 3L22 4" />
+                      </svg>
+                      Confirmar presença
+                    </button>
+                  </div>
+                  <sc-if value="{{ attMsg }}" hint-placeholder-val="">
+                    <p class="xirras-style-87">{{ attMsg }}</p>
+                  </sc-if>
+                </div>
+                <div class="xirras-style-88">
+                  <div>
+                    <span class="xirras-style-33">Lista</span>
+                    <h3 class="xirras-style-89">Quem já confirmou</h3>
+                  </div>
+                  <sc-if
+                    value="{{ hasAttendance }}"
+                    hint-placeholder-val="{{ true }}"
+                  >
+                    <div class="xirras-style-90">
+                      <div class="xirras-style-91">
+                        <span>Nome</span><span>Status</span><span>Data</span>
+                      </div>
+                      <sc-for
+                        list="{{ attendanceView }}"
+                        as="a"
+                        hint-placeholder-count="4"
+                      >
+                        <div class="xirras-style-92">
+                          <span>{{ a.name }}</span
+                          ><span class="xirras-style-93">{{ a.status }}</span
+                          ><span class="xirras-style-94"
+                            >{{ a.dateLabel }}</span
+                          >
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if
+                    value="{{ noAttendance }}"
+                    hint-placeholder-val="{{ false }}"
+                  >
+                    <p class="xirras-style-94">Ninguém confirmou ainda.</p>
+                  </sc-if>
+                  <span class="xirras-style-95"
                     ><svg
                       width="16"
                       height="16"
@@ -604,26 +580,503 @@
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     >
-                      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-                      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-                      <path d="M4 22h16" />
-                      <path
-                        d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
-                      />
-                      <path
-                        d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
-                      />
-                      <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M19 8v6" />
+                      <path d="M22 11h-6" />
                     </svg>
-                    {{ hl.weekLabel }}</span
+                    {{ attendanceCount }} confirmados</span
                   >
-                  <h2 class="xirras-style-101">{{ hl.playerName }}</h2>
-                  <p class="xirras-style-102">{{ hl.reason }}</p>
-                  <div class="xirras-style-103">
-                    <span class="xirras-style-104"
+                </div>
+              </div>
+            </section>
+
+            <!-- DESTAQUE -->
+            <sc-if
+              value="{{ highlightExists }}"
+              hint-placeholder-val="{{ true }}"
+            >
+              <section class="xirras-style-96">
+                <div class="xirras-style-97"></div>
+                <div class="xirras-style-98">
+                  <div class="xirras-style-99">
+                    <span class="xirras-style-100"
                       ><svg
                         width="16"
                         height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                        <path d="M4 22h16" />
+                        <path
+                          d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
+                        />
+                        <path
+                          d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
+                        />
+                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                      </svg>
+                      {{ hl.weekLabel }}</span
+                    >
+                    <h2 class="xirras-style-101">{{ hl.playerName }}</h2>
+                    <p class="xirras-style-102">{{ hl.reason }}</p>
+                    <div class="xirras-style-103">
+                      <span class="xirras-style-104"
+                        ><svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="var(--primary)"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M7 10v12" />
+                          <path
+                            d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"
+                          />
+                        </svg>
+                        {{ hl.votes }} votos registrados</span
+                      >
+                      <span class="xirras-style-105"
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
+                          /></svg
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
+                          /></svg
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
+                          /></svg
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
+                          /></svg
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
+                          /></svg
+                      ></span>
+                    </div>
+                  </div>
+                  <div class="xirras-style-106">
+                    <div class="xirras-style-107"></div>
+                    <div class="xirras-style-108">
+                      <sc-if
+                        value="{{ hl.hasPhoto }}"
+                        hint-placeholder-val="{{ false }}"
+                        ><img
+                          src="{{ hl.photo }}"
+                          alt="Destaque"
+                          class="xirras-style-41"
+                      /></sc-if>
+                      <sc-if
+                        value="{{ hl.noPhoto }}"
+                        hint-placeholder-val="{{ true }}"
+                      >
+                        <div class="xirras-style-109">{{ hl.initials }}</div>
+                      </sc-if>
+                      <div class="xirras-style-110">
+                        <svg
+                          width="30"
+                          height="30"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="var(--primary)"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                          <path d="M4 22h16" />
+                          <path
+                            d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
+                          />
+                          <path
+                            d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
+                          />
+                          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg
+                        ><span class="xirras-style-111"
+                          >Destaque registrado</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </sc-if>
+
+            <!-- JOGOS -->
+            <section id="jogos" class="xirras-style-78">
+              <div class="xirras-style-32">
+                <span class="xirras-style-33">Linha do tempo</span>
+                <h2 class="xirras-style-112">Últimos jogos</h2>
+                <sc-if value="{{ hasGames }}" hint-placeholder-val="{{ true }}">
+                  <div class="xirras-style-113">
+                    <sc-for
+                      list="{{ gamesView }}"
+                      as="g"
+                      hint-placeholder-count="2"
+                    >
+                      <article class="xirras-style-114">
+                        <div class="xirras-style-115">
+                          <div class="xirras-style-116">
+                            <span class="xirras-style-117"
+                              >{{ g.metaLabel }}</span
+                            >
+                            <h3 class="xirras-style-118">{{ g.title }}</h3>
+                            <sc-if
+                              value="{{ g.hasLocation }}"
+                              hint-placeholder-val="{{ false }}"
+                              ><span class="xirras-style-119"
+                                ><svg
+                                  width="15"
+                                  height="15"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                >
+                                  <path
+                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+                                  />
+                                  <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                {{ g.location }}</span
+                              ></sc-if
+                            >
+                          </div>
+                          <div class="xirras-style-120">
+                            <div class="xirras-style-121">
+                              <span
+                                class="xirras-style-122"
+                                style="color: {{ g.colorA }};"
+                                >{{ g.scoreA }}</span
+                              ><span class="xirras-style-123"
+                                >{{ g.teamA }}</span
+                              >
+                            </div>
+                            <span class="xirras-style-124">vs</span>
+                            <div class="xirras-style-121">
+                              <span
+                                class="xirras-style-122"
+                                style="color: {{ g.colorB }};"
+                                >{{ g.scoreB }}</span
+                              ><span class="xirras-style-123"
+                                >{{ g.teamB }}</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <sc-if
+                          value="{{ g.hasHighlight }}"
+                          hint-placeholder-val="{{ false }}"
+                        >
+                          <p class="xirras-style-125">
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="var(--primary)"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="xirras-style-126"
+                            >
+                              <path
+                                d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+                              />
+                              <path
+                                d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+                              />
+                            </svg>
+                            {{ g.highlightText }}
+                          </p>
+                        </sc-if>
+                        <sc-if
+                          value="{{ g.hasResult }}"
+                          hint-placeholder-val="{{ false }}"
+                        >
+                          <div class="xirras-style-127">
+                            <span class="xirras-style-128">{{ g.result }}</span>
+                          </div>
+                        </sc-if>
+                      </article>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ noGames }}" hint-placeholder-val="{{ false }}">
+                  <div class="xirras-style-129">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--primary)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="xirras-style-126"
+                    >
+                      <path d="M8 2v4" />
+                      <path d="M16 2v4" />
+                      <rect width="18" height="18" x="3" y="4" rx="2" />
+                      <path d="M3 10h18" />
+                      <path d="M8 14h.01" />
+                      <path d="M12 14h.01" />
+                      <path d="M16 14h.01" />
+                    </svg>
+                    <div>
+                      <h3 class="xirras-style-130">
+                        Nenhum jogo publicado ainda
+                      </h3>
+                      <p class="xirras-style-131">
+                        Cadastre uma partida no painel admin e ela aparece aqui.
+                      </p>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </section>
+
+            <!-- GALERIA -->
+            <section id="galeria" class="xirras-style-132">
+              <div class="xirras-style-32">
+                <span class="xirras-style-33">Memórias</span>
+                <h2 class="xirras-style-112">Galeria do time</h2>
+                <sc-if
+                  value="{{ hasAlbums }}"
+                  hint-placeholder-val="{{ true }}"
+                >
+                  <div class="xirras-style-133">
+                    <sc-for
+                      list="{{ albumsView }}"
+                      as="al"
+                      hint-placeholder-count="3"
+                    >
+                      <button
+                        data-id="{{ al.id }}"
+                        onClick="{{ openAlbum }}"
+                        class="xirras-style-134"
+                      >
+                        <sc-if
+                          value="{{ al.hasCover }}"
+                          hint-placeholder-val="{{ true }}"
+                          ><img
+                            src="{{ al.cover }}"
+                            alt="Capa"
+                            class="xirras-style-41"
+                        /></sc-if>
+                        <sc-if
+                          value="{{ al.noCover }}"
+                          hint-placeholder-val="{{ false }}"
+                        >
+                          <div class="xirras-style-135"></div>
+                        </sc-if>
+                        <div class="xirras-style-136"></div>
+                        <div class="xirras-style-137">
+                          <span class="xirras-style-138"
+                            >{{ al.dateLabel }}</span
+                          >
+                          <h3 class="xirras-style-139">{{ al.title }}</h3>
+                          <span class="xirras-style-140"
+                            ><svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path d="M18 22H4a2 2 0 0 1-2-2V6" />
+                              <path
+                                d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"
+                              />
+                              <circle cx="12" cy="8" r="2" />
+                              <rect width="16" height="16" x="6" y="2" rx="2" />
+                            </svg>
+                            {{ al.countLabel }}</span
+                          >
+                        </div>
+                      </button>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if
+                  value="{{ noAlbums }}"
+                  hint-placeholder-val="{{ false }}"
+                >
+                  <div class="xirras-style-141">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--primary)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="xirras-style-126"
+                    >
+                      <path d="M18 22H4a2 2 0 0 1-2-2V6" />
+                      <path
+                        d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"
+                      />
+                      <circle cx="12" cy="8" r="2" />
+                      <rect width="16" height="16" x="6" y="2" rx="2" />
+                    </svg>
+                    <div>
+                      <h3 class="xirras-style-130">
+                        Nenhum álbum publicado ainda
+                      </h3>
+                      <p class="xirras-style-131">
+                        Crie um álbum no painel admin e envie as fotos do time.
+                      </p>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </section>
+
+            <!-- MURAL -->
+            <section id="mural" class="xirras-style-142">
+              <div class="xirras-style-32">
+                <span class="xirras-style-33">Mural do clube</span>
+                <h2 class="xirras-style-112">Avisos e novidades</h2>
+                <sc-if value="{{ hasPosts }}" hint-placeholder-val="{{ true }}">
+                  <div class="xirras-style-143">
+                    <sc-for
+                      list="{{ postsView }}"
+                      as="p"
+                      hint-placeholder-count="2"
+                    >
+                      <article class="xirras-style-144">
+                        <sc-if
+                          value="{{ p.hasImage }}"
+                          hint-placeholder-val="{{ false }}"
+                        >
+                          <div class="xirras-style-145">
+                            <img
+                              src="{{ p.image }}"
+                              alt="{{ p.title }}"
+                              class="xirras-style-41"
+                            /><span class="xirras-style-146"
+                              >{{ p.category }}</span
+                            >
+                          </div>
+                        </sc-if>
+                        <div class="xirras-style-147">
+                          <sc-if
+                            value="{{ p.noImage }}"
+                            hint-placeholder-val="{{ true }}"
+                            ><span class="xirras-style-148"
+                              >{{ p.category }}</span
+                            ></sc-if
+                          >
+                          <h3 class="xirras-style-149">{{ p.title }}</h3>
+                          <p class="xirras-style-150">{{ p.content }}</p>
+                          <div class="xirras-style-151">
+                            <span class="xirras-style-152">{{ p.author }}</span
+                            ><span>{{ p.dateLabel }}</span>
+                          </div>
+                        </div>
+                      </article>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ noPosts }}" hint-placeholder-val="{{ false }}">
+                  <div class="xirras-style-129">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--primary)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="xirras-style-126"
+                    >
+                      <path d="m3 11 18-5v12L3 14v-3z" />
+                      <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+                    </svg>
+                    <div>
+                      <h3 class="xirras-style-130">
+                        Nenhum aviso publicado ainda
+                      </h3>
+                      <p class="xirras-style-131">
+                        Publique um recado no painel admin.
+                      </p>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </section>
+
+            <!-- SOBRE -->
+            <section id="sobre" class="xirras-style-78">
+              <div class="xirras-style-98">
+                <div class="xirras-style-153">
+                  <div class="xirras-style-154">
+                    <img
+                      src="public/images/xirras-logo.png"
+                      alt="Escudo do Xirras"
+                      class="xirras-style-155"
+                    />
+                  </div>
+                </div>
+                <div class="xirras-style-113">
+                  <span class="xirras-style-33"
+                    >Base oficial · Fundado em {{ foundedLabel }}</span
+                  >
+                  <h2 class="xirras-style-156">{{ site.aboutTitle }}</h2>
+                  <p class="xirras-style-157">{{ site.aboutText }}</p>
+                  <div class="xirras-style-158">
+                    <div class="xirras-style-159">
+                      <svg
+                        width="24"
+                        height="24"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="var(--primary)"
@@ -631,83 +1084,20 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                       >
-                        <path d="M7 10v12" />
-                        <path
-                          d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"
-                        />
+                        <ellipse cx="12" cy="5" rx="9" ry="3" />
+                        <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+                        <path d="M3 12A9 3 0 0 0 21 12" />
                       </svg>
-                      {{ hl.votes }} votos registrados</span
-                    >
-                    <span class="xirras-style-105"
-                      ><svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path
-                          d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                        /></svg
-                      ><svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path
-                          d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                        /></svg
-                      ><svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path
-                          d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                        /></svg
-                      ><svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path
-                          d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                        /></svg
-                      ><svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path
-                          d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-                        /></svg
-                    ></span>
-                  </div>
-                </div>
-                <div class="xirras-style-106">
-                  <div class="xirras-style-107"></div>
-                  <div class="xirras-style-108">
-                    <sc-if
-                      value="{{ hl.hasPhoto }}"
-                      hint-placeholder-val="{{ false }}"
-                      ><img
-                        src="{{ hl.photo }}"
-                        alt="Destaque"
-                        class="xirras-style-41"
-                    /></sc-if>
-                    <sc-if
-                      value="{{ hl.noPhoto }}"
-                      hint-placeholder-val="{{ true }}"
-                    >
-                      <div class="xirras-style-109">{{ hl.initials }}</div>
-                    </sc-if>
-                    <div class="xirras-style-110">
+                      <h3 class="xirras-style-160">Cadastro único</h3>
+                      <p class="xirras-style-161">
+                        Integrantes, perfil e ranking usam a mesma fonte de
+                        dados.
+                      </p>
+                    </div>
+                    <div class="xirras-style-159">
                       <svg
-                        width="30"
-                        height="30"
+                        width="24"
+                        height="24"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="var(--primary)"
@@ -724,538 +1114,177 @@
                         <path
                           d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
                         />
-                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg
-                      ><span class="xirras-style-111">Destaque registrado</span>
+                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                      </svg>
+                      <h3 class="xirras-style-160">Ranking real</h3>
+                      <p class="xirras-style-161">
+                        A classificação nasce das estatísticas preenchidas.
+                      </p>
+                    </div>
+                    <div class="xirras-style-159">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--primary)"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"
+                        />
+                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                        <circle cx="9" cy="9" r="2" />
+                        <path d="M16 19h6" />
+                        <path d="M19 16v6" />
+                      </svg>
+                      <h3 class="xirras-style-160">Fotos editáveis</h3>
+                      <p class="xirras-style-161">
+                        Cada integrante pode receber uma foto própria pelo
+                        painel.
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
-          </sc-if>
+          </main>
 
-          <!-- JOGOS -->
-          <section id="jogos" class="xirras-style-78">
-            <div class="xirras-style-32">
-              <span class="xirras-style-33">Linha do tempo</span>
-              <h2 class="xirras-style-112">Últimos jogos</h2>
-              <sc-if value="{{ hasGames }}" hint-placeholder-val="{{ true }}">
-                <div class="xirras-style-113">
-                  <sc-for
-                    list="{{ gamesView }}"
-                    as="g"
-                    hint-placeholder-count="2"
+          <footer class="xirras-style-162">
+            <div class="xirras-style-163">
+              <div class="xirras-style-164">
+                <div class="xirras-style-165">
+                  <div class="xirras-style-166">
+                    <img
+                      src="public/images/xirras-logo.png"
+                      alt="Escudo"
+                      class="xirras-style-167"
+                    /><span class="xirras-style-168"
+                      >Xirras<span class="xirras-style-7"
+                        >Voleibol Club</span
+                      ></span
+                    >
+                  </div>
+                  <p class="xirras-style-169">
+                    Base oficial para integrantes, ranking e registros do time.
+                    Fundado em {{ foundedLabel }}.
+                  </p>
+                  <a
+                    href="https://www.instagram.com/xirrasvc/"
+                    target="_blank"
+                    rel="noopener"
+                    class="xirras-style-170"
+                    ><svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect width="20" height="20" x="2" y="2" rx="5" />
+                      <path
+                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                      />
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                    @xirrasvc</a
                   >
-                    <article class="xirras-style-114">
-                      <div class="xirras-style-115">
-                        <div class="xirras-style-116">
-                          <span class="xirras-style-117"
-                            >{{ g.metaLabel }}</span
-                          >
-                          <h3 class="xirras-style-118">{{ g.title }}</h3>
-                          <sc-if
-                            value="{{ g.hasLocation }}"
-                            hint-placeholder-val="{{ false }}"
-                            ><span class="xirras-style-119"
-                              ><svg
-                                width="15"
-                                height="15"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              >
-                                <path
-                                  d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
-                                />
-                                <circle cx="12" cy="10" r="3" />
-                              </svg>
-                              {{ g.location }}</span
-                            ></sc-if
-                          >
-                        </div>
-                        <div class="xirras-style-120">
-                          <div class="xirras-style-121">
-                            <span
-                              class="xirras-style-122"
-                              style="color: {{ g.colorA }};"
-                              >{{ g.scoreA }}</span
-                            ><span class="xirras-style-123">{{ g.teamA }}</span>
-                          </div>
-                          <span class="xirras-style-124">vs</span>
-                          <div class="xirras-style-121">
-                            <span
-                              class="xirras-style-122"
-                              style="color: {{ g.colorB }};"
-                              >{{ g.scoreB }}</span
-                            ><span class="xirras-style-123">{{ g.teamB }}</span>
-                          </div>
-                        </div>
-                      </div>
-                      <sc-if
-                        value="{{ g.hasHighlight }}"
-                        hint-placeholder-val="{{ false }}"
-                      >
-                        <p class="xirras-style-125">
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="var(--primary)"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="xirras-style-126"
-                          >
-                            <path
-                              d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
-                            />
-                            <path
-                              d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
-                            />
-                          </svg>
-                          {{ g.highlightText }}
-                        </p>
-                      </sc-if>
-                      <sc-if
-                        value="{{ g.hasResult }}"
-                        hint-placeholder-val="{{ false }}"
-                      >
-                        <div class="xirras-style-127">
-                          <span class="xirras-style-128">{{ g.result }}</span>
-                        </div>
-                      </sc-if>
-                    </article>
-                  </sc-for>
                 </div>
-              </sc-if>
-              <sc-if value="{{ noGames }}" hint-placeholder-val="{{ false }}">
-                <div class="xirras-style-129">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--primary)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="xirras-style-126"
-                  >
-                    <path d="M8 2v4" />
-                    <path d="M16 2v4" />
-                    <rect width="18" height="18" x="3" y="4" rx="2" />
-                    <path d="M3 10h18" />
-                    <path d="M8 14h.01" />
-                    <path d="M12 14h.01" />
-                    <path d="M16 14h.01" />
-                  </svg>
-                  <div>
-                    <h3 class="xirras-style-130">
-                      Nenhum jogo publicado ainda
-                    </h3>
-                    <p class="xirras-style-131">
-                      Cadastre uma partida no painel admin e ela aparece aqui.
-                    </p>
+                <nav class="xirras-style-171">
+                  <a href="#integrantes" class="xirras-style-9">Integrantes</a>
+                  <a href="#ranking" class="xirras-style-9">Ranking</a>
+                  <a href="#presenca" class="xirras-style-9">Presença</a>
+                  <a href="#jogos" class="xirras-style-9">Jogos</a>
+                  <a href="#galeria" class="xirras-style-9">Galeria</a>
+                  <a href="#mural" class="xirras-style-9">Mural</a>
+                </nav>
+                <div class="xirras-style-172">
+                  <span class="xirras-style-173">Pix do clube</span>
+                  <div class="xirras-style-174">
+                    <span class="xirras-style-175">Mensalidade</span>
+                    <span class="xirras-style-176"
+                      >{{ site.pixMensalidade }}</span
+                    >
+                  </div>
+                  <div class="xirras-style-174">
+                    <span class="xirras-style-175">Avulso</span>
+                    <span class="xirras-style-176">{{ site.pixAvulso }}</span>
                   </div>
                 </div>
-              </sc-if>
+              </div>
+              <div class="xirras-style-177">
+                <p class="xirras-style-178">
+                  Feito pelos Xirras para os Xirras
+                </p>
+                <p class="xirras-style-179">
+                  © {{ year }} Xirras Voleibol Club.
+                </p>
+              </div>
             </div>
-          </section>
+          </footer>
 
-          <!-- GALERIA -->
-          <section id="galeria" class="xirras-style-132">
-            <div class="xirras-style-32">
-              <span class="xirras-style-33">Memórias</span>
-              <h2 class="xirras-style-112">Galeria do time</h2>
-              <sc-if value="{{ hasAlbums }}" hint-placeholder-val="{{ true }}">
-                <div class="xirras-style-133">
-                  <sc-for
-                    list="{{ albumsView }}"
-                    as="al"
-                    hint-placeholder-count="3"
-                  >
-                    <button
-                      data-id="{{ al.id }}"
-                      onClick="{{ openAlbum }}"
-                      class="xirras-style-134"
+          <!-- LIGHTBOX ÁLBUM -->
+          <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ closeAlbum }}" class="xirras-style-180">
+              <div class="xirras-style-181">
+                <div class="xirras-style-182">
+                  <div>
+                    <span class="xirras-style-138">{{ lb.dateLabel }}</span>
+                    <h3 class="xirras-style-183">{{ lb.title }}</h3>
+                  </div>
+                  <button onClick="{{ closeAlbum }}" class="xirras-style-184">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     >
-                      <sc-if
-                        value="{{ al.hasCover }}"
-                        hint-placeholder-val="{{ true }}"
-                        ><img
-                          src="{{ al.cover }}"
-                          alt="Capa"
+                      <path d="M18 6 6 18" />
+                      <path d="m6 6 12 12" />
+                    </svg>
+                  </button>
+                </div>
+                <sc-if
+                  value="{{ lb.hasPhotos }}"
+                  hint-placeholder-val="{{ true }}"
+                >
+                  <div class="xirras-style-185">
+                    <sc-for
+                      list="{{ lb.photos }}"
+                      as="ph"
+                      hint-placeholder-count="4"
+                    >
+                      <div class="xirras-style-186">
+                        <img
+                          src="{{ ph.url }}"
+                          alt="{{ ph.caption }}"
                           class="xirras-style-41"
-                      /></sc-if>
-                      <sc-if
-                        value="{{ al.noCover }}"
-                        hint-placeholder-val="{{ false }}"
-                      >
-                        <div class="xirras-style-135"></div>
-                      </sc-if>
-                      <div class="xirras-style-136"></div>
-                      <div class="xirras-style-137">
-                        <span class="xirras-style-138">{{ al.dateLabel }}</span>
-                        <h3 class="xirras-style-139">{{ al.title }}</h3>
-                        <span class="xirras-style-140"
-                          ><svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <path d="M18 22H4a2 2 0 0 1-2-2V6" />
-                            <path
-                              d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"
-                            />
-                            <circle cx="12" cy="8" r="2" />
-                            <rect width="16" height="16" x="6" y="2" rx="2" />
-                          </svg>
-                          {{ al.countLabel }}</span
-                        >
+                        />
                       </div>
-                    </button>
-                  </sc-for>
-                </div>
-              </sc-if>
-              <sc-if value="{{ noAlbums }}" hint-placeholder-val="{{ false }}">
-                <div class="xirras-style-141">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--primary)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="xirras-style-126"
-                  >
-                    <path d="M18 22H4a2 2 0 0 1-2-2V6" />
-                    <path
-                      d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"
-                    />
-                    <circle cx="12" cy="8" r="2" />
-                    <rect width="16" height="16" x="6" y="2" rx="2" />
-                  </svg>
-                  <div>
-                    <h3 class="xirras-style-130">
-                      Nenhum álbum publicado ainda
-                    </h3>
-                    <p class="xirras-style-131">
-                      Crie um álbum no painel admin e envie as fotos do time.
-                    </p>
+                    </sc-for>
                   </div>
-                </div>
-              </sc-if>
-            </div>
-          </section>
-
-          <!-- MURAL -->
-          <section id="mural" class="xirras-style-142">
-            <div class="xirras-style-32">
-              <span class="xirras-style-33">Mural do clube</span>
-              <h2 class="xirras-style-112">Avisos e novidades</h2>
-              <sc-if value="{{ hasPosts }}" hint-placeholder-val="{{ true }}">
-                <div class="xirras-style-143">
-                  <sc-for
-                    list="{{ postsView }}"
-                    as="p"
-                    hint-placeholder-count="2"
-                  >
-                    <article class="xirras-style-144">
-                      <sc-if
-                        value="{{ p.hasImage }}"
-                        hint-placeholder-val="{{ false }}"
-                      >
-                        <div class="xirras-style-145">
-                          <img
-                            src="{{ p.image }}"
-                            alt="{{ p.title }}"
-                            class="xirras-style-41"
-                          /><span class="xirras-style-146"
-                            >{{ p.category }}</span
-                          >
-                        </div>
-                      </sc-if>
-                      <div class="xirras-style-147">
-                        <sc-if
-                          value="{{ p.noImage }}"
-                          hint-placeholder-val="{{ true }}"
-                          ><span class="xirras-style-148"
-                            >{{ p.category }}</span
-                          ></sc-if
-                        >
-                        <h3 class="xirras-style-149">{{ p.title }}</h3>
-                        <p class="xirras-style-150">{{ p.content }}</p>
-                        <div class="xirras-style-151">
-                          <span class="xirras-style-152">{{ p.author }}</span
-                          ><span>{{ p.dateLabel }}</span>
-                        </div>
-                      </div>
-                    </article>
-                  </sc-for>
-                </div>
-              </sc-if>
-              <sc-if value="{{ noPosts }}" hint-placeholder-val="{{ false }}">
-                <div class="xirras-style-129">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="var(--primary)"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="xirras-style-126"
-                  >
-                    <path d="m3 11 18-5v12L3 14v-3z" />
-                    <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
-                  </svg>
-                  <div>
-                    <h3 class="xirras-style-130">
-                      Nenhum aviso publicado ainda
-                    </h3>
-                    <p class="xirras-style-131">
-                      Publique um recado no painel admin.
-                    </p>
-                  </div>
-                </div>
-              </sc-if>
-            </div>
-          </section>
-
-          <!-- SOBRE -->
-          <section id="sobre" class="xirras-style-78">
-            <div class="xirras-style-98">
-              <div class="xirras-style-153">
-                <div class="xirras-style-154">
-                  <img
-                    src="public/images/xirras-logo.png"
-                    alt="Escudo do Xirras"
-                    class="xirras-style-155"
-                  />
-                </div>
-              </div>
-              <div class="xirras-style-113">
-                <span class="xirras-style-33"
-                  >Base oficial · Fundado em {{ foundedLabel }}</span
+                </sc-if>
+                <sc-if
+                  value="{{ lb.noPhotos }}"
+                  hint-placeholder-val="{{ false }}"
                 >
-                <h2 class="xirras-style-156">{{ site.aboutTitle }}</h2>
-                <p class="xirras-style-157">{{ site.aboutText }}</p>
-                <div class="xirras-style-158">
-                  <div class="xirras-style-159">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="var(--primary)"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <ellipse cx="12" cy="5" rx="9" ry="3" />
-                      <path d="M3 5V19A9 3 0 0 0 21 19V5" />
-                      <path d="M3 12A9 3 0 0 0 21 12" />
-                    </svg>
-                    <h3 class="xirras-style-160">Cadastro único</h3>
-                    <p class="xirras-style-161">
-                      Integrantes, perfil e ranking usam a mesma fonte de dados.
-                    </p>
-                  </div>
-                  <div class="xirras-style-159">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="var(--primary)"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-                      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-                      <path d="M4 22h16" />
-                      <path
-                        d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
-                      />
-                      <path
-                        d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
-                      />
-                      <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
-                    </svg>
-                    <h3 class="xirras-style-160">Ranking real</h3>
-                    <p class="xirras-style-161">
-                      A classificação nasce das estatísticas preenchidas.
-                    </p>
-                  </div>
-                  <div class="xirras-style-159">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="var(--primary)"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"
-                      />
-                      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-                      <circle cx="9" cy="9" r="2" />
-                      <path d="M16 19h6" />
-                      <path d="M19 16v6" />
-                    </svg>
-                    <h3 class="xirras-style-160">Fotos editáveis</h3>
-                    <p class="xirras-style-161">
-                      Cada integrante pode receber uma foto própria pelo painel.
-                    </p>
-                  </div>
-                </div>
+                  <p class="xirras-style-187">
+                    Nenhuma foto neste álbum ainda. Adicione fotos pelo painel
+                    admin.
+                  </p>
+                </sc-if>
               </div>
             </div>
-          </section>
-        </main>
-
-        <footer class="xirras-style-162">
-          <div class="xirras-style-163">
-            <div class="xirras-style-164">
-              <div class="xirras-style-165">
-                <div class="xirras-style-166">
-                  <img
-                    src="public/images/xirras-logo.png"
-                    alt="Escudo"
-                    class="xirras-style-167"
-                  /><span class="xirras-style-168"
-                    >Xirras<span class="xirras-style-7"
-                      >Voleibol Club</span
-                    ></span
-                  >
-                </div>
-                <p class="xirras-style-169">
-                  Base oficial para integrantes, ranking e registros do time.
-                  Fundado em {{ foundedLabel }}.
-                </p>
-                <a
-                  href="https://www.instagram.com/xirrasvc/"
-                  target="_blank"
-                  rel="noopener"
-                  class="xirras-style-170"
-                  ><svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <rect width="20" height="20" x="2" y="2" rx="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
-                  @xirrasvc</a
-                >
-              </div>
-              <nav class="xirras-style-171">
-                <a href="#integrantes" class="xirras-style-9">Integrantes</a>
-                <a href="#ranking" class="xirras-style-9">Ranking</a>
-                <a href="#presenca" class="xirras-style-9">Presença</a>
-                <a href="#jogos" class="xirras-style-9">Jogos</a>
-                <a href="#galeria" class="xirras-style-9">Galeria</a>
-                <a href="#mural" class="xirras-style-9">Mural</a>
-              </nav>
-              <div class="xirras-style-172">
-                <span class="xirras-style-173">Pix do clube</span>
-                <div class="xirras-style-174">
-                  <span class="xirras-style-175">Mensalidade</span>
-                  <span class="xirras-style-176"
-                    >{{ site.pixMensalidade }}</span
-                  >
-                </div>
-                <div class="xirras-style-174">
-                  <span class="xirras-style-175">Avulso</span>
-                  <span class="xirras-style-176">{{ site.pixAvulso }}</span>
-                </div>
-              </div>
-            </div>
-            <div class="xirras-style-177">
-              <p class="xirras-style-178">Feito pelos Xirras para os Xirras</p>
-              <p class="xirras-style-179">© {{ year }} Xirras Voleibol Club.</p>
-            </div>
-          </div>
-        </footer>
-
-        <!-- LIGHTBOX ÁLBUM -->
-        <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
-          <div onClick="{{ closeAlbum }}" class="xirras-style-180">
-            <div class="xirras-style-181">
-              <div class="xirras-style-182">
-                <div>
-                  <span class="xirras-style-138">{{ lb.dateLabel }}</span>
-                  <h3 class="xirras-style-183">{{ lb.title }}</h3>
-                </div>
-                <button onClick="{{ closeAlbum }}" class="xirras-style-184">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M18 6 6 18" />
-                    <path d="m6 6 12 12" />
-                  </svg>
-                </button>
-              </div>
-              <sc-if
-                value="{{ lb.hasPhotos }}"
-                hint-placeholder-val="{{ true }}"
-              >
-                <div class="xirras-style-185">
-                  <sc-for
-                    list="{{ lb.photos }}"
-                    as="ph"
-                    hint-placeholder-count="4"
-                  >
-                    <div class="xirras-style-186">
-                      <img
-                        src="{{ ph.url }}"
-                        alt="{{ ph.caption }}"
-                        class="xirras-style-41"
-                      />
-                    </div>
-                  </sc-for>
-                </div>
-              </sc-if>
-              <sc-if
-                value="{{ lb.noPhotos }}"
-                hint-placeholder-val="{{ false }}"
-              >
-                <p class="xirras-style-187">
-                  Nenhuma foto neste álbum ainda. Adicione fotos pelo painel
-                  admin.
-                </p>
-              </sc-if>
-            </div>
-          </div>
-        </sc-if>
+          </sc-if>
         </sc-if>
 
         <sc-if value="{{ showAdminLogin }}" hint-placeholder-val="{{ false }}">
@@ -1273,7 +1302,9 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   >
-                    <path d="M12 2a5 5 0 0 0-5 5v3H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-2V7a5 5 0 0 0-5-5Z" />
+                    <path
+                      d="M12 2a5 5 0 0 0-5 5v3H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-2V7a5 5 0 0 0-5-5Z"
+                    />
                     <path d="M9 10V7a3 3 0 0 1 6 0v3" />
                   </svg>
                   <span class="xirras-style-192">Acesso restrito</span>
@@ -1283,7 +1314,8 @@
               <div class="xirras-style-249">
                 <h3 class="xirras-style-238">Entrar no admin</h3>
                 <p class="xirras-style-242">
-                  Use seu usuário e senha de admin. A sessão fica salva em cookie seguro no navegador.
+                  Use seu usuário e senha de admin. A sessão fica salva em
+                  cookie seguro no navegador.
                 </p>
                 <label class="xirras-style-243">Usuário</label>
                 <input
@@ -1313,7 +1345,10 @@
           </div>
         </sc-if>
 
-        <sc-if value="{{ showAdminLoading }}" hint-placeholder-val="{{ false }}">
+        <sc-if
+          value="{{ showAdminLoading }}"
+          hint-placeholder-val="{{ false }}"
+        >
           <div class="xirras-style-188">
             <div class="xirras-style-189">
               <div class="xirras-style-190">
@@ -1341,7 +1376,9 @@
                 </div>
               </div>
               <div class="xirras-style-249">
-                <p class="xirras-style-242">Checando sua sessão segura antes de abrir o painel.</p>
+                <p class="xirras-style-242">
+                  Checando sua sessão segura antes de abrir o painel.
+                </p>
               </div>
             </div>
           </div>
@@ -2141,7 +2178,8 @@
                     <div class="xirras-style-249">
                       <h3 class="xirras-style-238">Imagem do topo</h3>
                       <p class="xirras-style-242">
-                        Essa é a imagem de fundo do hero. Você pode colar uma URL ou enviar um arquivo para trocar a foto principal.
+                        Essa é a imagem de fundo do hero. Você pode colar uma
+                        URL ou enviar um arquivo para trocar a foto principal.
                       </p>
                       <label class="xirras-style-243">URL da imagem</label>
                       <input
@@ -2159,7 +2197,10 @@
                         class="xirras-style-218"
                       />
                       <div class="xirras-style-245">
-                        <button onClick="{{ clearHeroImage }}" class="xirras-style-248">
+                        <button
+                          onClick="{{ clearHeroImage }}"
+                          class="xirras-style-248"
+                        >
                           Restaurar padrão
                         </button>
                       </div>
@@ -2707,6 +2748,8 @@
             adminMembers, adminGames, adminAlbums, adminPosts, adminAttendance, adminHighlight,
             newAtt: this.state.newAtt,
             onSite: this.onSite,
+            onAdminLoginUser: this.onAdminLoginUser,
+            onAdminLoginPassword: this.onAdminLoginPassword,
             onHeroImage: this.onHeroImage,
             clearHeroImage: this.clearHeroImage,
             onMember: this.onMember, onMemberPhoto: this.onMemberPhoto, addMember: this.addMember, removeMember: this.removeMember,
