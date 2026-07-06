@@ -2615,6 +2615,7 @@
         onSite = (e) => { const f = e.currentTarget.dataset.field; const v = e.currentTarget.value; this.setAdminData(d => ({ ...d, site: { ...d.site, [f]: v } })); };
         onHeroImage = (e) => { const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAdminData(d => ({ ...d, site: { ...d.site, heroImage: r.result } })); r.readAsDataURL(f); };
         clearHeroImage = () => this.setAdminData(d => ({ ...d, site: { ...d.site, heroImage: '' } }));
+        readFileAsDataUrl = (file) => new Promise((resolve, reject) => { const r = new FileReader(); r.onload = () => resolve(r.result); r.onerror = reject; r.readAsDataURL(file); });
 
         onMember = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setAdminData(d => ({ ...d, members: d.members.map(m => { if (m.id !== id) return m; if (field.indexOf('stat:') === 0) { const key = field.slice(5); return { ...m, stats: { ...m.stats, [key]: Number(raw) || 0 } }; } return { ...m, [field]: raw }; }) })); };
         onMemberPhoto = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAdminData(d => ({ ...d, members: d.members.map(m => m.id === id ? { ...m, foto: r.result } : m) })); r.readAsDataURL(f); };
@@ -2631,7 +2632,22 @@
 
         onAlbum = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setAdminData(d => ({ ...d, albums: d.albums.map(a => String(a.id) === String(id) ? { ...a, [field]: raw } : a) })); };
         onAlbumCover = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAdminData(d => ({ ...d, albums: d.albums.map(a => String(a.id) === String(id) ? { ...a, coverUrl: r.result } : a) })); r.readAsDataURL(f); };
-        onAlbumPhoto = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAdminData(d => ({ ...d, albums: d.albums.map(a => { if (String(a.id) !== String(id)) return a; const photos = [...(a.photos||[]), { id: 'ph' + Date.now(), url: r.result, caption: '' }]; return { ...a, coverUrl: a.coverUrl || r.result, photos }; }) })); r.readAsDataURL(f); };
+        onAlbumPhoto = async (e) => {
+          const id = e.currentTarget.dataset.id;
+          const files = Array.from(e.currentTarget.files || []);
+          if (!files.length) return;
+          const urls = await Promise.all(files.map((file) => this.readFileAsDataUrl(file)));
+          this.setAdminData((d) => ({
+            ...d,
+            albums: d.albums.map((a) => {
+              if (String(a.id) !== String(id)) return a;
+              const additions = urls.map((url, idx) => ({ id: 'ph' + Date.now() + '_' + idx, url, caption: '' }));
+              const photos = [...(a.photos || []), ...additions];
+              return { ...a, coverUrl: a.coverUrl || urls[0], photos };
+            }),
+          }));
+          e.currentTarget.value = '';
+        };
         addAlbum = () => { const iso = new Date().toISOString().slice(0,10); this.setAdminData(d => ({ ...d, albums: [{ id: 'al' + Date.now(), title: 'Novo álbum', eventDate: iso, coverUrl: null, photos: [] }, ...d.albums] })); };
         removeAlbum = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, albums: d.albums.filter(a => String(a.id) !== String(id)) })); };
         openAlbum = (e) => { const id = e.currentTarget.dataset.id; this.setState({ lightbox: id }); };

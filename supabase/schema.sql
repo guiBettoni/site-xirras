@@ -111,3 +111,18 @@ on conflict (id) do nothing;
 
 insert into public.highlights (id) values ('main')
 on conflict (id) do nothing;
+
+insert into public.albums (id, title, event_date, cover_url)
+values ('album-momentos-xirras', 'Momentos Xirras', '2026-07-06', 'uploads/gallery/momento-03.jpeg')
+on conflict (id) do nothing;
+
+insert into public.album_photos (id, album_id, url, caption)
+values
+  ('album-momentos-xirras-ph01', 'album-momentos-xirras', 'uploads/gallery/momento-01.jpeg', 'Hoje tem Xirras'),
+  ('album-momentos-xirras-ph02', 'album-momentos-xirras', 'uploads/gallery/momento-02.jpeg', 'Time na quadra'),
+  ('album-momentos-xirras-ph03', 'album-momentos-xirras', 'uploads/gallery/momento-03.jpeg', 'Celebração com a galera'),
+  ('album-momentos-xirras-ph04', 'album-momentos-xirras', 'uploads/gallery/momento-04.jpeg', 'Foto oficial do grupo'),
+  ('album-momentos-xirras-ph05', 'album-momentos-xirras', 'uploads/gallery/momento-05.jpeg', 'Chuva de comemoração'),
+  ('album-momentos-xirras-ph06', 'album-momentos-xirras', 'uploads/gallery/momento-06.jpeg', 'No corre pelo Xirras'),
+  ('album-momentos-xirras-ph07', 'album-momentos-xirras', 'uploads/gallery/momento-07.jpeg', 'Noite de resenha')
+on conflict (id) do nothing;
