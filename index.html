@@ -1895,6 +1895,9 @@
                           onInput="{{ onAlbum }}"
                           class="xirras-style-212"
                         />
+                        <p class="xirras-style-242" style="margin: 0;">
+                          Você pode usar a capa por URL ou enviar fotos direto do dispositivo.
+                        </p>
                         <div class="xirras-style-227">
                           <label class="xirras-style-217"
                             ><svg
@@ -1941,6 +1944,7 @@
                               data-id="{{ al.id }}"
                               type="file"
                               accept="image/*"
+                              multiple
                               onChange="{{ onAlbumPhoto }}"
                               class="xirras-style-218"
                           /></label>
