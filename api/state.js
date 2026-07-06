@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const { buildAdminAuth } = require("../lib/admin-auth");
 
 const rootDir = path.resolve(__dirname, "..");
 const env = loadEnv(path.join(rootDir, ".env"));
@@ -8,6 +9,13 @@ const SUPABASE_URL = String(process.env.SUPABASE_URL || env.SUPABASE_URL || "").
 const SUPABASE_SERVICE_ROLE_KEY = String(
   process.env.SUPABASE_SERVICE_ROLE_KEY || env.SUPABASE_SERVICE_ROLE_KEY || ""
 ).trim();
+const adminAuth = buildAdminAuth({
+  username: process.env.ADMIN_USERNAME || env.ADMIN_USERNAME,
+  passwordSalt: process.env.ADMIN_PASSWORD_SALT || env.ADMIN_PASSWORD_SALT,
+  passwordHash: process.env.ADMIN_PASSWORD_HASH || env.ADMIN_PASSWORD_HASH,
+  sessionSecret: process.env.ADMIN_SESSION_SECRET || env.ADMIN_SESSION_SECRET,
+  secureCookie: Boolean(process.env.VERCEL || process.env.NODE_ENV === "production"),
+});
 
 function loadEnv(filePath) {
   if (!fs.existsSync(filePath)) return {};
@@ -97,6 +105,7 @@ async function requestSupabase(endpointPath, options = {}) {
 function defaults() {
   return {
     site: {
+      heroImage: "",
       heroBadge: "",
       heroTitle: "",
       heroTitle2: "",
@@ -150,7 +159,8 @@ function aggregateState(rows) {
     site: {
       ...d.site,
       ...(site
-        ? {
+          ? {
+            heroImage: normalizeText(site.hero_image_url),
             heroBadge: normalizeText(site.hero_badge),
             heroTitle: normalizeText(site.hero_title),
             heroTitle2: normalizeText(site.hero_title_2),
@@ -352,6 +362,7 @@ async function saveState(data) {
       headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
       body: JSON.stringify({
         id: "main",
+        hero_image_url: normalizeText(site.heroImage),
         hero_badge: normalizeText(site.heroBadge),
         hero_title: normalizeText(site.heroTitle),
         hero_title_2: normalizeText(site.heroTitle2),
@@ -481,6 +492,12 @@ module.exports = async function handler(req, res) {
     }
 
     if (req.method === "PUT") {
+      if (!adminAuth.isConfigured()) {
+        return sendJson(res, 503, { ok: false, error: "Admin nao configurado." });
+      }
+      if (!adminAuth.isAuthorizedRequest(req)) {
+        return sendJson(res, 401, { ok: false, error: "Sem permissão para editar o painel." });
+      }
       const raw = await readBody(req);
       const parsed = raw ? JSON.parse(raw) : {};
       if (!parsed || typeof parsed !== "object" || Array.isArray(parsed) || typeof parsed.data !== "object") {

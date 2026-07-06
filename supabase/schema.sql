@@ -8,6 +8,7 @@
 
 create table if not exists public.site_settings (
   id               text primary key default 'main',
+  hero_image_url   text,
   hero_badge       text not null default '',
   hero_title       text not null default '',
   hero_title_2     text not null default '',
@@ -20,6 +21,9 @@ create table if not exists public.site_settings (
   pix_avulso       text not null default '',
   updated_at       timestamptz not null default now()
 );
+
+alter table public.site_settings
+  add column if not exists hero_image_url text;
 
 create table if not exists public.highlights (
   id            text primary key default 'main',

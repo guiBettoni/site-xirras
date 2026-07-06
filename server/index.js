@@ -1,6 +1,7 @@
 const http = require("node:http");
 const fs = require("node:fs");
 const path = require("node:path");
+const { buildAdminAuth } = require("../lib/admin-auth");
 
 const rootDir = path.resolve(__dirname, "..");
 const env = loadEnv(path.join(rootDir, ".env"));
@@ -10,6 +11,13 @@ const SUPABASE_URL = String(process.env.SUPABASE_URL || env.SUPABASE_URL || "").
 const SUPABASE_SERVICE_ROLE_KEY = String(
   process.env.SUPABASE_SERVICE_ROLE_KEY || env.SUPABASE_SERVICE_ROLE_KEY || ""
 ).trim();
+const adminAuth = buildAdminAuth({
+  username: process.env.ADMIN_USERNAME || env.ADMIN_USERNAME,
+  passwordSalt: process.env.ADMIN_PASSWORD_SALT || env.ADMIN_PASSWORD_SALT,
+  passwordHash: process.env.ADMIN_PASSWORD_HASH || env.ADMIN_PASSWORD_HASH,
+  sessionSecret: process.env.ADMIN_SESSION_SECRET || env.ADMIN_SESSION_SECRET,
+  secureCookie: Boolean(process.env.VERCEL || process.env.NODE_ENV === "production"),
+});
 
 const STATIC_ROOTS = [rootDir, path.join(rootDir, "public"), path.join(rootDir, "uploads")];
 
@@ -51,10 +59,12 @@ function send(res, statusCode, body, headers = {}) {
   res.end(body);
 }
 
-function sendJson(res, statusCode, payload) {
-  send(res, statusCode, JSON.stringify(payload), {
+function sendJson(res, statusCode, payload, cookies = []) {
+  const headers = {
     "Content-Type": "application/json; charset=utf-8",
-  });
+  };
+  if (cookies.length) headers["Set-Cookie"] = cookies;
+  send(res, statusCode, JSON.stringify(payload), headers);
 }
 
 function readBody(req) {
@@ -86,7 +96,9 @@ function safeJoin(root, requestPath) {
 }
 
 function findStaticFile(urlPath) {
-  const normalized = urlPath === "/" ? "/index.html" : urlPath;
+  const normalized = urlPath === "/" || urlPath === "/admin" || urlPath.startsWith("/admin/")
+    ? "/index.html"
+    : urlPath;
   for (const base of STATIC_ROOTS) {
     const resolved = safeJoin(base, normalized);
     if (resolved && fs.existsSync(resolved) && fs.statSync(resolved).isFile()) {
@@ -164,6 +176,7 @@ function normalizeDate(value) {
 function defaults() {
   return {
     site: {
+      heroImage: "",
       heroBadge: "",
       heroTitle: "",
       heroTitle2: "",
@@ -199,10 +212,11 @@ function aggregateState(rows) {
     site: {
       ...d.site,
       ...(site
-        ? {
-            heroBadge: normalizeText(site.hero_badge),
-            heroTitle: normalizeText(site.hero_title),
-            heroTitle2: normalizeText(site.hero_title_2),
+          ? {
+              heroImage: normalizeText(site.hero_image_url),
+              heroBadge: normalizeText(site.hero_badge),
+              heroTitle: normalizeText(site.hero_title),
+              heroTitle2: normalizeText(site.hero_title_2),
             heroText: normalizeText(site.hero_text),
             nextGamePlace: normalizeText(site.next_game_place),
             aboutTitle: normalizeText(site.about_title),
@@ -372,6 +386,7 @@ async function saveState(data) {
       headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
       body: JSON.stringify({
         id: "main",
+        hero_image_url: normalizeText(site.heroImage),
         hero_badge: normalizeText(site.heroBadge),
         hero_title: normalizeText(site.heroTitle),
         hero_title_2: normalizeText(site.heroTitle2),
@@ -525,12 +540,61 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
+    if (url.pathname === "/api/admin/session" && req.method === "GET") {
+      return sendJson(res, 200, {
+        ok: true,
+        authed: adminAuth.isAuthorizedRequest(req),
+      });
+    }
+
+    if (url.pathname === "/api/admin/login" && req.method === "POST") {
+      if (!adminAuth.isConfigured()) {
+        return sendJson(res, 503, { ok: false, error: "Admin nao configurado." });
+      }
+      const raw = await readBody(req);
+      const parsed = raw ? JSON.parse(raw) : {};
+      const username = parsed && typeof parsed === "object" ? parsed.username : "";
+      const password = parsed && typeof parsed === "object" ? parsed.password : "";
+      if (!adminAuth.verifyCredentials(username, password)) {
+        return sendJson(res, 401, { ok: false, error: "Credenciais invalidas." });
+      }
+      return sendJson(
+        res,
+        200,
+        { ok: true, user: String(username).trim() },
+        [adminAuth.createSessionCookie()]
+      );
+    }
+
+    if (url.pathname === "/api/admin/logout" && req.method === "POST") {
+      if (!adminAuth.isConfigured()) {
+        return sendJson(res, 503, { ok: false, error: "Admin nao configurado." });
+      }
+      return sendJson(res, 200, { ok: true }, [adminAuth.clearSessionCookie()]);
+    }
+
+    if ((url.pathname === "/admin" || url.pathname.startsWith("/admin/")) && req.method === "GET") {
+      const adminIndex = path.join(rootDir, "index.html");
+      res.writeHead(200, {
+        "Content-Type": "text/html; charset=utf-8",
+        "Cache-Control": "no-cache",
+      });
+      fs.createReadStream(adminIndex).pipe(res);
+      return;
+    }
+
     if (url.pathname === "/api/state" && req.method === "GET") {
       const data = await getState();
       return sendJson(res, 200, { ok: true, data });
     }
 
     if (url.pathname === "/api/state" && req.method === "PUT") {
+      if (!adminAuth.isConfigured()) {
+        return sendJson(res, 503, { ok: false, error: "Admin nao configurado." });
+      }
+      if (!adminAuth.isAuthorizedRequest(req)) {
+        return sendJson(res, 401, { ok: false, error: "Sem permissão para editar o painel." });
+      }
       const raw = await readBody(req);
       const parsed = raw ? JSON.parse(raw) : {};
       if (!parsed || typeof parsed !== "object" || Array.isArray(parsed) || typeof parsed.data !== "object") {
