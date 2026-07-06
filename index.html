@@ -1410,12 +1410,8 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     const data = this.defaults();
-    let theme = (props && props.startTheme) || 'dark';
-    try { const t = localStorage.getItem('xirras-theme'); if (t) theme = t; } catch (e) {}
-    let sbUrl = '';
-    let sbKey = '';
-    try { const s = localStorage.getItem('xirras-supabase'); if (s) { const parsed = JSON.parse(s); sbUrl = parsed.url || ''; sbKey = parsed.key || ''; } } catch (e) {}
-    this.state = { data, adminData: null, theme, adminOpen: false, adminTab: 'destaque', lightbox: null, newAtt: '', pubName: '', attMsg: '', sbUrl, sbKey, sbStatus: 'off', sbMsg: '' };
+    const theme = (props && props.startTheme) || 'dark';
+    this.state = { data, adminData: null, theme, adminOpen: false, adminTab: 'destaque', lightbox: null, newAtt: '', pubName: '', attMsg: '', sbUrl: '', sbKey: '', sbStatus: 'off', sbMsg: '' };
   }
 
   componentDidMount() { if (this.state.sbUrl && this.state.sbKey) this.connectSb(true); }
@@ -1435,7 +1431,6 @@ class Component extends DCLogic {
       this.sb = lib.createClient(url, key);
       const { data: row, error } = await this.sb.from('xirras_state').select('data').eq('id', 'main').maybeSingle();
       if (error) throw error;
-      try { localStorage.setItem('xirras-supabase', JSON.stringify({ url, key })); } catch (e) {}
       if (row && row.data && Object.keys(row.data).length) {
         const merged = this.merge(row.data);
         this.setState({ data: merged, sbStatus: 'online', sbMsg: '' });
@@ -1519,7 +1514,7 @@ class Component extends DCLogic {
   hasScore(m) { return m.stats.pontos>0 || m.stats.mvp>0 || m.stats.vitorias>0 || m.stats.jogos>0; }
   sorted() { return [...this.state.data.members].sort((a,b)=>{ const k=['pontos','mvp','vitorias','jogos']; for(const key of k){ const diff=b.stats[key]-a.stats[key]; if(diff!==0) return diff;} return a.nome.localeCompare(b.nome,'pt-BR'); }); }
 
-  toggleTheme = () => { const theme = this.state.theme === 'dark' ? 'light' : 'dark'; this.setState({ theme }); try { localStorage.setItem('xirras-theme', theme); } catch(e){} };
+  toggleTheme = () => { const theme = this.state.theme === 'dark' ? 'light' : 'dark'; this.setState({ theme }); };
   setTab = (e) => this.setState({ adminTab: e.currentTarget.dataset.tab });
 
   onSite = (e) => { const f = e.currentTarget.dataset.field; const v = e.currentTarget.value; this.setAdminData(d => ({ ...d, site: { ...d.site, [f]: v } })); };
