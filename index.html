@@ -1004,13 +1004,19 @@
                   <circle cx="7" cy="7" r="3" />
                 </svg><span style="font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:18px">Painel de
                   edição</span></div>
-              <button onClick="{{ closeAdmin }}"
-                style="width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--fg);cursor:pointer"><svg
-                  width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 6 6 18" />
-                  <path d="m6 6 12 12" />
-                </svg></button>
+              <div style="display:flex;align-items:center;gap:8px">
+                <button onClick="{{ saveAdmin }}"
+                  style="height:40px;padding:0 16px;border-radius:10px;border:none;background:var(--primary);color:var(--primary-fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Salvar</button>
+                <button onClick="{{ discardChanges }}"
+                  style="height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg);font-family:Oswald;font-size:12px;font-weight:600;text-transform:uppercase;cursor:pointer">Descartar</button>
+                <button onClick="{{ closeAdmin }}"
+                  style="width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--fg);cursor:pointer"><svg
+                    width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg></button>
+              </div>
             </div>
 
             <div style="display:flex;flex-wrap:wrap;gap:8px;padding:16px 24px;border-bottom:1px solid var(--border)">
@@ -1344,8 +1350,8 @@
                     <div
                       style="display:inline-flex;width:fit-content;align-items:center;gap:8px;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;background:{{ sbBadgeBg }};color:{{ sbBadgeColor }}">
                       <span style="width:8px;height:8px;border-radius:999px;background:currentColor"></span>{{
-                      sbStatusLabel }}</span>
-                      <sc-if value="{{ sbMsg }}" hint-placeholder-val="">
+                      sbStatusLabel }}</div>
+                    <sc-if value="{{ sbMsg }}" hint-placeholder-val="">
                         <p style="margin:0;font-size:12px;color:var(--destructive)">{{ sbMsg }}</p>
                       </sc-if>
                       <p style="font-size:13px;line-height:1.5;color:var(--muted-fg);margin:0">Cole a <b>URL do
@@ -1379,43 +1385,43 @@
                       <label
                         style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Selo
                         do topo</label>
-                      <input data-field="heroBadge" value="{{ site.heroBadge }}" onInput="{{ onSite }}"
+                      <input data-field="heroBadge" value="{{ adminSite.heroBadge }}" onInput="{{ onSite }}"
                         style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
                       <label
                         style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Frase
                         do topo</label>
                       <textarea data-field="heroText" onInput="{{ onSite }}"
-                        style="min-height:64px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px;resize:vertical">{{ site.heroText }}</textarea>
+                        style="min-height:64px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px;resize:vertical">{{ adminSite.heroText }}</textarea>
                       <label
                         style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Local
                         do próximo jogo</label>
-                      <input data-field="nextGamePlace" value="{{ site.nextGamePlace }}" onInput="{{ onSite }}"
+                      <input data-field="nextGamePlace" value="{{ adminSite.nextGamePlace }}" onInput="{{ onSite }}"
                         style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
                       <label
                         style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Data
                         de fundação</label>
-                      <input data-field="foundedDate" type="date" value="{{ site.foundedDate }}" onInput="{{ onSite }}"
+                      <input data-field="foundedDate" type="date" value="{{ adminSite.foundedDate }}" onInput="{{ onSite }}"
                         style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
                       <label
                         style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Chave
                         Pix — Mensalidade</label>
-                      <input data-field="pixMensalidade" value="{{ site.pixMensalidade }}" onInput="{{ onSite }}"
+                      <input data-field="pixMensalidade" value="{{ adminSite.pixMensalidade }}" onInput="{{ onSite }}"
                         style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
                       <label
                         style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Chave
                         Pix — Avulso</label>
-                      <input data-field="pixAvulso" value="{{ site.pixAvulso }}" onInput="{{ onSite }}"
+                      <input data-field="pixAvulso" value="{{ adminSite.pixAvulso }}" onInput="{{ onSite }}"
                         style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
                       <label
                         style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Título
                         do "Sobre"</label>
-                      <input data-field="aboutTitle" value="{{ site.aboutTitle }}" onInput="{{ onSite }}"
+                      <input data-field="aboutTitle" value="{{ adminSite.aboutTitle }}" onInput="{{ onSite }}"
                         style="height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px" />
                       <label
                         style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-fg)">Texto
                         do "Sobre"</label>
                       <textarea data-field="aboutText" onInput="{{ onSite }}"
-                        style="min-height:80px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px;resize:vertical">{{ site.aboutText }}</textarea>
+                        style="min-height:80px;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg);font-size:14px;resize:vertical">{{ adminSite.aboutText }}</textarea>
                     </div>
                     <div
                       style="border-radius:16px;border:1px solid var(--border);background:var(--card);padding:18px;display:flex;flex-direction:column;gap:12px">
@@ -1535,7 +1541,7 @@ class Component extends DCLogic {
     try { const t = localStorage.getItem('xirras-theme'); if (t) theme = t; } catch (e) {}
     let sb = { url: '', key: '' };
     try { const s = localStorage.getItem('xirras-supabase'); if (s) sb = JSON.parse(s); } catch (e) {}
-    this.state = { data, theme, adminOpen: false, adminTab: 'destaque', lightbox: null, newAtt: '', pubName: '', attMsg: '', sbUrl: sb.url || '', sbKey: sb.key || '', sbStatus: 'off', sbMsg: '' };
+    this.state = { data, adminData: null, theme, adminOpen: false, adminTab: 'destaque', lightbox: null, newAtt: '', pubName: '', attMsg: '', sbUrl: sb.url || '', sbKey: sb.key || '', sbStatus: 'off', sbMsg: '' };
   }
 
   componentDidMount() { if (this.state.sbUrl && this.state.sbKey) this.connectSb(true); }
@@ -1583,6 +1589,18 @@ class Component extends DCLogic {
 
   disconnectSb = () => { this.sb = null; try { localStorage.removeItem('xirras-supabase'); } catch (e) {} this.setState({ sbStatus: 'off', sbMsg: '' }); };
 
+  cloneData(data) { return JSON.parse(JSON.stringify(data)); }
+  setAdminData(fn) { const adminData = fn(this.state.adminData || this.state.data); this.setState({ adminData }); }
+
+  openAdmin = () => this.setState({ adminOpen: true, adminData: this.cloneData(this.state.data), adminTab: 'destaque' });
+  closeAdmin = () => this.setState({ adminOpen: false, adminData: null, attMsg: '' });
+  discardChanges = () => this.closeAdmin();
+  saveAdmin = () => {
+    const data = this.state.adminData || this.state.data;
+    this.setState({ data, adminOpen: false, adminData: null, sbMsg: 'Alterações salvas.' });
+    this.persist(data);
+  };
+
   persistLocal(data) { try { localStorage.setItem(this.KEY, JSON.stringify(data)); } catch (e) {} }
   pushRemote(data) {
     if (!this.sb) return;
@@ -1621,52 +1639,51 @@ class Component extends DCLogic {
   sorted() { return [...this.state.data.members].sort((a,b)=>{ const k=['pontos','mvp','vitorias','jogos']; for(const key of k){ const diff=b.stats[key]-a.stats[key]; if(diff!==0) return diff;} return a.nome.localeCompare(b.nome,'pt-BR'); }); }
 
   toggleTheme = () => { const theme = this.state.theme === 'dark' ? 'light' : 'dark'; this.setState({ theme }); try { localStorage.setItem('xirras-theme', theme); } catch(e){} };
-  openAdmin = () => this.setState({ adminOpen: true });
-  closeAdmin = () => this.setState({ adminOpen: false });
   setTab = (e) => this.setState({ adminTab: e.currentTarget.dataset.tab });
 
-  onSite = (e) => { const f = e.currentTarget.dataset.field; const v = e.currentTarget.value; this.setData(d => ({ ...d, site: { ...d.site, [f]: v } })); };
+  onSite = (e) => { const f = e.currentTarget.dataset.field; const v = e.currentTarget.value; this.setAdminData(d => ({ ...d, site: { ...d.site, [f]: v } })); };
 
-  onMember = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setData(d => ({ ...d, members: d.members.map(m => { if (m.id !== id) return m; if (field.indexOf('stat:') === 0) { const key = field.slice(5); return { ...m, stats: { ...m.stats, [key]: Number(raw) || 0 } }; } return { ...m, [field]: raw }; }) })); };
-  onMemberPhoto = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setData(d => ({ ...d, members: d.members.map(m => m.id === id ? { ...m, foto: r.result } : m) })); r.readAsDataURL(f); };
-  addMember = () => this.setData(d => ({ ...d, members: [...d.members, { id: 'm' + Date.now(), nome: 'Novo integrante', apelido: '', foto: null, stats: { jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 } }] }));
-  removeMember = (e) => { const id = e.currentTarget.dataset.id; this.setData(d => ({ ...d, members: d.members.filter(m => m.id !== id) })); };
+  onMember = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setAdminData(d => ({ ...d, members: d.members.map(m => { if (m.id !== id) return m; if (field.indexOf('stat:') === 0) { const key = field.slice(5); return { ...m, stats: { ...m.stats, [key]: Number(raw) || 0 } }; } return { ...m, [field]: raw }; }) })); };
+  onMemberPhoto = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAdminData(d => ({ ...d, members: d.members.map(m => m.id === id ? { ...m, foto: r.result } : m) })); r.readAsDataURL(f); };
+  addMember = () => this.setAdminData(d => ({ ...d, members: [...d.members, { id: 'm' + Date.now(), nome: 'Novo integrante', apelido: '', foto: null, stats: { jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 } }] }));
+  removeMember = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, members: d.members.filter(m => m.id !== id) })); };
 
-  onHighlight = (e) => { const f = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setData(d => { const hl = d.highlight ? { ...d.highlight } : { playerName:'', weekLabel:'Destaque da semana', reason:'', votes:0, playerPhoto:null }; hl[f] = f === 'votes' ? (Number(raw)||0) : raw; return { ...d, highlight: hl }; }); };
-  onHighlightPhoto = (e) => { const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setData(d => { const hl = d.highlight ? { ...d.highlight } : { playerName:'', weekLabel:'Destaque da semana', reason:'', votes:0, playerPhoto:null }; hl.playerPhoto = r.result; return { ...d, highlight: hl }; }); r.readAsDataURL(f); };
-  clearHighlight = () => this.setData(d => ({ ...d, highlight: null }));
+  onHighlight = (e) => { const f = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setAdminData(d => { const hl = d.highlight ? { ...d.highlight } : { playerName:'', weekLabel:'Destaque da semana', reason:'', votes:0, playerPhoto:null }; hl[f] = f === 'votes' ? (Number(raw)||0) : raw; return { ...d, highlight: hl }; }); };
+  onHighlightPhoto = (e) => { const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAdminData(d => { const hl = d.highlight ? { ...d.highlight } : { playerName:'', weekLabel:'Destaque da semana', reason:'', votes:0, playerPhoto:null }; hl.playerPhoto = r.result; return { ...d, highlight: hl }; }); r.readAsDataURL(f); };
+  clearHighlight = () => this.setAdminData(d => ({ ...d, highlight: null }));
 
-  onGame = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; const num = field === 'scoreA' || field === 'scoreB'; this.setData(d => ({ ...d, games: d.games.map(g => { if (String(g.id) !== String(id)) return g; let v = raw; if (num) v = raw === '' ? null : (Number(raw) || 0); return { ...g, [field]: v }; }) })); };
-  addGame = () => { const iso = new Date().toISOString().slice(0,10); this.setData(d => ({ ...d, games: [{ id: 'g' + Date.now(), eventDate: iso, title: 'Novo jogo', location: '', matchType: 'interno', teamA: 'Xirras A', teamB: 'Xirras B', scoreA: null, scoreB: null, result: '', highlightText: '' }, ...d.games] })); };
-  removeGame = (e) => { const id = e.currentTarget.dataset.id; this.setData(d => ({ ...d, games: d.games.filter(g => String(g.id) !== String(id)) })); };
+  onGame = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; const num = field === 'scoreA' || field === 'scoreB'; this.setAdminData(d => ({ ...d, games: d.games.map(g => { if (String(g.id) !== String(id)) return g; let v = raw; if (num) v = raw === '' ? null : (Number(raw) || 0); return { ...g, [field]: v }; }) })); };
+  addGame = () => { const iso = new Date().toISOString().slice(0,10); this.setAdminData(d => ({ ...d, games: [{ id: 'g' + Date.now(), eventDate: iso, title: 'Novo jogo', location: '', matchType: 'interno', teamA: 'Xirras A', teamB: 'Xirras B', scoreA: null, scoreB: null, result: '', highlightText: '' }, ...d.games] })); };
+  removeGame = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, games: d.games.filter(g => String(g.id) !== String(id)) })); };
 
-  onAlbum = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setData(d => ({ ...d, albums: d.albums.map(a => String(a.id) === String(id) ? { ...a, [field]: raw } : a) })); };
-  onAlbumCover = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setData(d => ({ ...d, albums: d.albums.map(a => String(a.id) === String(id) ? { ...a, coverUrl: r.result } : a) })); r.readAsDataURL(f); };
-  onAlbumPhoto = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setData(d => ({ ...d, albums: d.albums.map(a => { if (String(a.id) !== String(id)) return a; const photos = [...(a.photos||[]), { id: 'ph' + Date.now(), url: r.result, caption: '' }]; return { ...a, coverUrl: a.coverUrl || r.result, photos }; }) })); r.readAsDataURL(f); };
-  addAlbum = () => { const iso = new Date().toISOString().slice(0,10); this.setData(d => ({ ...d, albums: [{ id: 'al' + Date.now(), title: 'Novo álbum', eventDate: iso, coverUrl: null, photos: [] }, ...d.albums] })); };
-  removeAlbum = (e) => { const id = e.currentTarget.dataset.id; this.setData(d => ({ ...d, albums: d.albums.filter(a => String(a.id) !== String(id)) })); };
+  onAlbum = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setAdminData(d => ({ ...d, albums: d.albums.map(a => String(a.id) === String(id) ? { ...a, [field]: raw } : a) })); };
+  onAlbumCover = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAdminData(d => ({ ...d, albums: d.albums.map(a => String(a.id) === String(id) ? { ...a, coverUrl: r.result } : a) })); r.readAsDataURL(f); };
+  onAlbumPhoto = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAdminData(d => ({ ...d, albums: d.albums.map(a => { if (String(a.id) !== String(id)) return a; const photos = [...(a.photos||[]), { id: 'ph' + Date.now(), url: r.result, caption: '' }]; return { ...a, coverUrl: a.coverUrl || r.result, photos }; }) })); r.readAsDataURL(f); };
+  addAlbum = () => { const iso = new Date().toISOString().slice(0,10); this.setAdminData(d => ({ ...d, albums: [{ id: 'al' + Date.now(), title: 'Novo álbum', eventDate: iso, coverUrl: null, photos: [] }, ...d.albums] })); };
+  removeAlbum = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, albums: d.albums.filter(a => String(a.id) !== String(id)) })); };
   openAlbum = (e) => { const id = e.currentTarget.dataset.id; this.setState({ lightbox: id }); };
   closeAlbum = () => this.setState({ lightbox: null });
 
-  onPost = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setData(d => ({ ...d, posts: d.posts.map(p => String(p.id) === String(id) ? { ...p, [field]: raw } : p) })); };
-  onPostImage = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setData(d => ({ ...d, posts: d.posts.map(p => String(p.id) === String(id) ? { ...p, imageUrl: r.result } : p) })); r.readAsDataURL(f); };
-  addPost = () => { const iso = new Date().toISOString().slice(0,10); this.setData(d => ({ ...d, posts: [{ id: 'p' + Date.now(), title: 'Novo aviso', content: '', category: 'Aviso', author: '', imageUrl: null, createdAt: iso }, ...d.posts] })); };
-  removePost = (e) => { const id = e.currentTarget.dataset.id; this.setData(d => ({ ...d, posts: d.posts.filter(p => String(p.id) !== String(id)) })); };
+  onPost = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setAdminData(d => ({ ...d, posts: d.posts.map(p => String(p.id) === String(id) ? { ...p, [field]: raw } : p) })); };
+  onPostImage = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => this.setAdminData(d => ({ ...d, posts: d.posts.map(p => String(p.id) === String(id) ? { ...p, imageUrl: r.result } : p) })); r.readAsDataURL(f); };
+  addPost = () => { const iso = new Date().toISOString().slice(0,10); this.setAdminData(d => ({ ...d, posts: [{ id: 'p' + Date.now(), title: 'Novo aviso', content: '', category: 'Aviso', author: '', imageUrl: null, createdAt: iso }, ...d.posts] })); };
+  removePost = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, posts: d.posts.filter(p => String(p.id) !== String(id)) })); };
 
   onNewAtt = (e) => this.setState({ newAtt: e.currentTarget.value });
-  addAttendance = () => { const name = (this.state.newAtt || '').trim(); if (!name) return; this.setData(d => ({ ...d, attendance: [...d.attendance, { id: 'a' + Date.now(), name, status: 'Confirmado' }] })); this.setState({ newAtt: '' }); };
-  removeAttendance = (e) => { const id = e.currentTarget.dataset.id; this.setData(d => ({ ...d, attendance: d.attendance.filter(a => String(a.id) !== String(id)) })); };
+  addAttendance = () => { const name = (this.state.newAtt || '').trim(); if (!name) return; this.setAdminData(d => ({ ...d, attendance: [...d.attendance, { id: 'a' + Date.now(), name, status: 'Confirmado' }] })); this.setState({ newAtt: '' }); };
+  removeAttendance = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, attendance: d.attendance.filter(a => String(a.id) !== String(id)) })); };
 
   onPubName = (e) => this.setState({ pubName: e.currentTarget.value });
   confirmPresence = () => { const name = (this.state.pubName || '').trim(); if (!name) { this.setState({ attMsg: 'Digite seu nome para confirmar.' }); return; } this.setData(d => ({ ...d, attendance: [...d.attendance, { id: 'a' + Date.now(), name, status: 'Confirmado' }] })); this.setState({ pubName: '', attMsg: 'Presença confirmada! Nos vemos na quadra.' }); };
 
-  exportData = () => { try { const blob = new Blob([JSON.stringify(this.state.data, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'xirras-backup.json'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); } catch (e) {} };
-  importData = (e) => { const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { try { const parsed = JSON.parse(r.result); const data = this.merge(parsed); this.setState({ data }); this.persist(data); } catch (err) { alert('Arquivo de backup inválido.'); } }; r.readAsText(f); };
-  resetDemo = () => { const data = this.defaults(); this.setState({ data }); this.persist(data); };
-  clearContent = () => { const data = this.defaults(); const cleared = { ...data, highlight: null, games: [], albums: [], posts: [], attendance: [], members: data.members.map(m => ({ ...m, stats: { jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 } })) }; this.setState({ data: cleared }); this.persist(cleared); };
+  exportData = () => { try { const blob = new Blob([JSON.stringify(this.state.adminOpen && this.state.adminData ? this.state.adminData : this.state.data, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'xirras-backup.json'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); } catch (e) {} };
+  importData = (e) => { const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { try { const parsed = JSON.parse(r.result); const data = this.merge(parsed); if (this.state.adminOpen) { this.setState({ adminData: data }); } else { this.setState({ data }); this.persist(data); } } catch (err) { alert('Arquivo de backup inválido.'); } }; r.readAsText(f); };
+  resetDemo = () => { const data = this.defaults(); if (this.state.adminOpen) { this.setState({ adminData: data }); } else { this.setState({ data }); this.persist(data); } };
+  clearContent = () => { const data = this.defaults(); const cleared = { ...data, highlight: null, games: [], albums: [], posts: [], attendance: [], members: data.members.map(m => ({ ...m, stats: { jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 } })) }; if (this.state.adminOpen) { this.setState({ adminData: cleared }); } else { this.setState({ data: cleared }); this.persist(cleared); } };
 
   renderVals() {
     const d = this.state.data;
+    const adminSource = this.state.adminOpen && this.state.adminData ? this.state.adminData : d;
     const theme = this.state.theme;
     const ranked = this.sorted();
     const posById = new Map(ranked.map((m, i) => [m.id, i + 1]));
@@ -1709,12 +1726,12 @@ class Component extends DCLogic {
     const lbAlbum = lbId ? d.albums.find(a => String(a.id) === String(lbId)) : null;
     const lb = lbAlbum ? { title: lbAlbum.title, dateLabel: this.fmt(lbAlbum.eventDate), photos: (lbAlbum.photos || []).map(p => ({ url: p.url, caption: p.caption || '' })), hasPhotos: (lbAlbum.photos || []).length > 0, noPhotos: (lbAlbum.photos || []).length === 0 } : { title:'', dateLabel:'', photos:[], hasPhotos:false, noPhotos:true };
 
-    const adminMembers = d.members.map(m => ({ id: m.id, nome: m.nome, apelido: m.apelido, foto: m.foto, hasFoto: !!m.foto, noFoto: !m.foto, initials: this.initials(m.nome), jogos: m.stats.jogos, vitorias: m.stats.vitorias, derrotas: m.stats.derrotas, pontos: m.stats.pontos, mvp: m.stats.mvp }));
-    const adminGames = d.games.map(g => ({ id: g.id, title: g.title, eventDate: g.eventDate, location: g.location || '', matchType: g.matchType || 'interno', teamA: g.teamA || '', teamB: g.teamB || '', scoreA: g.scoreA == null ? '' : g.scoreA, scoreB: g.scoreB == null ? '' : g.scoreB, result: g.result || '', highlightText: g.highlightText || '' }));
-    const adminAlbums = d.albums.map(a => { const c = (a.photos || []).length; return { id: a.id, title: a.title, eventDate: a.eventDate, countLabel: c + (c === 1 ? ' foto' : ' fotos') }; });
-    const adminPosts = d.posts.map(p => ({ id: p.id, title: p.title, content: p.content, category: p.category, author: p.author }));
-    const adminAttendance = d.attendance.map(a => ({ id: a.id, name: a.name }));
-    const adminHighlight = hl ? { playerName: hl.playerName, weekLabel: hl.weekLabel, reason: hl.reason, votes: hl.votes } : { playerName: '', weekLabel: 'Destaque da semana', reason: '', votes: 0 };
+    const adminMembers = adminSource.members.map(m => ({ id: m.id, nome: m.nome, apelido: m.apelido, foto: m.foto, hasFoto: !!m.foto, noFoto: !m.foto, initials: this.initials(m.nome), jogos: m.stats.jogos, vitorias: m.stats.vitorias, derrotas: m.stats.derrotas, pontos: m.stats.pontos, mvp: m.stats.mvp }));
+    const adminGames = adminSource.games.map(g => ({ id: g.id, title: g.title, eventDate: g.eventDate, location: g.location || '', matchType: g.matchType || 'interno', teamA: g.teamA || '', teamB: g.teamB || '', scoreA: g.scoreA == null ? '' : g.scoreA, scoreB: g.scoreB == null ? '' : g.scoreB, result: g.result || '', highlightText: g.highlightText || '' }));
+    const adminAlbums = adminSource.albums.map(a => { const c = (a.photos || []).length; return { id: a.id, title: a.title, eventDate: a.eventDate, countLabel: c + (c === 1 ? ' foto' : ' fotos') }; });
+    const adminPosts = adminSource.posts.map(p => ({ id: p.id, title: p.title, content: p.content, category: p.category, author: p.author }));
+    const adminAttendance = adminSource.attendance.map(a => ({ id: a.id, name: a.name }));
+    const adminHighlight = adminSource.highlight ? { playerName: adminSource.highlight.playerName, weekLabel: adminSource.highlight.weekLabel, reason: adminSource.highlight.reason, votes: adminSource.highlight.votes } : { playerName: '', weekLabel: 'Destaque da semana', reason: '', votes: 0 };
 
     const sbMap = {
       off:    { label: 'Não conectado (salvando só neste navegador)', bg: 'color-mix(in oklab,var(--muted) 60%,transparent)', color: 'var(--muted-fg)' },
@@ -1739,6 +1756,7 @@ class Component extends DCLogic {
       toggleTheme: this.toggleTheme, openAdmin: this.openAdmin, closeAdmin: this.closeAdmin, setTab: this.setTab,
       adminOpen: this.state.adminOpen,
       site: d.site,
+      adminSite: adminSource.site,
       memberCards, membersCount: d.members.length,
       rankingRows, seasonLabel: anyScore ? 'Temporada em andamento' : 'Temporada zerada', seasonBg: anyScore ? 'var(--primary)' : 'transparent', seasonColor: anyScore ? 'var(--primary-fg)' : 'var(--muted-fg)',
       stats, nextGameLabel, foundedLabel,
@@ -1759,6 +1777,7 @@ class Component extends DCLogic {
       onAlbum: this.onAlbum, onAlbumCover: this.onAlbumCover, onAlbumPhoto: this.onAlbumPhoto, addAlbum: this.addAlbum, removeAlbum: this.removeAlbum,
       onPost: this.onPost, onPostImage: this.onPostImage, addPost: this.addPost, removePost: this.removePost,
       onNewAtt: this.onNewAtt, addAttendance: this.addAttendance, removeAttendance: this.removeAttendance,
+      saveAdmin: this.saveAdmin, discardChanges: this.discardChanges,
       exportData: this.exportData, importData: this.importData, resetDemo: this.resetDemo, clearContent: this.clearContent,
       sbUrl: this.state.sbUrl, sbKey: this.state.sbKey, sbMsg: this.state.sbMsg,
       sbStatusLabel: sbInfo.label, sbBadgeBg: sbInfo.bg, sbBadgeColor: sbInfo.color,
