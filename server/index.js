@@ -96,7 +96,7 @@ function safeJoin(root, requestPath) {
 }
 
 function findStaticFile(urlPath) {
-  const normalized = urlPath === "/" || urlPath === "/admin" || urlPath.startsWith("/admin/")
+  const normalized = urlPath === "/" || urlPath === "/dev" || urlPath.startsWith("/dev/")
     ? "/index.html"
     : urlPath;
   for (const base of STATIC_ROOTS) {
@@ -573,7 +573,7 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, 200, { ok: true }, [adminAuth.clearSessionCookie()]);
     }
 
-    if ((url.pathname === "/admin" || url.pathname.startsWith("/admin/")) && req.method === "GET") {
+    if ((url.pathname === "/dev" || url.pathname.startsWith("/dev/")) && req.method === "GET") {
       const adminIndex = path.join(rootDir, "index.html");
       res.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8",

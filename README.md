@@ -5,7 +5,7 @@ Arquitetura separando o front do acesso ao banco, com deploy na Vercel e Supabas
 ## Estrutura
 
 - `index.html`: interface principal.
-- `admin` rota: painel administrativo separado via `/admin`.
+- `dev` rota: painel administrativo separado via `/dev`.
 - `styles.css`: estilos do site.
 - `support.js`: runtime do componente.
 - `api/state.js`: função serverless da Vercel para ler e gravar o estado.
@@ -38,7 +38,7 @@ npm start
 
 - O navegador conversa só com `/api/state`.
 - A Vercel lê e grava no Supabase com a `service role key`.
-- O painel de edição fica em `/admin` e exige login com sessão assinada no servidor.
+- O painel de edição fica em `/dev` e exige login com sessão assinada no servidor.
 - As tabelas ficam normalizadas e os dados são agregados no servidor para o painel.
 
 ### Como gerar o hash do admin
