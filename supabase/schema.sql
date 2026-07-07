@@ -106,8 +106,39 @@ alter table public.album_photos enable row level security;
 alter table public.posts enable row level security;
 alter table public.attendance enable row level security;
 
-insert into public.site_settings (id) values ('main')
-on conflict (id) do nothing;
+insert into public.site_settings (
+  id,
+  hero_badge,
+  hero_title,
+  hero_title_2,
+  hero_text,
+  next_game_place,
+  about_title,
+  about_text,
+  pix_mensalidade,
+  pix_avulso
+) values (
+  'main',
+  'Clube de voleibol',
+  'Xirras',
+  'Voleibol Club',
+  'Treino, raça e união dentro e fora da areia. O Xirras nasceu para competir, evoluir e celebrar cada ponto como um time de verdade.',
+  'Próximo jogo: agenda em atualização',
+  'Quem somos',
+  'O Xirras Voleibol Club reúne atletas, amigos e apaixonados pelo jogo em torno de treinos, partidas e eventos que fortalecem o grupo.',
+  'PIX mensalidade: consulte o admin',
+  'PIX avulso: consulte o admin'
+)
+on conflict (id) do update set
+  hero_badge = excluded.hero_badge,
+  hero_title = excluded.hero_title,
+  hero_title_2 = excluded.hero_title_2,
+  hero_text = excluded.hero_text,
+  next_game_place = excluded.next_game_place,
+  about_title = excluded.about_title,
+  about_text = excluded.about_text,
+  pix_mensalidade = excluded.pix_mensalidade,
+  pix_avulso = excluded.pix_avulso;
 
 insert into public.highlights (id) values ('main')
 on conflict (id) do nothing;

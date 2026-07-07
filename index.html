@@ -2353,16 +2353,16 @@
           return {
             site: {
               heroImage: '',
-              heroBadge: '',
-              heroTitle: '',
-              heroTitle2: '',
-              heroText: '',
-              nextGamePlace: '',
-              aboutTitle: '',
-              aboutText: '',
+              heroBadge: 'Clube de voleibol',
+              heroTitle: 'Xirras',
+              heroTitle2: 'Voleibol Club',
+              heroText: 'Treino, raça e união dentro e fora da areia. O Xirras nasceu para competir, evoluir e celebrar cada ponto como um time de verdade.',
+              nextGamePlace: 'Próximo jogo: agenda em atualização',
+              aboutTitle: 'Quem somos',
+              aboutText: 'O Xirras Voleibol Club reúne atletas, amigos e apaixonados pelo jogo em torno de treinos, partidas e eventos que fortalecem o grupo.',
               foundedDate: '',
-              pixMensalidade: '',
-              pixAvulso: '',
+              pixMensalidade: 'PIX mensalidade: consulte o admin',
+              pixAvulso: 'PIX avulso: consulte o admin',
             },
             highlight: null,
             members: [],
@@ -2612,8 +2612,21 @@
         merge(s) {
           const d = this.defaults();
           if (!s || typeof s !== 'object') return d;
+          const site = Object.assign({}, d.site, s.site || {});
           return {
-            site: Object.assign({}, d.site, s.site || {}),
+            site: {
+              heroImage: site.heroImage || d.site.heroImage,
+              heroBadge: site.heroBadge || d.site.heroBadge,
+              heroTitle: site.heroTitle || d.site.heroTitle,
+              heroTitle2: site.heroTitle2 || d.site.heroTitle2,
+              heroText: site.heroText || d.site.heroText,
+              nextGamePlace: site.nextGamePlace || d.site.nextGamePlace,
+              aboutTitle: site.aboutTitle || d.site.aboutTitle,
+              aboutText: site.aboutText || d.site.aboutText,
+              foundedDate: site.foundedDate || d.site.foundedDate,
+              pixMensalidade: site.pixMensalidade || d.site.pixMensalidade,
+              pixAvulso: site.pixAvulso || d.site.pixAvulso,
+            },
             highlight: s.highlight !== undefined ? s.highlight : d.highlight,
             members: Array.isArray(s.members) ? s.members.map(m => ({ id: m.id, nome: m.nome || '', apelido: m.apelido || '', foto: m.foto || null, stats: Object.assign({ jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 }, m.stats || {}) })) : d.members,
             games: Array.isArray(s.games) ? s.games : d.games,
