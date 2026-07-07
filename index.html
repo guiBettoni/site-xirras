@@ -32,7 +32,7 @@
                   >Xirras<span class="xirras-style-7">Voleibol Club</span></span
                 >
               </a>
-              <nav class="xirras-style-8">
+              <nav class="xirras-style-8 xirras-style-8--desktop">
                 <a href="#integrantes" class="xirras-style-9">Integrantes</a>
                 <a href="#ranking" class="xirras-style-9">Ranking</a>
                 <a href="#presenca" class="xirras-style-9">Presença</a>
@@ -40,6 +40,27 @@
                 <a href="#galeria" class="xirras-style-9">Galeria</a>
               </nav>
               <div class="xirras-style-10">
+                <button
+                  onClick="{{ toggleMobileMenu }}"
+                  aria-label="Abrir menu"
+                  aria-expanded="{{ mobileMenuOpen }}"
+                  class="xirras-style-11 xirras-style-11--menu"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M4 7h16" />
+                    <path d="M4 12h16" />
+                    <path d="M4 17h16" />
+                  </svg>
+                </button>
                 <button
                   onClick="{{ toggleTheme }}"
                   aria-label="Alternar tema"
@@ -82,9 +103,46 @@
                       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg
                   ></sc-if>
                 </button>
+              </div>
             </div>
-          </div>
-        </header>
+          </header>
+          <sc-if
+            value="{{ mobileMenuOpen }}"
+            hint-placeholder-val="{{ false }}"
+          >
+            <nav class="xirras-style-8-mobile">
+              <a
+                href="#integrantes"
+                onClick="{{ closeMobileMenu }}"
+                class="xirras-style-9"
+                >Integrantes</a
+              >
+              <a
+                href="#ranking"
+                onClick="{{ closeMobileMenu }}"
+                class="xirras-style-9"
+                >Ranking</a
+              >
+              <a
+                href="#presenca"
+                onClick="{{ closeMobileMenu }}"
+                class="xirras-style-9"
+                >Presença</a
+              >
+              <a
+                href="#jogos"
+                onClick="{{ closeMobileMenu }}"
+                class="xirras-style-9"
+                >Jogos</a
+              >
+              <a
+                href="#galeria"
+                onClick="{{ closeMobileMenu }}"
+                class="xirras-style-9"
+                >Galeria</a
+              >
+            </nav>
+          </sc-if>
 
           <main>
             <!-- HERO -->
@@ -125,7 +183,7 @@
                 <p class="xirras-style-22">{{ site.heroText }}</p>
                 <div class="xirras-style-23">
                   <a href="#integrantes" class="xirras-style-24"
-                    >Ver integrantes
+                    >Conhecer o time
                     <svg
                       width="16"
                       height="16"
@@ -138,6 +196,25 @@
                     >
                       <path d="m9 18 6-6-6-6" /></svg
                   ></a>
+                  <a href="#jogos" class="xirras-style-25">Ver agenda</a>
+                </div>
+                <div class="xirras-style-31a">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <path d="M16 2v4" />
+                    <path d="M8 2v4" />
+                    <path d="M3 10h18" />
+                  </svg>
+                  <span>{{ site.nextGamePlace }}</span>
                 </div>
               </div>
               <div class="xirras-style-26">
@@ -1857,8 +1934,9 @@
                           onInput="{{ onAlbum }}"
                           class="xirras-style-212"
                         />
-                        <p class="xirras-style-242" style="margin: 0;">
-                          Você pode usar a capa por URL ou enviar fotos direto do dispositivo.
+                        <p class="xirras-style-242" style="margin: 0">
+                          Você pode usar a capa por URL ou enviar fotos direto
+                          do dispositivo.
                         </p>
                         <div class="xirras-style-227">
                           <label class="xirras-style-217"
@@ -2147,12 +2225,15 @@
                         Essa é a imagem de fundo do hero. Você pode colar uma
                         URL ou enviar um arquivo para trocar a foto principal.
                       </p>
-                      <div class="xirras-style-154" style="aspect-ratio: 16 / 9; padding: 0;">
+                      <div
+                        class="xirras-style-154"
+                        style="aspect-ratio: 16 / 9; padding: 0"
+                      >
                         <img
                           src="{{ heroImagePreviewSrc }}"
                           alt="Preview da imagem do topo"
                           class="xirras-style-155"
-                          style="object-fit: cover;"
+                          style="object-fit: cover"
                         />
                       </div>
                       <label class="xirras-style-243">URL da imagem</label>
@@ -2163,7 +2244,7 @@
                         placeholder="https://..."
                         class="xirras-style-212"
                       />
-                      <label class="xirras-style-217" style="cursor: pointer;">
+                      <label class="xirras-style-217" style="cursor: pointer">
                         <svg
                           width="15"
                           height="15"
@@ -2174,7 +2255,9 @@
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         >
-                          <path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7" />
+                          <path
+                            d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"
+                          />
                           <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
                           <circle cx="9" cy="9" r="2" />
                           <path d="M16 19h6" />
@@ -2188,7 +2271,7 @@
                           class="xirras-style-218"
                         />
                       </label>
-                      <div class="xirras-style-242" style="margin-top: 10px;">
+                      <div class="xirras-style-242" style="margin-top: 10px">
                         <sc-if value="{{ heroImageFileName }}">
                           Arquivo selecionado: {{ heroImageFileName }}
                         </sc-if>
@@ -2211,7 +2294,7 @@
                         onInput="{{ onSite }}"
                         class="xirras-style-212"
                       />
-                      <label class="xirras-style-243">Frase do topo</label>
+                      <label class="xirras-style-243">Mensagem principal</label>
                       <textarea
                         data-field="heroText"
                         onInput="{{ onSite }}"
@@ -2220,7 +2303,7 @@
 {{ adminSite.heroText }}</textarea
                       >
                       <label class="xirras-style-243"
-                        >Local do próximo jogo</label
+                        >Próximo jogo / agenda</label
                       >
                       <input
                         data-field="nextGamePlace"
@@ -2356,8 +2439,8 @@
               heroBadge: 'Clube de voleibol',
               heroTitle: 'Xirras',
               heroTitle2: 'Voleibol Club',
-              heroText: 'Treino, raça e união dentro e fora da areia. O Xirras nasceu para competir, evoluir e celebrar cada ponto como um time de verdade.',
-              nextGamePlace: 'Próximo jogo: agenda em atualização',
+              heroText: 'Acompanhe treinos, jogos e o dia a dia do Xirras em um só lugar.',
+              nextGamePlace: 'Próximo jogo · Confira a agenda',
               aboutTitle: 'Quem somos',
               aboutText: 'O Xirras Voleibol Club reúne atletas, amigos e apaixonados pelo jogo em torno de treinos, partidas e eventos que fortalecem o grupo.',
               foundedDate: '',
@@ -2394,6 +2477,7 @@
             adminLoginUser: '',
             adminLoginPassword: '',
             adminAuthMsg: '',
+            mobileMenuOpen: false,
           };
           this.adminRoute = typeof window !== 'undefined' && (window.location.pathname === '/dev' || window.location.pathname.startsWith('/dev/'));
         }
@@ -2649,6 +2733,8 @@
         sorted() { return [...this.state.data.members].sort((a,b)=>{ const k=['pontos','mvp','vitorias','jogos']; for(const key of k){ const diff=b.stats[key]-a.stats[key]; if(diff!==0) return diff;} return a.nome.localeCompare(b.nome,'pt-BR'); }); }
 
         toggleTheme = () => { const theme = this.state.theme === 'dark' ? 'light' : 'dark'; this.setState({ theme }); };
+        toggleMobileMenu = () => this.setState((state) => ({ mobileMenuOpen: !state.mobileMenuOpen }));
+        closeMobileMenu = () => this.setState({ mobileMenuOpen: false });
         setTab = (e) => this.setState({ adminTab: e.currentTarget.dataset.tab });
 
         onSite = (e) => { const f = e.currentTarget.dataset.field; const v = e.currentTarget.value; this.setAdminData(d => ({ ...d, site: { ...d.site, [f]: v } })); };
@@ -2791,7 +2877,8 @@
           return Object.assign({
             setRoot: this.setRoot,
             theme, isDark: theme === 'dark', isLight: theme === 'light',
-            toggleTheme: this.toggleTheme, openAdmin: this.openAdmin, closeAdmin: this.closeAdmin, setTab: this.setTab,
+            toggleTheme: this.toggleTheme, toggleMobileMenu: this.toggleMobileMenu, closeMobileMenu: this.closeMobileMenu, openAdmin: this.openAdmin, closeAdmin: this.closeAdmin, setTab: this.setTab,
+            mobileMenuOpen: this.state.mobileMenuOpen,
             adminOpen: this.state.adminOpen,
             showAdminLoading: this.adminRoute && !this.state.adminAuthReady,
             showAdminLogin: this.adminRoute && this.state.adminAuthReady && !this.state.adminAuthed,
