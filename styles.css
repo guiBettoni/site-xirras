@@ -2185,33 +2185,56 @@ section[id] {
 
 @media (max-width: 640px) {
   .xirras-style-18 {
-    padding: 84px 16px 150px;
-    gap: 14px;
+    padding: 72px 14px 130px;
+    gap: 12px;
+  }
+  .xirras-style-19 {
+    font-size: 11px;
+    padding: 6px 14px;
   }
   .xirras-style-20 {
-    font-size: clamp(44px, 14vw, 76px);
+    font-size: clamp(36px, 11vw, 56px);
+    margin-bottom: 2px;
   }
   .xirras-style-22 {
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 1.5;
   }
   .xirras-style-23 {
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 10px;
   }
   .xirras-style-24,
   .xirras-style-25 {
-    flex: 1 1 0;
-    justify-content: center;
-    min-width: 0;
-    white-space: nowrap;
+    flex: 1 1 calc(50% - 5px);
+    min-height: 44px;
+    font-size: 13px;
+    padding: 0 16px;
+    white-space: normal;
+  }
+  .xirras-style-31a {
+    padding: 8px 12px;
+    font-size: 12px;
+    gap: 6px;
+  }
+  .xirras-style-31a svg {
+    width: 14px;
+    height: 14px;
   }
   .xirras-style-27 {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .xirras-style-28 {
-    padding: 18px 10px;
+    padding: 16px 12px;
+  }
+  .xirras-style-29 {
+    font-size: clamp(28px, 4vw, 42px);
+  }
+  .xirras-style-30 {
+    font-size: 11px;
   }
 }
 
