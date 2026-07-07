@@ -2459,6 +2459,16 @@
         constructor(props) {
           super(props);
           const data = this.defaults();
+
+          // Try to load cached data from localStorage to avoid flash
+          try {
+            const cached = window.localStorage.getItem('xirras-site-data');
+            if (cached) {
+              const parsed = JSON.parse(cached);
+              Object.assign(data, parsed);
+            }
+          } catch (e) {}
+
           const theme = (props && props.startTheme) || 'dark';
           this.state = {
             data,
@@ -2536,8 +2546,12 @@
             if (data && Object.keys(data).length) {
               const merged = this.merge(data);
               this.setState({ data: merged, sbStatus: 'online', sbMsg: '' });
+              // Update cache with server data (server is source of truth)
+              try {
+                window.localStorage.setItem('xirras-site-data', JSON.stringify(merged));
+              } catch (e) {}
             } else {
-              this.setState({ sbStatus: 'online', sbMsg: 'Conectado. Nenhum conte?do foi encontrado no banco ainda.' });
+              this.setState({ sbStatus: 'online', sbMsg: 'Conectado. Nenhum conteúdo foi encontrado no banco ainda.' });
             }
           } catch (err) {
             this.setState({ sbStatus: 'error', sbMsg: (err && err.message) || 'Falha ao conectar com a API.' });
@@ -2548,8 +2562,14 @@
           this.setState({ sbStatus: 'connecting', sbMsg: '' });
           try {
             const data = await this.fetchState();
-            if (data) { const merged = this.merge(data); this.setState({ data: merged, sbStatus: 'online' }); }
-            else this.setState({ sbStatus: 'online' });
+            if (data) {
+              const merged = this.merge(data);
+              this.setState({ data: merged, sbStatus: 'online' });
+              // Update cache with server data
+              try {
+                window.localStorage.setItem('xirras-site-data', JSON.stringify(merged));
+              } catch (e) {}
+            } else this.setState({ sbStatus: 'online' });
           } catch (err) { this.setState({ sbStatus: 'error', sbMsg: (err && err.message) || 'Falha ao recarregar.' }); }
         };
         checkAdminSession = async () => {
@@ -2689,6 +2709,10 @@
           if (!res.ok || !payload.ok) {
             throw new Error(payload.error || 'Erro ao salvar no banco.');
           }
+          // Cache the data locally to avoid flash on next load
+          try {
+            window.localStorage.setItem('xirras-site-data', JSON.stringify(data));
+          } catch (e) {}
           return true;
         }
         onAdminLoginUser = (e) => this.setState({ adminLoginUser: e.currentTarget.value });
