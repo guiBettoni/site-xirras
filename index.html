@@ -938,6 +938,95 @@
               </div>
             </section>
 
+            <!-- HALL DE DESTAQUES -->
+            <section id="halldestaques" class="xirras-style-78" style="order:{{ ordHallDestaques }}; {{ dispHallDestaques }}">
+              <div class="xirras-style-32">
+                <span class="xirras-style-33">Histórico</span>
+                <h2 class="xirras-style-112">Hall de Destaques</h2>
+                <sc-if
+                  value="{{ hasMvpHistory }}"
+                  hint-placeholder-val="{{ true }}"
+                >
+                  <div class="xirras-style-113">
+                    <sc-for
+                      list="{{ mvpHistoryView }}"
+                      as="h"
+                      hint-placeholder-count="2"
+                    >
+                      <article class="xirras-style-114">
+                        <span class="xirras-style-117">{{ h.metaLabel }}</span>
+                        <h3 class="xirras-style-118">{{ h.mvp }}</h3>
+                        <sc-if
+                          value="{{ h.hasHighlight }}"
+                          hint-placeholder-val="{{ false }}"
+                        >
+                          <p class="xirras-style-125">
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="var(--primary)"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="xirras-style-126"
+                            >
+                              <path
+                                d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+                              />
+                              <path
+                                d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+                              />
+                            </svg>
+                            {{ h.highlightText }}
+                          </p>
+                        </sc-if>
+                      </article>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if
+                  value="{{ noMvpHistory }}"
+                  hint-placeholder-val="{{ false }}"
+                >
+                  <div class="xirras-style-129">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--primary)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="xirras-style-126"
+                    >
+                      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                      <path d="M4 22h16" />
+                      <path
+                        d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
+                      />
+                      <path
+                        d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
+                      />
+                      <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                    </svg>
+                    <div>
+                      <h3 class="xirras-style-130">
+                        Nenhum destaque de jogo ainda
+                      </h3>
+                      <p class="xirras-style-131">
+                        Defina o MVP ou o destaque de um jogo no painel admin
+                        e ele aparece aqui.
+                      </p>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </section>
+
             <!-- GALERIA -->
             <section id="galeria" class="xirras-style-132" style="order:{{ ordGaleria }}; {{ dispGaleria }}">
               <div class="xirras-style-32">
@@ -2691,6 +2780,7 @@
               { id: 'presenca', label: 'Presença', visible: true },
               { id: 'destaque', label: 'Destaque da semana', visible: true },
               { id: 'jogos', label: 'Jogos', visible: true },
+              { id: 'halldestaques', label: 'Hall de Destaques', visible: true },
               { id: 'galeria', label: 'Galeria', visible: true },
               { id: 'mural', label: 'Mural', visible: true },
               { id: 'sobre', label: 'Sobre', visible: true },
@@ -3215,6 +3305,8 @@
             return { id: g.id, title: g.title, metaLabel: this.fmt(g.eventDate) + (g.time ? (' · ' + g.time) : '') + ' • ' + (g.matchType === 'externo' ? 'Externo' : 'Interno'), location: g.location, hasLocation: !!g.location, teamA: g.teamA, teamB: g.teamB, scoreA: g.scoreA == null ? '-' : String(g.scoreA), scoreB: g.scoreB == null ? '-' : String(g.scoreB), colorA: aWon ? 'var(--primary)' : 'var(--fg)', colorB: bWon ? 'var(--primary)' : 'var(--fg)', hasHighlight: !!g.highlightText, highlightText: g.highlightText, hasResult: !!g.result, result: g.result, hasMvp: !!g.mvp, mvp: g.mvp || '', hasPhotos: gp.length > 0, photos: gp.map((url, i) => ({ url, alt: (g.title || 'Jogo') + ' foto ' + (i + 1) })) };
           });
 
+          const mvpHistoryView = gamesSorted.filter(g => !!g.mvp).map(g => ({ id: g.id, mvp: g.mvp, metaLabel: this.fmt(g.eventDate) + (g.title ? (' — ' + g.title) : '') + (g.teamA && g.teamB ? (' · ' + g.teamA + ' vs ' + g.teamB) : ''), hasHighlight: !!g.highlightText, highlightText: g.highlightText || '' }));
+
           const albumsView = d.albums.map(a => { const c = (a.photos || []).length; return { id: a.id, title: a.title, dateLabel: this.fmt(a.eventDate), cover: a.coverUrl, hasCover: !!a.coverUrl, noCover: !a.coverUrl, countLabel: c + (c === 1 ? ' foto' : ' fotos') }; });
 
           const postsSorted = [...d.posts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -3275,6 +3367,7 @@
             pubName: this.state.pubName, attMsg: this.state.attMsg, onPubName: this.onPubName, confirmPresence: this.confirmPresence,
             highlightExists: !!hl, hl: hlView,
             gamesView, hasGames: gamesView.length > 0, noGames: gamesView.length === 0,
+            mvpHistoryView, hasMvpHistory: mvpHistoryView.length > 0, noMvpHistory: mvpHistoryView.length === 0,
             albumsView, hasAlbums: albumsView.length > 0, noAlbums: albumsView.length === 0, openAlbum: this.openAlbum, closeAlbum: this.closeAlbum,
             lbOpen: !!lbAlbum, lb,
             postsView, hasPosts: postsView.length > 0, noPosts: postsView.length === 0,
@@ -3288,6 +3381,7 @@
             showPresenca: vis('presenca'), ordPresenca: ord('presenca'), dispPresenca: disp('presenca'),
             ordDestaque: ord('destaque'), dispDestaque: (vis('destaque') && !!d.highlight) ? '' : 'display:none',
             showJogos: vis('jogos'), ordJogos: ord('jogos'), dispJogos: disp('jogos'),
+            showHallDestaques: vis('halldestaques'), ordHallDestaques: ord('halldestaques'), dispHallDestaques: disp('halldestaques'),
             showGaleria: vis('galeria'), ordGaleria: ord('galeria'), dispGaleria: disp('galeria'),
             showMural: vis('mural'), ordMural: ord('mural'), dispMural: disp('mural'),
             showSobre: vis('sobre'), ordSobre: ord('sobre'), dispSobre: disp('sobre'),
