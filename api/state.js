@@ -174,6 +174,7 @@ function aggregateState(rows) {
           }
         : {}),
     },
+    config: (site && site.config && typeof site.config === "object") ? site.config : {},
     highlight: highlight
       ? {
           id: highlight.id,
@@ -209,6 +210,9 @@ function aggregateState(rows) {
       scoreB: g.score_b === null || g.score_b === undefined ? null : normalizeInt(g.score_b),
       result: normalizeText(g.result),
       highlightText: normalizeText(g.highlight_text),
+      time: normalizeText(g.game_time),
+      mvp: normalizeText(g.mvp),
+      photos: Array.isArray(g.photos) ? g.photos : [],
     })),
     albums: albums.map((a) => ({
       id: a.id,
@@ -236,6 +240,7 @@ function aggregateState(rows) {
       id: a.id,
       name: normalizeText(a.name),
       status: normalizeText(a.status, "Confirmado"),
+      gameId: normalizeText(a.game_id),
     })),
   };
 }
@@ -296,6 +301,9 @@ function toGameRow(game) {
     score_b: game.scoreB === null || game.scoreB === undefined || game.scoreB === "" ? null : normalizeInt(game.scoreB),
     result: normalizeText(game.result),
     highlight_text: normalizeText(game.highlightText),
+    game_time: normalizeText(game.time),
+    mvp: normalizeText(game.mvp),
+    photos: Array.isArray(game.photos) ? game.photos : [],
   };
 }
 
@@ -325,6 +333,7 @@ function toAttendanceRow(item) {
     id: item.id,
     name: normalizeText(item.name),
     status: normalizeText(item.status, "Confirmado"),
+    game_id: normalizeText(item.gameId),
   };
 }
 
@@ -373,6 +382,7 @@ async function saveState(data) {
         founded_date: normalizeDate(site.foundedDate),
         pix_mensalidade: normalizeText(site.pixMensalidade),
         pix_avulso: normalizeText(site.pixAvulso),
+        config: (payload.config && typeof payload.config === "object" && !Array.isArray(payload.config)) ? payload.config : {},
         updated_at: new Date().toISOString(),
       }),
     }),

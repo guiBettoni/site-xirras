@@ -25,6 +25,12 @@ create table if not exists public.site_settings (
 alter table public.site_settings
   add column if not exists hero_image_url text;
 
+-- Camada flexivel de configuracao do CMS: SEO, redes sociais, endereco,
+-- e ordem/visibilidade das secoes. Guardada como JSON para permitir
+-- evoluir o painel sem novas migracoes a cada campo.
+alter table public.site_settings
+  add column if not exists config jsonb not null default '{}'::jsonb;
+
 create table if not exists public.highlights (
   id            text primary key default 'main',
   player_name   text not null default '',
@@ -60,8 +66,16 @@ create table if not exists public.games (
   score_b       integer,
   result        text not null default '',
   highlight_text text not null default '',
+  game_time     text not null default '',
+  mvp           text not null default '',
+  photos        jsonb not null default '[]'::jsonb,
   updated_at    timestamptz not null default now()
 );
+
+-- Colunas adicionais (idempotente para bancos ja existentes)
+alter table public.games add column if not exists game_time text not null default '';
+alter table public.games add column if not exists mvp text not null default '';
+alter table public.games add column if not exists photos jsonb not null default '[]'::jsonb;
 
 create table if not exists public.albums (
   id         text primary key,
@@ -94,8 +108,11 @@ create table if not exists public.attendance (
   id         text primary key,
   name       text not null default '',
   status     text not null default 'Confirmado',
+  game_id    text not null default '',
   updated_at timestamptz not null default now()
 );
+
+alter table public.attendance add column if not exists game_id text not null default '';
 
 alter table public.site_settings enable row level security;
 alter table public.highlights enable row level security;

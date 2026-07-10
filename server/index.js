@@ -11,6 +11,10 @@ const SUPABASE_URL = String(process.env.SUPABASE_URL || env.SUPABASE_URL || "").
 const SUPABASE_SERVICE_ROLE_KEY = String(
   process.env.SUPABASE_SERVICE_ROLE_KEY || env.SUPABASE_SERVICE_ROLE_KEY || ""
 ).trim();
+const STORAGE_BUCKET = String(process.env.SUPABASE_STORAGE_BUCKET || env.SUPABASE_STORAGE_BUCKET || "media").trim();
+const MAX_UPLOAD_BYTES = 8 * 1024 * 1024;
+const ALLOWED_MIME = new Set(["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"]);
+const EXT_BY_MIME = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif", "image/svg+xml": "svg" };
 const adminAuth = buildAdminAuth({
   username: process.env.ADMIN_USERNAME || env.ADMIN_USERNAME,
   passwordSalt: process.env.ADMIN_PASSWORD_SALT || env.ADMIN_PASSWORD_SALT,
@@ -227,6 +231,7 @@ function aggregateState(rows) {
           }
         : {}),
     },
+    config: (site && site.config && typeof site.config === "object") ? site.config : {},
     highlight: highlight
       ? {
           id: highlight.id,
@@ -262,6 +267,9 @@ function aggregateState(rows) {
       scoreB: g.score_b === null || g.score_b === undefined ? null : normalizeInt(g.score_b),
       result: normalizeText(g.result),
       highlightText: normalizeText(g.highlight_text),
+      time: normalizeText(g.game_time),
+      mvp: normalizeText(g.mvp),
+      photos: Array.isArray(g.photos) ? g.photos : [],
     })),
     albums: albums.map((a) => ({
       id: a.id,
@@ -289,6 +297,7 @@ function aggregateState(rows) {
       id: a.id,
       name: normalizeText(a.name),
       status: normalizeText(a.status, "Confirmado"),
+      gameId: normalizeText(a.game_id),
     })),
   };
 }
@@ -320,6 +329,9 @@ function toGameRow(game) {
     score_b: game.scoreB === null || game.scoreB === undefined || game.scoreB === "" ? null : normalizeInt(game.scoreB),
     result: normalizeText(game.result),
     highlight_text: normalizeText(game.highlightText),
+    game_time: normalizeText(game.time),
+    mvp: normalizeText(game.mvp),
+    photos: Array.isArray(game.photos) ? game.photos : [],
   };
 }
 
@@ -349,6 +361,7 @@ function toAttendanceRow(item) {
     id: item.id,
     name: normalizeText(item.name),
     status: normalizeText(item.status, "Confirmado"),
+    game_id: normalizeText(item.gameId),
   };
 }
 
@@ -397,6 +410,7 @@ async function saveState(data) {
         founded_date: normalizeDate(site.foundedDate),
         pix_mensalidade: normalizeText(site.pixMensalidade),
         pix_avulso: normalizeText(site.pixAvulso),
+        config: (payload.config && typeof payload.config === "object" && !Array.isArray(payload.config)) ? payload.config : {},
         updated_at: new Date().toISOString(),
       }),
     }),
@@ -527,6 +541,68 @@ async function getState() {
     posts,
     attendance,
   });
+}
+
+function readBinaryBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    let length = 0;
+    req.on("data", (chunk) => {
+      length += chunk.length;
+      if (length > MAX_UPLOAD_BYTES) {
+        reject(Object.assign(new Error("Imagem muito grande (máx. 8 MB)."), { status: 413 }));
+        req.destroy();
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on("end", () => resolve(Buffer.concat(chunks)));
+    req.on("error", reject);
+  });
+}
+
+function slugify(name) {
+  return String(name || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 48);
+}
+
+function buildObjectPath(fileName, contentType) {
+  const dot = String(fileName || "").lastIndexOf(".");
+  const rawExt = dot > -1 ? String(fileName).slice(dot + 1).toLowerCase() : "";
+  const ext = (rawExt && /^[a-z0-9]{1,5}$/.test(rawExt) ? rawExt : EXT_BY_MIME[contentType]) || "bin";
+  const base = slugify(dot > -1 ? String(fileName).slice(0, dot) : fileName) || "imagem";
+  const stamp = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  return `${base}-${stamp}.${ext}`;
+}
+
+async function uploadToStorage(objectPath, buffer, contentType) {
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+    throw Object.assign(new Error("Defina SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY no .env."), { status: 503 });
+  }
+  const endpoint = `${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${encodeURI(objectPath)}`;
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_SERVICE_ROLE_KEY,
+      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+      "Content-Type": contentType,
+      "x-upsert": "true",
+      "Cache-Control": "public, max-age=31536000, immutable",
+    },
+    body: buffer,
+  });
+  if (!response.ok) {
+    const text = await response.text();
+    let message = text || response.statusText;
+    try { const j = JSON.parse(text); message = j.message || j.error || message; } catch {}
+    throw Object.assign(new Error(message || "Falha ao enviar a imagem."), { status: response.status });
+  }
+  return `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${encodeURI(objectPath)}`;
 }
 
 const server = http.createServer(async (req, res) => {

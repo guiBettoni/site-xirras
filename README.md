@@ -9,8 +9,10 @@ Arquitetura separando o front do acesso ao banco, com deploy na Vercel e Supabas
 - `styles.css`: estilos do site.
 - `support.js`: runtime do componente.
 - `api/state.js`: função serverless da Vercel para ler e gravar o estado.
+- `api/upload.js`: função serverless que envia imagens para o Supabase Storage (sem base64 no banco).
 - `server/index.js`: servidor Node para desenvolvimento local.
 - `supabase/schema.sql`: schema normalizado do banco.
+- `supabase/storage.sql`: cria o bucket público `media` para as imagens.
 - `public/`: imagens públicas.
 - `uploads/`: imagens do projeto.
 
@@ -22,11 +24,27 @@ Crie um `.env` na raiz com:
 PORT=3000
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=...
+SUPABASE_STORAGE_BUCKET=media
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD_SALT=...
 ADMIN_PASSWORD_HASH=...
 ADMIN_SESSION_SECRET=...
 ```
+
+> `SUPABASE_STORAGE_BUCKET` é opcional (padrão `media`). Rode `supabase/schema.sql` e `supabase/storage.sql` uma vez no SQL Editor do Supabase antes do primeiro uso. O `schema.sql` é idempotente: rode de novo após atualizar para aplicar as colunas novas (`config`, `game_time`, `mvp`, `photos`, `attendance.game_id`).
+
+## Painel administrável (CMS)
+
+Quase todo o conteúdo é editável em `/dev` (login), sem tocar no código:
+
+- **Marca/textos:** logo, imagem do topo, textos do hero e do "Sobre", Pix, fundação.
+- **SEO e compartilhamento:** título, descrição e imagem (Open Graph/Twitter) — aplicados dinamicamente; favicon automático.
+- **Redes e contato:** Instagram, WhatsApp, e-mail e endereço (aparecem no rodapé).
+- **Seções do site:** reordenar (subir/descer) e mostrar/ocultar cada bloco da home.
+- **Integrantes, Ranking, Destaque, Mural, Galeria.**
+- **Jogos:** cadastro completo (data, horário, tipo, local, times, placar, resultado, destaque, **MVP** e **fotos** da partida).
+- **Presença por jogo:** cada confirmação fica vinculada a uma partida; a home mostra os confirmados do próximo jogo.
+- **Imagens** vão para o Supabase Storage (bucket `media`); o banco guarda só a URL.
 
 ## Rodar local
 
@@ -36,8 +54,9 @@ npm start
 
 ## Fluxo de dados
 
-- O navegador conversa só com `/api/state`.
+- O navegador conversa só com `/api/state` (conteúdo) e `/api/upload` (imagens).
 - A Vercel lê e grava no Supabase com a `service role key`.
+- As imagens enviadas pelo painel vão para o Supabase Storage (bucket `media`); o banco guarda apenas a URL pública, não o base64.
 - O painel de edição fica em `/dev` e exige login com sessão assinada no servidor.
 - As tabelas ficam normalizadas e os dados são agregados no servidor para o painel.
 
