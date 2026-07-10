@@ -41,6 +41,11 @@ create table if not exists public.highlights (
   updated_at    timestamptz not null default now()
 );
 
+-- Cada destaque agora aponta pra um jogo especifico e a tabela passa a
+-- guardar uma linha por destaque (historico completo), em vez de uma
+-- unica linha 'main' sobrescrita a cada edicao.
+alter table public.highlights add column if not exists game_id text not null default '';
+
 create table if not exists public.members (
   id         text primary key,
   nome       text not null default '',

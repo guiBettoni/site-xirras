@@ -192,7 +192,7 @@ function defaults() {
       pixMensalidade: "PIX mensalidade: consulte o admin",
       pixAvulso: "PIX avulso: consulte o admin",
     },
-    highlight: null,
+    highlights: [],
     members: [],
     games: [],
     albums: [],
@@ -204,7 +204,7 @@ function defaults() {
 function aggregateState(rows) {
   const d = defaults();
   const site = firstRow(rows.site_settings);
-  const highlight = firstRow(rows.highlights);
+  const highlights = rows.highlights || [];
   const members = rows.members || [];
   const games = rows.games || [];
   const albums = rows.albums || [];
@@ -232,16 +232,14 @@ function aggregateState(rows) {
         : {}),
     },
     config: (site && site.config && typeof site.config === "object") ? site.config : {},
-    highlight: highlight
-      ? {
-          id: highlight.id,
-          playerName: normalizeText(highlight.player_name),
-          weekLabel: normalizeText(highlight.week_label),
-          reason: normalizeText(highlight.reason),
-          votes: normalizeInt(highlight.votes),
-          playerPhoto: highlight.player_photo || null,
-        }
-      : null,
+    highlights: highlights.map((h) => ({
+      id: h.id,
+      gameId: normalizeText(h.game_id),
+      playerName: normalizeText(h.player_name),
+      reason: normalizeText(h.reason),
+      votes: normalizeInt(h.votes),
+      playerPhoto: h.player_photo || null,
+    })),
     members: members.map((m) => ({
       id: m.id,
       nome: normalizeText(m.nome),
@@ -316,6 +314,17 @@ function toMemberRow(member) {
   };
 }
 
+function toHighlightRow(highlight) {
+  return {
+    id: highlight.id,
+    game_id: normalizeText(highlight.gameId),
+    player_name: normalizeText(highlight.playerName),
+    reason: normalizeText(highlight.reason),
+    votes: normalizeInt(highlight.votes),
+    player_photo: highlight.playerPhoto || null,
+  };
+}
+
 function toGameRow(game) {
   return {
     id: game.id,
@@ -377,7 +386,7 @@ async function clearTable(table, filter = "id=not.is.null") {
 async function saveState(data) {
   const payload = data && typeof data === "object" ? data : defaults();
   const site = payload.site || {};
-  const highlight = payload.highlight;
+  const highlights = Array.isArray(payload.highlights) ? payload.highlights : [];
   const members = Array.isArray(payload.members) ? payload.members : [];
   const games = Array.isArray(payload.games) ? payload.games : [];
   const albums = Array.isArray(payload.albums) ? payload.albums : [];
@@ -387,59 +396,46 @@ async function saveState(data) {
   await Promise.all([
     clearTable("album_photos"),
     clearTable("attendance"),
+    clearTable("highlights"),
     clearTable("games"),
     clearTable("posts"),
     clearTable("albums"),
     clearTable("members"),
   ]);
 
-  await Promise.all([
-    requestSupabase("site_settings?on_conflict=id", {
-      method: "POST",
-      headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
-      body: JSON.stringify({
-        id: "main",
-        hero_image_url: normalizeText(site.heroImage),
-        hero_badge: normalizeText(site.heroBadge),
-        hero_title: normalizeText(site.heroTitle),
-        hero_title_2: normalizeText(site.heroTitle2),
-        hero_text: normalizeText(site.heroText),
-        next_game_place: normalizeText(site.nextGamePlace),
-        about_title: normalizeText(site.aboutTitle),
-        about_text: normalizeText(site.aboutText),
-        founded_date: normalizeDate(site.foundedDate),
-        pix_mensalidade: normalizeText(site.pixMensalidade),
-        pix_avulso: normalizeText(site.pixAvulso),
-        config: (payload.config && typeof payload.config === "object" && !Array.isArray(payload.config)) ? payload.config : {},
-        updated_at: new Date().toISOString(),
-      }),
+  await requestSupabase("site_settings?on_conflict=id", {
+    method: "POST",
+    headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+    body: JSON.stringify({
+      id: "main",
+      hero_image_url: normalizeText(site.heroImage),
+      hero_badge: normalizeText(site.heroBadge),
+      hero_title: normalizeText(site.heroTitle),
+      hero_title_2: normalizeText(site.heroTitle2),
+      hero_text: normalizeText(site.heroText),
+      next_game_place: normalizeText(site.nextGamePlace),
+      about_title: normalizeText(site.aboutTitle),
+      about_text: normalizeText(site.aboutText),
+      founded_date: normalizeDate(site.foundedDate),
+      pix_mensalidade: normalizeText(site.pixMensalidade),
+      pix_avulso: normalizeText(site.pixAvulso),
+      config: (payload.config && typeof payload.config === "object" && !Array.isArray(payload.config)) ? payload.config : {},
+      updated_at: new Date().toISOString(),
     }),
-    requestSupabase("highlights?on_conflict=id", {
+  });
+
+  if (highlights.length) {
+    await requestSupabase("highlights?on_conflict=id", {
       method: "POST",
       headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
       body: JSON.stringify(
-        highlight
-          ? {
-              id: "main",
-              player_name: normalizeText(highlight.playerName),
-              week_label: normalizeText(highlight.weekLabel),
-              reason: normalizeText(highlight.reason),
-              votes: normalizeInt(highlight.votes),
-              player_photo: highlight.playerPhoto || null,
-              updated_at: new Date().toISOString(),
-            }
-          : {
-              id: "main",
-              player_name: "",
-              week_label: "Destaque da semana",
-              reason: "",
-              votes: 0,
-              player_photo: null,
-              updated_at: new Date().toISOString(),
-            }
+        highlights.map((item) => ({
+          ...toHighlightRow(item),
+          updated_at: new Date().toISOString(),
+        }))
       ),
-    }),
-  ]);
+    });
+  }
 
   if (members.length) {
     await requestSupabase("members?on_conflict=id", {

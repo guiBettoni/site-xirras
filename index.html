@@ -661,11 +661,15 @@
                         />
                         <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
                       </svg>
-                      {{ hl.weekLabel }}</span
+                      {{ hl.badgeLabel }}</span
                     >
                     <h2 class="xirras-style-101">{{ hl.playerName }}</h2>
                     <p class="xirras-style-102">{{ hl.reason }}</p>
                     <div class="xirras-style-103">
+                      <sc-if
+                        value="{{ hl.hasVotes }}"
+                        hint-placeholder-val="{{ false }}"
+                      >
                       <span class="xirras-style-104"
                         ><svg
                           width="16"
@@ -684,6 +688,7 @@
                         </svg>
                         {{ hl.votes }} votos registrados</span
                       >
+                      </sc-if>
                       <span class="xirras-style-105"
                         ><svg
                           width="20"
@@ -944,50 +949,110 @@
                 <span class="xirras-style-33">Histórico</span>
                 <h2 class="xirras-style-112">Hall de Destaques</h2>
                 <sc-if
-                  value="{{ hasMvpHistory }}"
+                  value="{{ hasHighlightHistory }}"
                   hint-placeholder-val="{{ true }}"
                 >
                   <div class="xirras-style-113">
                     <sc-for
-                      list="{{ mvpHistoryView }}"
+                      list="{{ highlightHistoryView }}"
                       as="h"
                       hint-placeholder-count="2"
                     >
-                      <article class="xirras-style-114">
-                        <span class="xirras-style-117">{{ h.metaLabel }}</span>
-                        <h3 class="xirras-style-118">{{ h.mvp }}</h3>
+                      <article
+                        class="xirras-style-114"
+                        data-id="{{ h.id }}"
+                        onClick="{{ toggleHighlightCard }}"
+                        style="cursor:pointer"
+                      >
+                        <div style="display:flex; align-items:center; gap:12px">
+                          <sc-if
+                            value="{{ h.hasPhoto }}"
+                            hint-placeholder-val="{{ false }}"
+                          >
+                            <img
+                              src="{{ h.photo }}"
+                              alt=""
+                              style="width:48px; height:48px; border-radius:50%; object-fit:cover; flex:none"
+                            />
+                          </sc-if>
+                          <sc-if
+                            value="{{ h.noPhoto }}"
+                            hint-placeholder-val="{{ true }}"
+                          >
+                            <div
+                              class="xirras-style-109"
+                              style="width:48px; height:48px; font-size:16px; flex:none"
+                            >
+                              {{ h.initials }}
+                            </div>
+                          </sc-if>
+                          <div style="flex:1; min-width:0">
+                            <span class="xirras-style-117">{{ h.metaLabel }}</span>
+                            <h3 class="xirras-style-118" style="font-size:18px">
+                              {{ h.playerName }}
+                            </h3>
+                          </div>
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="var(--muted-fg)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            style="flex:none"
+                          >
+                            <path d="m6 9 6 6 6-6" />
+                          </svg>
+                        </div>
                         <sc-if
-                          value="{{ h.hasHighlight }}"
+                          value="{{ h.isExpanded }}"
                           hint-placeholder-val="{{ false }}"
                         >
-                          <p class="xirras-style-125">
-                            <svg
-                              width="16"
-                              height="16"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="var(--primary)"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              class="xirras-style-126"
+                          <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border)">
+                            <sc-if
+                              value="{{ h.hasReason }}"
+                              hint-placeholder-val="{{ false }}"
                             >
-                              <path
-                                d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
-                              />
-                              <path
-                                d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
-                              />
-                            </svg>
-                            {{ h.highlightText }}
-                          </p>
+                              <p class="xirras-style-125">
+                                <svg
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="var(--primary)"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  class="xirras-style-126"
+                                >
+                                  <path
+                                    d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+                                  />
+                                  <path
+                                    d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+                                  />
+                                </svg>
+                                {{ h.reason }}
+                              </p>
+                            </sc-if>
+                            <sc-if
+                              value="{{ h.hasVotes }}"
+                              hint-placeholder-val="{{ false }}"
+                            >
+                              <p style="margin:12px 0 0; font-size:14px; color:var(--muted-fg)">
+                                {{ h.votes }} votos registrados
+                              </p>
+                            </sc-if>
+                          </div>
                         </sc-if>
                       </article>
                     </sc-for>
                   </div>
                 </sc-if>
                 <sc-if
-                  value="{{ noMvpHistory }}"
+                  value="{{ noHighlightHistory }}"
                   hint-placeholder-val="{{ false }}"
                 >
                   <div class="xirras-style-129">
@@ -1018,8 +1083,8 @@
                         Nenhum destaque de jogo ainda
                       </h3>
                       <p class="xirras-style-131">
-                        Defina o MVP ou o destaque de um jogo no painel admin
-                        e ele aparece aqui.
+                        Adicione um destaque apontando pra um jogo no painel
+                        admin e ele aparece aqui.
                       </p>
                     </div>
                   </div>
@@ -1687,55 +1752,108 @@
                   value="{{ isTab_destaque }}"
                   hint-placeholder-val="{{ true }}"
                 >
-                  <div class="xirras-style-199">
-                    <label class="xirras-style-200">Nome do destaque</label>
-                    <input
-                      data-field="playerName"
-                      value="{{ adminHighlight.playerName }}"
-                      onInput="{{ onHighlight }}"
-                      placeholder="Nome do integrante"
-                      class="xirras-style-201"
-                    />
-                    <label class="xirras-style-200">Título / semana</label>
-                    <input
-                      data-field="weekLabel"
-                      value="{{ adminHighlight.weekLabel }}"
-                      onInput="{{ onHighlight }}"
-                      placeholder="Destaque da semana"
-                      class="xirras-style-201"
-                    />
-                    <label class="xirras-style-200">Motivo</label>
-                    <textarea
-                      data-field="reason"
-                      onInput="{{ onHighlight }}"
-                      placeholder="Por que essa pessoa foi destaque?"
-                      class="xirras-style-202"
+                  <div class="xirras-style-206">
+                    <sc-for
+                      list="{{ adminHighlights }}"
+                      as="h"
+                      hint-placeholder-count="2"
                     >
-{{ adminHighlight.reason }}</textarea
-                    >
-                    <label class="xirras-style-200">Votos</label>
-                    <input
-                      data-field="votes"
-                      type="number"
-                      value="{{ adminHighlight.votes }}"
-                      onInput="{{ onHighlight }}"
-                      class="xirras-style-203"
-                    />
-                    <label class="xirras-style-200">Foto do destaque</label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange="{{ onHighlightPhoto }}"
-                      class="xirras-style-204"
-                    />
-                    <div>
-                      <button
-                        onClick="{{ clearHighlight }}"
-                        class="xirras-style-205"
+                      <div class="xirras-style-221">
+                        <select
+                          data-id="{{ h.id }}"
+                          data-field="gameId"
+                          value="{{ h.gameId }}"
+                          onChange="{{ onHighlight }}"
+                          class="xirras-style-223"
+                        >
+                          <sc-for
+                            list="{{ gameOptions }}"
+                            as="go"
+                            hint-placeholder-count="2"
+                          >
+                            <option value="{{ go.id }}">{{ go.label }}</option>
+                          </sc-for>
+                        </select>
+                        <input
+                          data-id="{{ h.id }}"
+                          data-field="playerName"
+                          value="{{ h.playerName }}"
+                          onInput="{{ onHighlight }}"
+                          placeholder="Nome do destaque"
+                          class="xirras-style-212"
+                        />
+                        <textarea
+                          data-id="{{ h.id }}"
+                          data-field="reason"
+                          onInput="{{ onHighlight }}"
+                          placeholder="Por que essa pessoa foi destaque?"
+                          class="xirras-style-202"
+                        >
+{{ h.reason }}</textarea
+                        >
+                        <input
+                          data-id="{{ h.id }}"
+                          data-field="votes"
+                          type="number"
+                          value="{{ h.votes }}"
+                          onInput="{{ onHighlight }}"
+                          placeholder="Votos"
+                          class="xirras-style-212"
+                        />
+                        <label class="xirras-style-217" style="cursor: pointer">
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"/><circle cx="12" cy="8" r="2"/><rect width="16" height="16" x="6" y="2" rx="2"/></svg>
+                          Adicionar foto do destaque
+                          <input
+                            data-id="{{ h.id }}"
+                            type="file"
+                            accept="image/*"
+                            onChange="{{ onHighlightPhoto }}"
+                            class="xirras-style-218"
+                          />
+                        </label>
+                        <sc-if
+                          value="{{ h.hasPhoto }}"
+                          hint-placeholder-val="{{ false }}"
+                        >
+                          <div style="position:relative; width:72px; aspect-ratio:1; overflow:hidden; border-radius:8px; border:1px solid var(--border)">
+                            <img src="{{ h.playerPhoto }}" alt="" style="width:100%; height:100%; object-fit:cover"/>
+                            <button
+                              data-id="{{ h.id }}"
+                              onClick="{{ removeHighlightPhoto }}"
+                              aria-label="Remover foto"
+                              style="position:absolute; top:3px; right:3px; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; border:none; border-radius:6px; background:var(--destructive); color:#fff; cursor:pointer"
+                            >
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </button>
+                          </div>
+                        </sc-if>
+                        <div>
+                          <button
+                            data-id="{{ h.id }}"
+                            onClick="{{ removeHighlight }}"
+                            class="xirras-style-226"
+                          >
+                            Remover destaque
+                          </button>
+                        </div>
+                      </div>
+                    </sc-for>
+                    <button onClick="{{ addHighlight }}" class="xirras-style-220">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
                       >
-                        Remover destaque
-                      </button>
-                    </div>
+                        <path d="M5 12h14" />
+                        <path d="M12 5v14" />
+                      </svg>
+                      Adicionar destaque
+                    </button>
                   </div>
                 </sc-if>
 
@@ -2759,7 +2877,7 @@
               pixMensalidade: 'PIX mensalidade: consulte o admin',
               pixAvulso: 'PIX avulso: consulte o admin',
             },
-            highlight: null,
+            highlights: [],
             members: [],
             games: [],
             albums: [],
@@ -2839,6 +2957,7 @@
             adminLoginPassword: '',
             adminAuthMsg: '',
             mobileMenuOpen: false,
+            expandedHighlightId: null,
           };
           this.adminRoute = typeof window !== 'undefined' && (window.location.pathname === '/dev' || window.location.pathname.startsWith('/dev/'));
         }
@@ -3087,7 +3206,9 @@
               pixMensalidade: site.pixMensalidade || d.site.pixMensalidade,
               pixAvulso: site.pixAvulso || d.site.pixAvulso,
             },
-            highlight: s.highlight !== undefined ? s.highlight : d.highlight,
+            highlights: Array.isArray(s.highlights)
+              ? s.highlights.map(h => ({ id: h.id, gameId: h.gameId || '', playerName: h.playerName || '', reason: h.reason || '', votes: Number(h.votes) || 0, playerPhoto: h.playerPhoto || null }))
+              : (s.highlight ? [{ id: s.highlight.id || ('h' + Date.now()), gameId: '', playerName: s.highlight.playerName || '', reason: s.highlight.reason || '', votes: Number(s.highlight.votes) || 0, playerPhoto: s.highlight.playerPhoto || null }] : d.highlights),
             members: Array.isArray(s.members) ? s.members.map(m => ({ id: m.id, nome: m.nome || '', apelido: m.apelido || '', foto: m.foto || null, stats: Object.assign({ jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 }, m.stats || {}) })) : d.members,
             games: Array.isArray(s.games) ? s.games : d.games,
             albums: Array.isArray(s.albums) ? s.albums.map(a => ({ id:a.id, title:a.title||'', eventDate:a.eventDate||'', coverUrl:a.coverUrl||null, photos: Array.isArray(a.photos)?a.photos:[] })) : d.albums,
@@ -3195,9 +3316,12 @@
         addMember = () => this.setAdminData(d => ({ ...d, members: [...d.members, { id: 'm' + Date.now(), nome: 'Novo integrante', apelido: '', foto: null, stats: { jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 } }] }));
         removeMember = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, members: d.members.filter(m => m.id !== id) })); };
 
-        onHighlight = (e) => { const f = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setAdminData(d => { const hl = d.highlight ? { ...d.highlight } : { playerName:'', weekLabel:'Destaque da semana', reason:'', votes:0, playerPhoto:null }; hl[f] = f === 'votes' ? (Number(raw)||0) : raw; return { ...d, highlight: hl }; }); };
-        onHighlightPhoto = (e) => { const f = e.currentTarget.files[0]; e.currentTarget.value = ''; if (!f) return; this.withUpload(async () => { const url = await this.uploadFile(f); this.setAdminData(d => { const hl = d.highlight ? { ...d.highlight } : { playerName:'', weekLabel:'Destaque da semana', reason:'', votes:0, playerPhoto:null }; hl.playerPhoto = url; return { ...d, highlight: hl }; }); }); };
-        clearHighlight = () => this.setAdminData(d => ({ ...d, highlight: null }));
+        onHighlight = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setAdminData(d => ({ ...d, highlights: d.highlights.map(h => String(h.id) === String(id) ? { ...h, [field]: field === 'votes' ? (Number(raw) || 0) : raw } : h) })); };
+        addHighlight = () => { this.setAdminData(d => ({ ...d, highlights: [{ id: 'h' + Date.now(), gameId: '', playerName: '', reason: '', votes: 0, playerPhoto: null }, ...d.highlights] })); };
+        removeHighlight = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, highlights: d.highlights.filter(h => String(h.id) !== String(id)) })); };
+        onHighlightPhoto = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; e.currentTarget.value = ''; if (!f) return; this.withUpload(async () => { const url = await this.uploadFile(f); this.setAdminData(d => ({ ...d, highlights: d.highlights.map(h => String(h.id) === String(id) ? { ...h, playerPhoto: url } : h) })); }); };
+        removeHighlightPhoto = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, highlights: d.highlights.map(h => String(h.id) === String(id) ? { ...h, playerPhoto: null } : h) })); };
+        toggleHighlightCard = (e) => { const id = e.currentTarget.dataset.id; this.setState(s => ({ expandedHighlightId: String(s.expandedHighlightId) === String(id) ? null : id })); };
 
         onGame = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; const num = field === 'scoreA' || field === 'scoreB'; this.setAdminData(d => ({ ...d, games: d.games.map(g => { if (String(g.id) !== String(id)) return g; let v = raw; if (num) v = raw === '' ? null : (Number(raw) || 0); return { ...g, [field]: v }; }) })); };
         addGame = () => { const iso = new Date().toISOString().slice(0,10); this.setAdminData(d => ({ ...d, games: [{ id: 'g' + Date.now(), eventDate: iso, title: 'Novo jogo', location: '', matchType: 'interno', teamA: 'Xirras A', teamB: 'Xirras B', scoreA: null, scoreB: null, result: '', highlightText: '', time: '', mvp: '', photos: [] }, ...d.games] })); };
@@ -3255,7 +3379,7 @@
 
         exportData = () => { try { const blob = new Blob([JSON.stringify(this.state.adminOpen && this.state.adminData ? this.state.adminData : this.state.data, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'xirras-backup.json'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); } catch (e) {} };
         importData = (e) => { const f = e.currentTarget.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { try { const parsed = JSON.parse(r.result); const data = this.merge(parsed); if (this.state.adminOpen) { this.setState({ adminData: data }); } else { this.setState({ data }); this.persist(data).catch((err) => this.setState({ sbStatus: 'error', sbMsg: (err && err.message) || 'Erro ao salvar no banco.' })); } } catch (err) { alert('Arquivo de backup inválido.'); } }; r.readAsText(f); };
-        clearContent = () => { const data = this.defaults(); const cleared = { ...data, highlight: null, games: [], albums: [], posts: [], attendance: [], members: data.members.map(m => ({ ...m, stats: { jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 } })) }; if (this.state.adminOpen) { this.setState({ adminData: cleared }); } else { this.setState({ data: cleared }); this.persist(cleared).catch((err) => this.setState({ sbStatus: 'error', sbMsg: (err && err.message) || 'Erro ao salvar no banco.' })); } };
+        clearContent = () => { const data = this.defaults(); const cleared = { ...data, highlights: [], games: [], albums: [], posts: [], attendance: [], members: data.members.map(m => ({ ...m, stats: { jogos:0,vitorias:0,derrotas:0,pontos:0,mvp:0 } })) }; if (this.state.adminOpen) { this.setState({ adminData: cleared }); } else { this.setState({ data: cleared }); this.persist(cleared).catch((err) => this.setState({ sbStatus: 'error', sbMsg: (err && err.message) || 'Erro ao salvar no banco.' })); } };
 
         renderVals() {
           const d = this.state.data;
@@ -3305,15 +3429,42 @@
             return { id: g.id, title: g.title, metaLabel: this.fmt(g.eventDate) + (g.time ? (' · ' + g.time) : '') + ' • ' + (g.matchType === 'externo' ? 'Externo' : 'Interno'), location: g.location, hasLocation: !!g.location, teamA: g.teamA, teamB: g.teamB, scoreA: g.scoreA == null ? '-' : String(g.scoreA), scoreB: g.scoreB == null ? '-' : String(g.scoreB), colorA: aWon ? 'var(--primary)' : 'var(--fg)', colorB: bWon ? 'var(--primary)' : 'var(--fg)', hasHighlight: !!g.highlightText, highlightText: g.highlightText, hasResult: !!g.result, result: g.result, hasMvp: !!g.mvp, mvp: g.mvp || '', hasPhotos: gp.length > 0, photos: gp.map((url, i) => ({ url, alt: (g.title || 'Jogo') + ' foto ' + (i + 1) })) };
           });
 
-          const mvpHistoryView = gamesSorted.filter(g => !!g.mvp).map(g => ({ id: g.id, mvp: g.mvp, metaLabel: this.fmt(g.eventDate) + (g.title ? (' — ' + g.title) : '') + (g.teamA && g.teamB ? (' · ' + g.teamA + ' vs ' + g.teamB) : ''), hasHighlight: !!g.highlightText, highlightText: g.highlightText || '' }));
-
           const albumsView = d.albums.map(a => { const c = (a.photos || []).length; return { id: a.id, title: a.title, dateLabel: this.fmt(a.eventDate), cover: a.coverUrl, hasCover: !!a.coverUrl, noCover: !a.coverUrl, countLabel: c + (c === 1 ? ' foto' : ' fotos') }; });
 
           const postsSorted = [...d.posts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
           const postsView = postsSorted.map(p => ({ id: p.id, title: p.title, content: p.content, category: p.category, author: p.author, dateLabel: this.fmt(p.createdAt), image: p.imageUrl, hasImage: !!p.imageUrl, noImage: !p.imageUrl }));
 
-          const hl = d.highlight;
-          const hlView = hl ? { playerName: hl.playerName, weekLabel: hl.weekLabel, reason: hl.reason, votes: hl.votes, photo: hl.playerPhoto, hasPhoto: !!hl.playerPhoto, noPhoto: !hl.playerPhoto, initials: this.initials(hl.playerName) } : { playerName:'', weekLabel:'', reason:'', votes:0, photo:null, hasPhoto:false, noPhoto:true, initials:'' };
+          const gameLabelOfPub = (g) => (this.fmt(g.eventDate) + (g.title ? (' — ' + g.title) : ''));
+          const pubGameById = {}; d.games.forEach(g => { pubGameById[g.id] = g; });
+          const validHighlights = d.highlights.filter(h => !!(h.playerName && h.playerName.trim()));
+          const highlightsSorted = [...validHighlights].sort((a, b) => {
+            const ga = pubGameById[a.gameId], gb = pubGameById[b.gameId];
+            const da = ga ? new Date(ga.eventDate || 0).getTime() : 0;
+            const db = gb ? new Date(gb.eventDate || 0).getTime() : 0;
+            if (da !== db) return db - da;
+            return String(b.id).localeCompare(String(a.id));
+          });
+          const hl = highlightsSorted[0] || null;
+          const hlGame = hl ? pubGameById[hl.gameId] : null;
+          const hlView = hl ? { playerName: hl.playerName, reason: hl.reason, votes: hl.votes, hasVotes: (hl.votes || 0) > 0, photo: hl.playerPhoto, hasPhoto: !!hl.playerPhoto, noPhoto: !hl.playerPhoto, initials: this.initials(hl.playerName), badgeLabel: 'Destaque do jogo' + (hlGame ? (' · ' + gameLabelOfPub(hlGame)) : '') } : { playerName:'', reason:'', votes:0, hasVotes:false, photo:null, hasPhoto:false, noPhoto:true, initials:'', badgeLabel:'Destaque do jogo' };
+          const expandedHighlightId = this.state.expandedHighlightId;
+          const highlightHistoryView = highlightsSorted.map(h => {
+            const g = pubGameById[h.gameId];
+            return {
+              id: h.id,
+              playerName: h.playerName,
+              initials: this.initials(h.playerName),
+              metaLabel: g ? gameLabelOfPub(g) : 'Jogo não especificado',
+              hasReason: !!h.reason,
+              reason: h.reason || '',
+              votes: h.votes || 0,
+              hasVotes: (h.votes || 0) > 0,
+              photo: h.playerPhoto || null,
+              hasPhoto: !!h.playerPhoto,
+              noPhoto: !h.playerPhoto,
+              isExpanded: String(expandedHighlightId) === String(h.id),
+            };
+          });
 
           const lbId = this.state.lightbox;
           const lbAlbum = lbId ? d.albums.find(a => String(a.id) === String(lbId)) : null;
@@ -3327,7 +3478,7 @@
           const adminAlbums = adminSource.albums.map(a => { const c = (a.photos || []).length; return { id: a.id, title: a.title, eventDate: a.eventDate, countLabel: c + (c === 1 ? ' foto' : ' fotos') }; });
           const adminPosts = adminSource.posts.map(p => ({ id: p.id, title: p.title, content: p.content, category: p.category, author: p.author }));
           const adminAttendance = adminSource.attendance.map(a => ({ id: a.id, name: a.name, gameLabel: a.gameId ? (gameLabelById[a.gameId] || 'Jogo removido') : 'Geral' }));
-          const adminHighlight = adminSource.highlight ? { playerName: adminSource.highlight.playerName, weekLabel: adminSource.highlight.weekLabel, reason: adminSource.highlight.reason, votes: adminSource.highlight.votes } : { playerName: '', weekLabel: 'Destaque da semana', reason: '', votes: 0 };
+          const adminHighlights = adminSource.highlights.map(h => ({ id: h.id, gameId: h.gameId || '', playerName: h.playerName || '', reason: h.reason || '', votes: h.votes || 0, playerPhoto: h.playerPhoto || null, hasPhoto: !!h.playerPhoto }));
 
           const sbMap = {
             off: { label: 'Pronto para sincronizar', bg: 'color-mix(in oklab,var(--muted) 60%,transparent)', color: 'var(--muted-fg)' },
@@ -3367,7 +3518,7 @@
             pubName: this.state.pubName, attMsg: this.state.attMsg, onPubName: this.onPubName, confirmPresence: this.confirmPresence,
             highlightExists: !!hl, hl: hlView,
             gamesView, hasGames: gamesView.length > 0, noGames: gamesView.length === 0,
-            mvpHistoryView, hasMvpHistory: mvpHistoryView.length > 0, noMvpHistory: mvpHistoryView.length === 0,
+            highlightHistoryView, hasHighlightHistory: highlightHistoryView.length > 0, noHighlightHistory: highlightHistoryView.length === 0,
             albumsView, hasAlbums: albumsView.length > 0, noAlbums: albumsView.length === 0, openAlbum: this.openAlbum, closeAlbum: this.closeAlbum,
             lbOpen: !!lbAlbum, lb,
             postsView, hasPosts: postsView.length > 0, noPosts: postsView.length === 0,
@@ -3379,7 +3530,7 @@
             showIntegrantes: vis('integrantes'), ordIntegrantes: ord('integrantes'), dispIntegrantes: disp('integrantes'),
             showRanking: vis('ranking'), ordRanking: ord('ranking'), dispRanking: disp('ranking'),
             showPresenca: vis('presenca'), ordPresenca: ord('presenca'), dispPresenca: disp('presenca'),
-            ordDestaque: ord('destaque'), dispDestaque: (vis('destaque') && !!d.highlight) ? '' : 'display:none',
+            ordDestaque: ord('destaque'), dispDestaque: (vis('destaque') && !!hl) ? '' : 'display:none',
             showJogos: vis('jogos'), ordJogos: ord('jogos'), dispJogos: disp('jogos'),
             showHallDestaques: vis('halldestaques'), ordHallDestaques: ord('halldestaques'), dispHallDestaques: disp('halldestaques'),
             showGaleria: vis('galeria'), ordGaleria: ord('galeria'), dispGaleria: disp('galeria'),
@@ -3392,7 +3543,7 @@
             hasEmail: !!(social.email && String(social.email).trim()), emailAddr: social.email || '',
             hasAddress: !!(contact.address && String(contact.address).trim()), addressText: contact.address || '',
             mapsUrl: contact.mapsUrl || (contact.address ? ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(contact.address)) : ''),
-            adminMembers, adminGames, adminAlbums, adminPosts, adminAttendance, adminHighlight,
+            adminMembers, adminGames, adminAlbums, adminPosts, adminAttendance, adminHighlights,
             newAtt: this.state.newAtt,
             onSite: this.onSite,
             onAdminLoginUser: this.onAdminLoginUser,
@@ -3401,7 +3552,7 @@
             clearHeroImage: this.clearHeroImage,
             heroImageFileName: adminSource.heroImageFileName || '',
             onMember: this.onMember, onMemberPhoto: this.onMemberPhoto, addMember: this.addMember, removeMember: this.removeMember,
-            onHighlight: this.onHighlight, onHighlightPhoto: this.onHighlightPhoto, clearHighlight: this.clearHighlight,
+            onHighlight: this.onHighlight, onHighlightPhoto: this.onHighlightPhoto, addHighlight: this.addHighlight, removeHighlight: this.removeHighlight, removeHighlightPhoto: this.removeHighlightPhoto, toggleHighlightCard: this.toggleHighlightCard,
             onGame: this.onGame, addGame: this.addGame, removeGame: this.removeGame,
             onAlbum: this.onAlbum, onAlbumCover: this.onAlbumCover, onAlbumPhoto: this.onAlbumPhoto, addAlbum: this.addAlbum, removeAlbum: this.removeAlbum,
             onPost: this.onPost, onPostImage: this.onPostImage, addPost: this.addPost, removePost: this.removePost,
