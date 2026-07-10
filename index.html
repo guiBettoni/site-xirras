@@ -1619,6 +1619,14 @@
         <!-- PAINEL ADMIN -->
         <sc-if value="{{ adminOpen }}" hint-placeholder-val="{{ false }}">
           <div class="xirras-style-188">
+            <sc-if value="{{ saveToast }}" hint-placeholder-val="">
+              <div
+                style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:80; display:flex; align-items:center; gap:8px; padding:12px 20px; border-radius:999px; background:var(--primary); color:var(--primary-fg); font-family:Oswald,sans-serif; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.04em; box-shadow:0 10px 30px rgba(0,0,0,0.35)"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                {{ saveToast }}
+              </div>
+            </sc-if>
             <div class="xirras-style-189">
               <div class="xirras-style-190">
                 <div class="xirras-style-191">
@@ -2958,6 +2966,8 @@
             adminAuthMsg: '',
             mobileMenuOpen: false,
             expandedHighlightId: null,
+            saveToast: '',
+            saveToastTick: 0,
           };
           this.adminRoute = typeof window !== 'undefined' && (window.location.pathname === '/dev' || window.location.pathname.startsWith('/dev/'));
         }
@@ -3155,13 +3165,17 @@
           this.setState({ sbStatus: 'saving', sbMsg: '' });
           try {
             await this.persist(data);
+            const tick = this.state.saveToastTick + 1;
             this.setState({
               data,
               adminOpen: this.adminRoute,
               adminData: this.adminRoute ? this.cloneData(data) : null,
               sbStatus: 'online',
               sbMsg: 'Alterações salvas.',
+              saveToast: 'Alterações salvas',
+              saveToastTick: tick,
             });
+            setTimeout(() => { if (this.state.saveToastTick === tick) this.setState({ saveToast: '' }); }, 2500);
           } catch (err) {
             this.setState({ sbStatus: 'error', sbMsg: (err && err.message) || 'Erro ao salvar no banco.' });
           }
@@ -3351,8 +3365,10 @@
         };
         addAlbum = () => { const iso = new Date().toISOString().slice(0,10); this.setAdminData(d => ({ ...d, albums: [{ id: 'al' + Date.now(), title: 'Novo álbum', eventDate: iso, coverUrl: null, photos: [] }, ...d.albums] })); };
         removeAlbum = (e) => { const id = e.currentTarget.dataset.id; this.setAdminData(d => ({ ...d, albums: d.albums.filter(a => String(a.id) !== String(id)) })); };
-        openAlbum = (e) => { const id = e.currentTarget.dataset.id; this.setState({ lightbox: id }); };
-        closeAlbum = () => this.setState({ lightbox: null });
+        openAlbum = (e) => { const id = e.currentTarget.dataset.id; this.setState({ lightbox: id, photoLightboxIndex: null }); };
+        closeAlbum = () => this.setState({ lightbox: null, photoLightboxIndex: null });
+        openPhoto = (e) => { e.stopPropagation(); const idx = Number(e.currentTarget.dataset.idx); this.setState({ photoLightboxIndex: idx }); };
+        closePhoto = (e) => { if (e) e.stopPropagation(); this.setState({ photoLightboxIndex: null }); };
 
         onPost = (e) => { const id = e.currentTarget.dataset.id; const field = e.currentTarget.dataset.field; const raw = e.currentTarget.value; this.setAdminData(d => ({ ...d, posts: d.posts.map(p => String(p.id) === String(id) ? { ...p, [field]: raw } : p) })); };
         onPostImage = (e) => { const id = e.currentTarget.dataset.id; const f = e.currentTarget.files[0]; e.currentTarget.value = ''; if (!f) return; this.withUpload(async () => { const url = await this.uploadFile(f); this.setAdminData(d => ({ ...d, posts: d.posts.map(p => String(p.id) === String(id) ? { ...p, imageUrl: url } : p) })); }); };
@@ -3468,7 +3484,13 @@
 
           const lbId = this.state.lightbox;
           const lbAlbum = lbId ? d.albums.find(a => String(a.id) === String(lbId)) : null;
-          const lb = lbAlbum ? { title: lbAlbum.title, dateLabel: this.fmt(lbAlbum.eventDate), photos: (lbAlbum.photos || []).map(p => ({ url: p.url, caption: p.caption || '' })), hasPhotos: (lbAlbum.photos || []).length > 0, noPhotos: (lbAlbum.photos || []).length === 0 } : { title:'', dateLabel:'', photos:[], hasPhotos:false, noPhotos:true };
+          const lb = lbAlbum ? { title: lbAlbum.title, dateLabel: this.fmt(lbAlbum.eventDate), photos: (lbAlbum.photos || []).map((p, i) => ({ url: p.url, caption: p.caption || '', idx: i })), hasPhotos: (lbAlbum.photos || []).length > 0, noPhotos: (lbAlbum.photos || []).length === 0 } : { title:'', dateLabel:'', photos:[], hasPhotos:false, noPhotos:true };
+          const photoLightboxIndex = this.state.photoLightboxIndex;
+          const photoLightboxPhoto = (lbAlbum && photoLightboxIndex != null && Array.isArray(lbAlbum.photos)) ? lbAlbum.photos[photoLightboxIndex] : null;
+          const photoLightboxOpen = !!photoLightboxPhoto;
+          const photoLightboxUrl = photoLightboxPhoto ? photoLightboxPhoto.url : '';
+          const photoLightboxCaption = photoLightboxPhoto ? (photoLightboxPhoto.caption || '') : '';
+          const photoLightboxHasCaption = !!photoLightboxCaption;
 
           const adminMembers = adminSource.members.map(m => ({ id: m.id, nome: m.nome, apelido: m.apelido, foto: m.foto, hasFoto: !!m.foto, noFoto: !m.foto, initials: this.initials(m.nome), jogos: m.stats.jogos, vitorias: m.stats.vitorias, derrotas: m.stats.derrotas, pontos: m.stats.pontos, mvp: m.stats.mvp }));
           const gameLabelOf = (g) => (this.fmt(g.eventDate) + (g.title ? (' — ' + g.title) : ''));
@@ -3559,7 +3581,7 @@
             onNewAtt: this.onNewAtt, addAttendance: this.addAttendance, removeAttendance: this.removeAttendance,
             onNewAttGame: this.onNewAttGame, newAttGame: this.state.newAttGame, gameOptions,
             onGamePhoto: this.onGamePhoto, removeGamePhoto: this.removeGamePhoto,
-            saveAdmin: this.saveAdmin, discardChanges: this.discardChanges,
+            saveAdmin: this.saveAdmin, discardChanges: this.discardChanges, saveToast: this.state.saveToast,
             loginAdmin: this.loginAdmin, logoutAdmin: this.logoutAdmin,
             adminLoginUser: this.state.adminLoginUser,
             adminLoginPassword: this.state.adminLoginPassword,
