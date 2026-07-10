@@ -2151,8 +2151,13 @@ section[id] {
     display: inline-flex;
   }
   .xirras-style-8-mobile {
-    position: relative;
-    z-index: 35;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    z-index: 39;
+    max-height: calc(100svh - 72px);
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 14px;
