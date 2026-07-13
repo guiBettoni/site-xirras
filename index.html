@@ -144,9 +144,9 @@
             </nav>
           </sc-if>
 
-          <main style="display:flex; flex-direction:column">
+          <main style="display: flex; flex-direction: column">
             <!-- HERO -->
-            <section id="topo" class="xirras-style-13" style="order:-1">
+            <section id="topo" class="xirras-style-13" style="order: -1">
               <div class="xirras-style-14">
                 <img
                   src="{{ heroImageSrc }}"
@@ -302,7 +302,11 @@
             </section>
 
             <!-- INTEGRANTES -->
-            <section id="integrantes" class="xirras-style-31" style="order:{{ ordIntegrantes }}; {{ dispIntegrantes }}">
+            <section
+              id="integrantes"
+              class="xirras-style-31"
+              style="order:{{ ordIntegrantes }}; {{ dispIntegrantes }}"
+            >
               <div class="xirras-style-32">
                 <span class="xirras-style-33">Integrantes</span>
                 <h2 class="xirras-style-34">Elenco do Xirras</h2>
@@ -396,7 +400,11 @@
             </section>
 
             <!-- RANKING -->
-            <section id="ranking" class="xirras-style-55" style="order:{{ ordRanking }}; {{ dispRanking }}">
+            <section
+              id="ranking"
+              class="xirras-style-55"
+              style="order:{{ ordRanking }}; {{ dispRanking }}"
+            >
               <div class="xirras-style-32">
                 <div class="xirras-style-56">
                   <div>
@@ -501,7 +509,11 @@
             </section>
 
             <!-- PRESENÇA -->
-            <section id="presenca" class="xirras-style-78" style="order:{{ ordPresenca }}; {{ dispPresenca }}">
+            <section
+              id="presenca"
+              class="xirras-style-78"
+              style="order:{{ ordPresenca }}; {{ dispPresenca }}"
+            >
               <div class="xirras-style-79">
                 <div class="xirras-style-80">
                   <span class="xirras-style-81"
@@ -635,7 +647,10 @@
               value="{{ highlightExists }}"
               hint-placeholder-val="{{ true }}"
             >
-              <section class="xirras-style-96" style="order:{{ ordDestaque }}; {{ dispDestaque }}">
+              <section
+                class="xirras-style-96"
+                style="order:{{ ordDestaque }}; {{ dispDestaque }}"
+              >
                 <div class="xirras-style-97"></div>
                 <div class="xirras-style-98">
                   <div class="xirras-style-99">
@@ -670,24 +685,24 @@
                         value="{{ hl.hasVotes }}"
                         hint-placeholder-val="{{ false }}"
                       >
-                      <span class="xirras-style-104"
-                        ><svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="var(--primary)"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                        <span class="xirras-style-104"
+                          ><svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="var(--primary)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M7 10v12" />
+                            <path
+                              d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"
+                            />
+                          </svg>
+                          {{ hl.votes }} votos registrados</span
                         >
-                          <path d="M7 10v12" />
-                          <path
-                            d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"
-                          />
-                        </svg>
-                        {{ hl.votes }} votos registrados</span
-                      >
                       </sc-if>
                       <span class="xirras-style-105"
                         ><svg
@@ -787,7 +802,11 @@
             </sc-if>
 
             <!-- JOGOS -->
-            <section id="jogos" class="xirras-style-78" style="order:{{ ordJogos }}; {{ dispJogos }}">
+            <section
+              id="jogos"
+              class="xirras-style-78"
+              style="order:{{ ordJogos }}; {{ dispJogos }}"
+            >
               <div class="xirras-style-32">
                 <span class="xirras-style-33">Linha do tempo</span>
                 <h2 class="xirras-style-112">Últimos jogos</h2>
@@ -888,19 +907,80 @@
                           value="{{ g.hasMvp }}"
                           hint-placeholder-val="{{ false }}"
                         >
-                          <p style="display:flex; align-items:center; gap:8px; margin:12px 0 0; font-size:14px; color:var(--fg)">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-                            MVP da partida: <strong style="color:var(--primary)">{{ g.mvp }}</strong>
+                          <p
+                            style="
+                              display: flex;
+                              align-items: center;
+                              gap: 8px;
+                              margin: 12px 0 0;
+                              font-size: 14px;
+                              color: var(--fg);
+                            "
+                          >
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="var(--primary)"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                              <path d="M4 22h16" />
+                              <path
+                                d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
+                              />
+                              <path
+                                d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
+                              />
+                              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                            </svg>
+                            MVP da partida:
+                            <strong style="color: var(--primary)"
+                              >{{ g.mvp }}</strong
+                            >
                           </p>
                         </sc-if>
                         <sc-if
                           value="{{ g.hasPhotos }}"
                           hint-placeholder-val="{{ false }}"
                         >
-                          <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:8px; margin-top:14px">
-                            <sc-for list="{{ g.photos }}" as="ph" hint-placeholder-count="3">
-                              <div style="aspect-ratio:1; overflow:hidden; border-radius:10px; border:1px solid var(--border)">
-                                <img src="{{ ph.url }}" alt="{{ ph.alt }}" style="width:100%; height:100%; object-fit:cover"/>
+                          <div
+                            style="
+                              display: grid;
+                              grid-template-columns: repeat(
+                                auto-fill,
+                                minmax(96px, 1fr)
+                              );
+                              gap: 8px;
+                              margin-top: 14px;
+                            "
+                          >
+                            <sc-for
+                              list="{{ g.photos }}"
+                              as="ph"
+                              hint-placeholder-count="3"
+                            >
+                              <div
+                                style="
+                                  aspect-ratio: 1;
+                                  overflow: hidden;
+                                  border-radius: 10px;
+                                  border: 1px solid var(--border);
+                                "
+                              >
+                                <img
+                                  src="{{ ph.url }}"
+                                  alt="{{ ph.alt }}"
+                                  style="
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                  "
+                                />
                               </div>
                             </sc-for>
                           </div>
@@ -944,7 +1024,11 @@
             </section>
 
             <!-- HALL DE DESTAQUES -->
-            <section id="halldestaques" class="xirras-style-78" style="order:{{ ordHallDestaques }}; {{ dispHallDestaques }}">
+            <section
+              id="halldestaques"
+              class="xirras-style-78"
+              style="order:{{ ordHallDestaques }}; {{ dispHallDestaques }}"
+            >
               <div class="xirras-style-32">
                 <span class="xirras-style-33">Histórico</span>
                 <h2 class="xirras-style-112">Hall de Destaques</h2>
@@ -962,9 +1046,11 @@
                         class="xirras-style-114"
                         data-id="{{ h.id }}"
                         onClick="{{ toggleHighlightCard }}"
-                        style="cursor:pointer"
+                        style="cursor: pointer"
                       >
-                        <div style="display:flex; align-items:center; gap:12px">
+                        <div
+                          style="display: flex; align-items: center; gap: 12px"
+                        >
                           <sc-if
                             value="{{ h.hasPhoto }}"
                             hint-placeholder-val="{{ false }}"
@@ -972,7 +1058,13 @@
                             <img
                               src="{{ h.photo }}"
                               alt=""
-                              style="width:48px; height:48px; border-radius:50%; object-fit:cover; flex:none"
+                              style="
+                                width: 48px;
+                                height: 48px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                                flex: none;
+                              "
                             />
                           </sc-if>
                           <sc-if
@@ -981,14 +1073,24 @@
                           >
                             <div
                               class="xirras-style-109"
-                              style="width:48px; height:48px; font-size:16px; flex:none"
+                              style="
+                                width: 48px;
+                                height: 48px;
+                                font-size: 16px;
+                                flex: none;
+                              "
                             >
                               {{ h.initials }}
                             </div>
                           </sc-if>
-                          <div style="flex:1; min-width:0">
-                            <span class="xirras-style-117">{{ h.metaLabel }}</span>
-                            <h3 class="xirras-style-118" style="font-size:18px">
+                          <div style="flex: 1; min-width: 0">
+                            <span class="xirras-style-117"
+                              >{{ h.metaLabel }}</span
+                            >
+                            <h3
+                              class="xirras-style-118"
+                              style="font-size: 18px"
+                            >
                               {{ h.playerName }}
                             </h3>
                           </div>
@@ -1001,7 +1103,7 @@
                             stroke-width="2"
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                            style="flex:none"
+                            style="flex: none"
                           >
                             <path d="m6 9 6 6 6-6" />
                           </svg>
@@ -1010,7 +1112,13 @@
                           value="{{ h.isExpanded }}"
                           hint-placeholder-val="{{ false }}"
                         >
-                          <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border)">
+                          <div
+                            style="
+                              margin-top: 14px;
+                              padding-top: 14px;
+                              border-top: 1px solid var(--border);
+                            "
+                          >
                             <sc-if
                               value="{{ h.hasReason }}"
                               hint-placeholder-val="{{ false }}"
@@ -1041,7 +1149,13 @@
                               value="{{ h.hasVotes }}"
                               hint-placeholder-val="{{ false }}"
                             >
-                              <p style="margin:12px 0 0; font-size:14px; color:var(--muted-fg)">
+                              <p
+                                style="
+                                  margin: 12px 0 0;
+                                  font-size: 14px;
+                                  color: var(--muted-fg);
+                                "
+                              >
                                 {{ h.votes }} votos registrados
                               </p>
                             </sc-if>
@@ -1093,7 +1207,11 @@
             </section>
 
             <!-- GALERIA -->
-            <section id="galeria" class="xirras-style-132" style="order:{{ ordGaleria }}; {{ dispGaleria }}">
+            <section
+              id="galeria"
+              class="xirras-style-132"
+              style="order:{{ ordGaleria }}; {{ dispGaleria }}"
+            >
               <div class="xirras-style-32">
                 <span class="xirras-style-33">Memórias</span>
                 <h2 class="xirras-style-112">Galeria do time</h2>
@@ -1194,7 +1312,11 @@
             </section>
 
             <!-- MURAL -->
-            <section id="mural" class="xirras-style-142" style="order:{{ ordMural }}; {{ dispMural }}">
+            <section
+              id="mural"
+              class="xirras-style-142"
+              style="order:{{ ordMural }}; {{ dispMural }}"
+            >
               <div class="xirras-style-32">
                 <span class="xirras-style-33">Mural do clube</span>
                 <h2 class="xirras-style-112">Avisos e novidades</h2>
@@ -1269,7 +1391,11 @@
             </section>
 
             <!-- SOBRE -->
-            <section id="sobre" class="xirras-style-78" style="order:{{ ordSobre }}; {{ dispSobre }}">
+            <section
+              id="sobre"
+              class="xirras-style-78"
+              style="order:{{ ordSobre }}; {{ dispSobre }}"
+            >
               <div class="xirras-style-98">
                 <div class="xirras-style-153">
                   <div class="xirras-style-154">
@@ -1408,21 +1534,86 @@
                     </svg>
                     {{ instagramHandle }}</a
                   >
-                  <sc-if value="{{ hasAddress }}" hint-placeholder-val="{{ false }}">
-                    <a href="{{ mapsUrl }}" target="_blank" rel="noopener" class="xirras-style-169" style="display:flex; gap:6px; align-items:flex-start; text-decoration:none">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <sc-if
+                    value="{{ hasAddress }}"
+                    hint-placeholder-val="{{ false }}"
+                  >
+                    <a
+                      href="{{ mapsUrl }}"
+                      target="_blank"
+                      rel="noopener"
+                      class="xirras-style-169"
+                      style="
+                        display: flex;
+                        gap: 6px;
+                        align-items: flex-start;
+                        text-decoration: none;
+                      "
+                    >
+                      <svg
+                        width="15"
+                        height="15"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--primary)"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        style="flex: none; margin-top: 2px"
+                      >
+                        <path
+                          d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+                        />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
                       {{ addressText }}
                     </a>
                   </sc-if>
-                  <sc-if value="{{ hasWhatsapp }}" hint-placeholder-val="{{ false }}">
-                    <a href="{{ whatsappUrl }}" target="_blank" rel="noopener" class="xirras-style-170">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                  <sc-if
+                    value="{{ hasWhatsapp }}"
+                    hint-placeholder-val="{{ false }}"
+                  >
+                    <a
+                      href="{{ whatsappUrl }}"
+                      target="_blank"
+                      rel="noopener"
+                      class="xirras-style-170"
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                        />
+                      </svg>
                       WhatsApp
                     </a>
                   </sc-if>
-                  <sc-if value="{{ hasEmail }}" hint-placeholder-val="{{ false }}">
+                  <sc-if
+                    value="{{ hasEmail }}"
+                    hint-placeholder-val="{{ false }}"
+                  >
                     <a href="mailto:{{ emailAddr }}" class="xirras-style-170">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect width="20" height="16" x="2" y="4" rx="2" />
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                      </svg>
                       {{ emailAddr }}
                     </a>
                   </sc-if>
@@ -1621,9 +1812,40 @@
           <div class="xirras-style-188">
             <sc-if value="{{ saveToast }}" hint-placeholder-val="">
               <div
-                style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:80; display:flex; align-items:center; gap:8px; padding:12px 20px; border-radius:999px; background:var(--primary); color:var(--primary-fg); font-family:Oswald,sans-serif; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.04em; box-shadow:0 10px 30px rgba(0,0,0,0.35)"
+                style="
+                  position: fixed;
+                  bottom: 24px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  z-index: 80;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  padding: 12px 20px;
+                  border-radius: 999px;
+                  background: var(--primary);
+                  color: var(--primary-fg);
+                  font-family: Oswald, sans-serif;
+                  font-weight: 600;
+                  font-size: 14px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.04em;
+                  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+                "
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                  <path d="m9 11 3 3L22 4" />
+                </svg>
                 {{ saveToast }}
               </div>
             </sc-if>
@@ -1809,7 +2031,23 @@
                           class="xirras-style-212"
                         />
                         <label class="xirras-style-217" style="cursor: pointer">
-                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"/><circle cx="12" cy="8" r="2"/><rect width="16" height="16" x="6" y="2" rx="2"/></svg>
+                          <svg
+                            width="15"
+                            height="15"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="var(--primary)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M18 22H4a2 2 0 0 1-2-2V6" />
+                            <path
+                              d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"
+                            />
+                            <circle cx="12" cy="8" r="2" />
+                            <rect width="16" height="16" x="6" y="2" rx="2" />
+                          </svg>
                           Adicionar foto do destaque
                           <input
                             data-id="{{ h.id }}"
@@ -1823,15 +2061,58 @@
                           value="{{ h.hasPhoto }}"
                           hint-placeholder-val="{{ false }}"
                         >
-                          <div style="position:relative; width:72px; aspect-ratio:1; overflow:hidden; border-radius:8px; border:1px solid var(--border)">
-                            <img src="{{ h.playerPhoto }}" alt="" style="width:100%; height:100%; object-fit:cover"/>
+                          <div
+                            style="
+                              position: relative;
+                              width: 72px;
+                              aspect-ratio: 1;
+                              overflow: hidden;
+                              border-radius: 8px;
+                              border: 1px solid var(--border);
+                            "
+                          >
+                            <img
+                              src="{{ h.playerPhoto }}"
+                              alt=""
+                              style="
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                              "
+                            />
                             <button
                               data-id="{{ h.id }}"
                               onClick="{{ removeHighlightPhoto }}"
                               aria-label="Remover foto"
-                              style="position:absolute; top:3px; right:3px; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; border:none; border-radius:6px; background:var(--destructive); color:#fff; cursor:pointer"
+                              style="
+                                position: absolute;
+                                top: 3px;
+                                right: 3px;
+                                width: 22px;
+                                height: 22px;
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                border: none;
+                                border-radius: 6px;
+                                background: var(--destructive);
+                                color: #fff;
+                                cursor: pointer;
+                              "
                             >
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                              <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <path d="M18 6 6 18" />
+                                <path d="m6 6 12 12" />
+                              </svg>
                             </button>
                           </div>
                         </sc-if>
@@ -1846,7 +2127,10 @@
                         </div>
                       </div>
                     </sc-for>
-                    <button onClick="{{ addHighlight }}" class="xirras-style-220">
+                    <button
+                      onClick="{{ addHighlight }}"
+                      class="xirras-style-220"
+                    >
                       <svg
                         width="16"
                         height="16"
@@ -2149,7 +2433,23 @@
                           class="xirras-style-212"
                         />
                         <label class="xirras-style-217" style="cursor: pointer">
-                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"/><circle cx="12" cy="8" r="2"/><rect width="16" height="16" x="6" y="2" rx="2"/></svg>
+                          <svg
+                            width="15"
+                            height="15"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="var(--primary)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M18 22H4a2 2 0 0 1-2-2V6" />
+                            <path
+                              d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"
+                            />
+                            <circle cx="12" cy="8" r="2" />
+                            <rect width="16" height="16" x="6" y="2" rx="2" />
+                          </svg>
                           Adicionar fotos do jogo
                           <input
                             data-id="{{ g.id }}"
@@ -2160,13 +2460,77 @@
                             class="xirras-style-218"
                           />
                         </label>
-                        <sc-if value="{{ g.photoCount }}" hint-placeholder-val="{{ 0 }}">
-                          <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(72px,1fr)); gap:8px">
-                            <sc-for list="{{ g.photos }}" as="ph" hint-placeholder-count="2">
-                              <div style="position:relative; aspect-ratio:1; overflow:hidden; border-radius:8px; border:1px solid var(--border)">
-                                <img src="{{ ph.url }}" alt="" style="width:100%; height:100%; object-fit:cover"/>
-                                <button data-id="{{ g.id }}" data-idx="{{ ph.idx }}" onClick="{{ removeGamePhoto }}" aria-label="Remover foto" style="position:absolute; top:3px; right:3px; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; border:none; border-radius:6px; background:var(--destructive); color:#fff; cursor:pointer">
-                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                        <sc-if
+                          value="{{ g.photoCount }}"
+                          hint-placeholder-val="{{ 0 }}"
+                        >
+                          <div
+                            style="
+                              display: grid;
+                              grid-template-columns: repeat(
+                                auto-fill,
+                                minmax(72px, 1fr)
+                              );
+                              gap: 8px;
+                            "
+                          >
+                            <sc-for
+                              list="{{ g.photos }}"
+                              as="ph"
+                              hint-placeholder-count="2"
+                            >
+                              <div
+                                style="
+                                  position: relative;
+                                  aspect-ratio: 1;
+                                  overflow: hidden;
+                                  border-radius: 8px;
+                                  border: 1px solid var(--border);
+                                "
+                              >
+                                <img
+                                  src="{{ ph.url }}"
+                                  alt=""
+                                  style="
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                  "
+                                />
+                                <button
+                                  data-id="{{ g.id }}"
+                                  data-idx="{{ ph.idx }}"
+                                  onClick="{{ removeGamePhoto }}"
+                                  aria-label="Remover foto"
+                                  style="
+                                    position: absolute;
+                                    top: 3px;
+                                    right: 3px;
+                                    width: 22px;
+                                    height: 22px;
+                                    display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border: none;
+                                    border-radius: 6px;
+                                    background: var(--destructive);
+                                    color: #fff;
+                                    cursor: pointer;
+                                  "
+                                >
+                                  <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="3"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  >
+                                    <path d="M18 6 6 18" />
+                                    <path d="m6 6 12 12" />
+                                  </svg>
                                 </button>
                               </div>
                             </sc-for>
@@ -2440,7 +2804,11 @@
                         onChange="{{ onNewAttGame }}"
                         class="xirras-style-223"
                       >
-                        <sc-for list="{{ gameOptions }}" as="opt" hint-placeholder-count="2">
+                        <sc-for
+                          list="{{ gameOptions }}"
+                          as="opt"
+                          hint-placeholder-count="2"
+                        >
                           <option value="{{ opt.id }}">{{ opt.label }}</option>
                         </sc-for>
                       </select>
@@ -2458,10 +2826,18 @@
                         hint-placeholder-count="3"
                       >
                         <div class="xirras-style-234">
-                          <span style="display:flex; flex-direction:column; gap:2px">
+                          <span
+                            style="
+                              display: flex;
+                              flex-direction: column;
+                              gap: 2px;
+                            "
+                          >
                             <span class="xirras-style-235">{{ a.name }}</span>
-                            <span style="font-size:11px; color:var(--muted-fg)">{{ a.gameLabel }}</span>
-                          </span
+                            <span
+                              style="font-size: 11px; color: var(--muted-fg)"
+                              >{{ a.gameLabel }}</span
+                            > </span
                           ><button
                             data-id="{{ a.id }}"
                             onClick="{{ removeAttendance }}"
@@ -2665,7 +3041,9 @@
                         Como o site aparece no Google e ao compartilhar o link.
                         Em branco, usamos o título e o texto do topo.
                       </p>
-                      <label class="xirras-style-243">Título (aba / Google)</label>
+                      <label class="xirras-style-243"
+                        >Título (aba / Google)</label
+                      >
                       <input
                         data-path="seo.title"
                         value="{{ adminSeo.title }}"
@@ -2755,7 +3133,16 @@
                         hint-placeholder-count="6"
                       >
                         <div
-                          style="display:flex; align-items:center; gap:8px; border:1px solid var(--border); border-radius:12px; background:var(--bg); padding:10px 12px; margin-top:8px"
+                          style="
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            border: 1px solid var(--border);
+                            border-radius: 12px;
+                            background: var(--bg);
+                            padding: 10px 12px;
+                            margin-top: 8px;
+                          "
                         >
                           <span
                             style="flex:1; font-family:Oswald,sans-serif; font-weight:600; text-transform:uppercase; font-size:13px; color:{{ s.labelColor }}"
@@ -2766,18 +3153,62 @@
                             data-dir="-1"
                             onClick="{{ moveSection }}"
                             aria-label="Subir seção"
-                            style="width:34px; height:34px; border-radius:8px; border:1px solid var(--border); background:transparent; color:var(--fg); cursor:pointer; display:inline-flex; align-items:center; justify-content:center"
+                            style="
+                              width: 34px;
+                              height: 34px;
+                              border-radius: 8px;
+                              border: 1px solid var(--border);
+                              background: transparent;
+                              color: var(--fg);
+                              cursor: pointer;
+                              display: inline-flex;
+                              align-items: center;
+                              justify-content: center;
+                            "
                           >
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+                            <svg
+                              width="15"
+                              height="15"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path d="m18 15-6-6-6 6" />
+                            </svg>
                           </button>
                           <button
                             data-id="{{ s.id }}"
                             data-dir="1"
                             onClick="{{ moveSection }}"
                             aria-label="Descer seção"
-                            style="width:34px; height:34px; border-radius:8px; border:1px solid var(--border); background:transparent; color:var(--fg); cursor:pointer; display:inline-flex; align-items:center; justify-content:center"
+                            style="
+                              width: 34px;
+                              height: 34px;
+                              border-radius: 8px;
+                              border: 1px solid var(--border);
+                              background: transparent;
+                              color: var(--fg);
+                              cursor: pointer;
+                              display: inline-flex;
+                              align-items: center;
+                              justify-content: center;
+                            "
                           >
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                            <svg
+                              width="15"
+                              height="15"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path d="m6 9 6 6 6-6" />
+                            </svg>
                           </button>
                           <button
                             data-id="{{ s.id }}"
